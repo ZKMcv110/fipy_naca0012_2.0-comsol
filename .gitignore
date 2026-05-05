@@ -115,6 +115,7 @@ dmypy.json
 # IDE
 .idea/
 .vscode/
+.lingma/
 
 # OS
 .DS_Store
@@ -129,3 +130,4 @@ gmsh-*.dll
 csv_data/
 solver_results/
 results/
+consol_cfddata/
