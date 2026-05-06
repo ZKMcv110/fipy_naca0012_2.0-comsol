@@ -11,6 +11,7 @@
 
 import os
 import csv
+import argparse
 import subprocess
 import numpy as np
 import pandas as pd
@@ -54,11 +55,18 @@ def extract_results_from_stdout(stdout_text):
     return None, None
 
 def main():
+    parser = argparse.ArgumentParser(description='Run a selectable number of COMSOL CFD cases.')
+    parser.add_argument('--num-samples', type=int, default=500,
+                        help='Number of LHS parameter groups / COMSOL cases to generate. Default: 500.')
+    args = parser.parse_args()
+    if args.num_samples <= 0:
+        raise ValueError("--num-samples must be a positive integer")
+
     print("=====================================================")
     print("🚀 高维拓扑数据集全自动生成流水线启动 (基础双特征提取版)")
     print("=====================================================")
     
-    num_samples = 500
+    num_samples = args.num_samples
     results_dir = "consol_cfddata"
     csv_dir = "csv_data"
     csv_file = os.path.join(csv_dir, "final_results.csv")
@@ -93,6 +101,7 @@ def main():
             "--Tad", str(params['Tad']),
             "--outdir", outdir
         ]
+        cmd[1] = "comsol单次执行脚本.py"
         
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=600)

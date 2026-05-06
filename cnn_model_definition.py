@@ -59,7 +59,7 @@ class CBAM(nn.Module):
 # 2. CFD性能预测CNN模型
 # ==========================================
 class CFDFieldToPerformanceCNN(nn.Module):
-    def __init__(self, num_fields=3, num_scalars=4, output_size=2):
+    def __init__(self, num_fields=3, num_scalars=6, output_size=2):
         """
         参数:
         num_fields: 输入流场图数量 (默认3: 速度, 压力, 温度)

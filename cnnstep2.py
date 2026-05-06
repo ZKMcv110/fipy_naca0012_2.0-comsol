@@ -10,6 +10,16 @@
 
 import os
 import json
+import argparse
+import sys
+
+os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(errors="replace")
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -19,9 +29,12 @@ import numpy as np
 from PIL import Image
 from torchvision import transforms
 import matplotlib.pyplot as plt
-from sklearn.metrics import mean_squared_error, mean_absolute_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 from cnn_model_definition import CFDFieldToPerformanceCNN
+
+PARAM_COLS = ['Ta', 'Twa', 'Tb', 'Ts', 'Tt', 'Tad']
+REQUIRED_IMAGE_FILES = ['velocity_magnitude.png', 'pressure.png', 'temperature.png']
 
 # ==========================================
 # 工具函数：计算数据集统计量 (绝对防止数据泄露)
@@ -54,7 +67,7 @@ class CFDFieldDataset(Dataset):
         self.transform = transform
         self.field_types = field_types or ['velocity_field', 'pressure_field', 'temperature_field']
         # 修复:使用正确的 4 个物理参数 (根据实际数据集选择最重要的4个)
-        self.param_cols = ['Tt', 'Ts', 'Tad', 'Tb']
+        self.param_cols = PARAM_COLS
         
         if stats is None:
             raise ValueError("必须传入统计量字典以进行归一化！")
@@ -115,6 +128,41 @@ def collate_fn(batch):
         'case_id': [item['case_id'] for item in batch]
     }
 
+def validate_training_rows(data_frame, data_dir):
+    required_cols = ['case_id', 'Nu', 'f'] + PARAM_COLS
+    missing_cols = [col for col in required_cols if col not in data_frame.columns]
+    if missing_cols:
+        raise ValueError(f"Missing required columns in labels CSV: {missing_cols}")
+
+    valid_rows = []
+    skipped = {'bad_numeric': 0, 'bad_target': 0, 'missing_images': 0}
+
+    for _, row in data_frame.iterrows():
+        try:
+            case_id = int(row['case_id'])
+            values = [float(row[col]) for col in ['Nu', 'f'] + PARAM_COLS]
+        except Exception:
+            skipped['bad_numeric'] += 1
+            continue
+
+        if not all(np.isfinite(values)) or values[0] <= 0 or values[1] <= 0:
+            skipped['bad_target'] += 1
+            continue
+
+        case_dir = os.path.join(data_dir, f'case_{case_id}_cfd_solution')
+        if not all(os.path.exists(os.path.join(case_dir, name)) for name in REQUIRED_IMAGE_FILES):
+            skipped['missing_images'] += 1
+            continue
+
+        valid_rows.append(row)
+
+    clean_df = pd.DataFrame(valid_rows).reset_index(drop=True)
+    print(f"[INFO] Validated labels: kept {len(clean_df)} / {len(data_frame)} rows")
+    for reason, count in skipped.items():
+        if count:
+            print(f"[WARN] Skipped {count} rows due to {reason}")
+    return clean_df
+
 # ==========================================
 # 训练与评估函数
 # ==========================================
@@ -165,12 +213,30 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, num_epoch
     model.load_state_dict(torch.load(os.path.join(model_dir, 'best_model.pth')))
     return train_hist, val_hist
 
+def _mape_percent(true_values, pred_values):
+    true_values = np.asarray(true_values, dtype=float)
+    pred_values = np.asarray(pred_values, dtype=float)
+    denom = np.maximum(np.abs(true_values), 1e-12)
+    return float(np.mean(np.abs((true_values - pred_values) / denom)) * 100.0)
+
+
+def _target_metrics(true_values, pred_values, prefix):
+    mse = float(mean_squared_error(true_values, pred_values))
+    return {
+        f'{prefix}_MSE': mse,
+        f'{prefix}_RMSE': float(np.sqrt(mse)),
+        f'{prefix}_MAE': float(mean_absolute_error(true_values, pred_values)),
+        f'{prefix}_MAPE_percent': _mape_percent(true_values, pred_values),
+        f'{prefix}_R2': float(r2_score(true_values, pred_values)),
+    }
+
+
 def evaluate_model(model, test_loader, stats, device='cpu'):
     """评估模型并进行严格的反归一化"""
     model.to(device)
     model.eval()
     
-    true_list, pred_list = [], []
+    true_list, pred_list, case_ids = [], [], []
     with torch.no_grad():
         for data in test_loader:
             imgs = data['images'].to(device)
@@ -180,6 +246,7 @@ def evaluate_model(model, test_loader, stats, device='cpu'):
             outputs = model(imgs, params)
             true_list.extend(targets.cpu().numpy())
             pred_list.extend(outputs.cpu().numpy())
+            case_ids.extend(data['case_id'])
             
     true_norm = np.array(true_list)
     pred_norm = np.array(pred_list)
@@ -195,13 +262,85 @@ def evaluate_model(model, test_loader, stats, device='cpu'):
     true_real[:, 1] = true_norm[:, 1] * (t_stats['f_std'] + 1e-8) + t_stats['f_mean']
     pred_real[:, 1] = pred_norm[:, 1] * (t_stats['f_std'] + 1e-8) + t_stats['f_mean']
     
-    metrics = {
-        'Nu_MSE': mean_squared_error(true_real[:, 0], pred_real[:, 0]),
-        'f_MSE': mean_squared_error(true_real[:, 1], pred_real[:, 1]),
-        'Nu_MAE': mean_absolute_error(true_real[:, 0], pred_real[:, 0]),
-        'f_MAE': mean_absolute_error(true_real[:, 1], pred_real[:, 1])
-    }
-    return metrics, true_real, pred_real
+    metrics = {}
+    metrics.update(_target_metrics(true_real[:, 0], pred_real[:, 0], 'Nu'))
+    metrics.update(_target_metrics(true_real[:, 1], pred_real[:, 1], 'f'))
+    return metrics, true_real, pred_real, case_ids
+
+
+def save_evaluation_artifacts(metrics, true_vals, pred_vals, case_ids, save_dir):
+    """Save paper-ready test metrics and per-case predictions."""
+    os.makedirs(save_dir, exist_ok=True)
+
+    eps = 1e-12
+    true_nu = true_vals[:, 0]
+    pred_nu = pred_vals[:, 0]
+    true_f = true_vals[:, 1]
+    pred_f = pred_vals[:, 1]
+
+    detail_df = pd.DataFrame({
+        'case_id': case_ids,
+        'true_Nu': true_nu,
+        'pred_Nu': pred_nu,
+        'error_Nu': pred_nu - true_nu,
+        'abs_error_Nu': np.abs(pred_nu - true_nu),
+        'ape_Nu_percent': np.abs((pred_nu - true_nu) / np.maximum(np.abs(true_nu), eps)) * 100.0,
+        'true_f': true_f,
+        'pred_f': pred_f,
+        'error_f': pred_f - true_f,
+        'abs_error_f': np.abs(pred_f - true_f),
+        'ape_f_percent': np.abs((pred_f - true_f) / np.maximum(np.abs(true_f), eps)) * 100.0,
+        'true_eta_proxy': true_nu / np.maximum(true_f, eps) ** (1.0 / 3.0),
+        'pred_eta_proxy': pred_nu / np.maximum(pred_f, eps) ** (1.0 / 3.0),
+    })
+    detail_path = os.path.join(save_dir, 'test_predictions.csv')
+    detail_df.to_csv(detail_path, index=False, encoding='utf-8-sig')
+
+    table7_df = pd.DataFrame([
+        {
+            'target': 'Nu',
+            'R2': metrics['Nu_R2'],
+            'MSE': metrics['Nu_MSE'],
+            'RMSE': metrics['Nu_RMSE'],
+            'MAE': metrics['Nu_MAE'],
+            'MAPE_percent': metrics['Nu_MAPE_percent'],
+        },
+        {
+            'target': 'f',
+            'R2': metrics['f_R2'],
+            'MSE': metrics['f_MSE'],
+            'RMSE': metrics['f_RMSE'],
+            'MAE': metrics['f_MAE'],
+            'MAPE_percent': metrics['f_MAPE_percent'],
+        },
+    ])
+    table7_path = os.path.join(save_dir, 'paper_table7_metrics.csv')
+    table7_df.to_csv(table7_path, index=False, encoding='utf-8-sig')
+
+    summary_path = os.path.join(save_dir, 'paper_table7_metrics.md')
+    with open(summary_path, 'w', encoding='utf-8') as f:
+        f.write('| Target | R2 | MSE | RMSE | MAE | MAPE/% |\n')
+        f.write('|---|---:|---:|---:|---:|---:|\n')
+        for _, row in table7_df.iterrows():
+            f.write(
+                f"| {row['target']} | {row['R2']:.4f} | {row['MSE']:.6g} | "
+                f"{row['RMSE']:.6g} | {row['MAE']:.6g} | {row['MAPE_percent']:.3f} |\n"
+            )
+
+    print(f"[INFO] Saved per-case test predictions: {detail_path}")
+    print(f"[INFO] Saved paper Table 7 metrics: {table7_path}")
+    print(f"[INFO] Saved markdown Table 7 metrics: {summary_path}")
+
+
+def save_split_indices(save_dir, data_frame, train_idx, val_idx, test_idx):
+    rows = []
+    for split_name, indices in [('train', train_idx), ('val', val_idx), ('test', test_idx)]:
+        for idx in indices:
+            rows.append({'split': split_name, 'row_index': int(idx), 'case_id': int(data_frame.iloc[idx]['case_id'])})
+    split_df = pd.DataFrame(rows)
+    split_path = os.path.join(save_dir, 'dataset_split.csv')
+    split_df.to_csv(split_path, index=False, encoding='utf-8-sig')
+    print(f"[INFO] Saved dataset split: {split_path}")
 
 # ==========================================
 # 绘图工具函数 (训练结束后生成并保存图表)
@@ -214,14 +353,14 @@ def plot_results(true_vals, pred_vals, save_dir):
     nu_true = true_vals[:, 0]
     nu_pred = pred_vals[:, 0]
     # 添加随机抖动 (jitter)
-    jitter_nu = 0.3
-    nu_true_jittered = nu_true + np.random.uniform(-jitter_nu, jitter_nu, size=len(nu_true))
-    nu_pred_jittered = nu_pred + np.random.uniform(-jitter_nu, jitter_nu, size=len(nu_pred))
+    nu_metrics = _target_metrics(nu_true, nu_pred, 'Nu')
     
-    ax1.scatter(nu_true_jittered, nu_pred_jittered, alpha=0.6, c='#1f77b4', edgecolors='white', s=60, linewidth=1)
+    ax1.scatter(nu_true, nu_pred, alpha=0.75, c='#1f77b4', edgecolors='white', s=56, linewidth=0.8)
     min_v, max_v = true_vals[:, 0].min() - 2, true_vals[:, 0].max() + 2
     ax1.plot([min_v, max_v], [min_v, max_v], 'r--', lw=2, label='Ideal (y=x)')
-    ax1.set_title(f'Nu Prediction on Test Set (n={len(nu_true)}, MAE: {mean_absolute_error(true_vals[:,0], pred_vals[:,0]):.2f})')
+    ax1.set_xlim(min_v, max_v)
+    ax1.set_ylim(min_v, max_v)
+    ax1.set_title(f"Nu Prediction (n={len(nu_true)}, R2={nu_metrics['Nu_R2']:.3f}, MAE={nu_metrics['Nu_MAE']:.3f})")
     ax1.set_xlabel('CFD True Nu')
     ax1.set_ylabel('CNN Predicted Nu')
     ax1.legend()
@@ -230,14 +369,14 @@ def plot_results(true_vals, pred_vals, save_dir):
     # 绘制 f - 添加轻微抖动
     f_true = true_vals[:, 1]
     f_pred = pred_vals[:, 1]
-    jitter_f = 0.0002
-    f_true_jittered = f_true + np.random.uniform(-jitter_f, jitter_f, size=len(f_true))
-    f_pred_jittered = f_pred + np.random.uniform(-jitter_f, jitter_f, size=len(f_pred))
+    f_metrics = _target_metrics(f_true, f_pred, 'f')
     
-    ax2.scatter(f_true_jittered, f_pred_jittered, alpha=0.6, c='#ff7f0e', edgecolors='white', s=60, linewidth=1)
+    ax2.scatter(f_true, f_pred, alpha=0.75, c='#ff7f0e', edgecolors='white', s=56, linewidth=0.8)
     min_v_f, max_v_f = true_vals[:, 1].min() - 0.0005, true_vals[:, 1].max() + 0.0005
     ax2.plot([min_v_f, max_v_f], [min_v_f, max_v_f], 'r--', lw=2, label='Ideal (y=x)')
-    ax2.set_title(f'f Prediction on Test Set (n={len(f_true)}, MAE: {mean_absolute_error(true_vals[:,1], pred_vals[:,1]):.6f})')
+    ax2.set_xlim(min_v_f, max_v_f)
+    ax2.set_ylim(min_v_f, max_v_f)
+    ax2.set_title(f"f Prediction (n={len(f_true)}, R2={f_metrics['f_R2']:.3f}, MAE={f_metrics['f_MAE']:.6f})")
     ax2.set_xlabel('CFD True f')
     ax2.set_ylabel('CNN Predicted f')
     ax2.legend()
@@ -245,11 +384,24 @@ def plot_results(true_vals, pred_vals, save_dir):
     
     plt.tight_layout()
     save_path = os.path.join(save_dir, 'final_prediction.png')
-    plt.savefig(save_path, dpi=150, bbox_inches='tight')
+    plt.savefig(save_path, dpi=300, bbox_inches='tight')
     plt.close()
     print(f"🎯 预测结果误差散点图已保存至: {save_path}")
 
 def main():
+    parser = argparse.ArgumentParser(description='Train CNN model on a selectable number of CFD cases.')
+    parser.add_argument('--num-samples', type=int, default=None,
+                        help='Number of valid cases to use. Default: use all valid cases.')
+    parser.add_argument('--sample-mode', choices=['first', 'random'], default='first',
+                        help='How to choose cases when --num-samples is set. Default: first.')
+    parser.add_argument('--seed', type=int, default=42,
+                        help='Random seed for sampling and train/val/test split. Default: 42.')
+    parser.add_argument('--eval-only', action='store_true',
+                        help='Only evaluate an existing trained model and regenerate paper metrics.')
+    parser.add_argument('--model-path', default=None,
+                        help='Model .pth path for --eval-only. Default: ai_cnn_model_results/cfd_cnn_model.pth.')
+    args = parser.parse_args()
+
     print(">>> 启动无数据泄露的严谨 CFD 参数预测模型训练 <<<")
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"使用计算设备: {device}")
@@ -273,6 +425,8 @@ def main():
         csv_file = os.path.join('csv_data', 'final_results.csv')
         print("⚠️  警告: 使用原始 CSV 文件(可能包含错误行)")
     
+    csv_file = os.path.join(results_dir, 'labels.csv')
+
     model_dir = 'ai_cnn_model_results'
     os.makedirs(model_dir, exist_ok=True)
     
@@ -298,8 +452,26 @@ def main():
     print(f"📋 列名: {list(data_frame.columns)}")
     
     # 修复:过滤掉 Nu 或 f 为 NaN 的失败案例
+    data_frame = validate_training_rows(data_frame, results_dir)
     valid_mask = data_frame['Nu'].notna() & data_frame['f'].notna()
     data_frame = data_frame[valid_mask].reset_index(drop=True)
+
+    if args.num_samples is not None:
+        if args.num_samples <= 0:
+            raise ValueError("--num-samples must be a positive integer")
+
+        requested = args.num_samples
+        available = len(data_frame)
+        use_count = min(requested, available)
+
+        if args.sample_mode == 'random':
+            data_frame = data_frame.sample(n=use_count, random_state=args.seed).reset_index(drop=True)
+        else:
+            data_frame = data_frame.head(use_count).reset_index(drop=True)
+
+        if requested > available:
+            print(f"[WARN] Requested {requested} samples, but only {available} valid cases are available. Using {use_count}.")
+        print(f"[INFO] Using {len(data_frame)} valid cases for this run (mode={args.sample_mode}).")
     
     print(f"✅ 有效样本数: {len(data_frame)} (已过滤 {valid_mask.sum() - len(data_frame)} 个失败案例)")
     
@@ -312,7 +484,7 @@ def main():
     # ---------------------------------------------------------
     # 【数据划分核心逻辑】：必须打乱数据后才能进行统计！
     # ---------------------------------------------------------
-    np.random.seed(42)
+    np.random.seed(args.seed)
     shuffled_indices = np.random.permutation(valid_indices)
     
     # 小样本集调整:至少保证每个集合有 1 个样本
@@ -335,10 +507,17 @@ def main():
     print(f"训练集: {len(train_idx)}, 验证集: {len(val_idx)}, 测试集: {len(test_idx)}")
     
     # 计算统计分布（仅依赖训练集）
-    stats = calculate_dataset_stats(data_frame, train_idx, ['Tt', 'Ts', 'Tad', 'Tb'])
-    
-    with open(os.path.join(model_dir, 'dataset_stats.json'), 'w') as f:
-        json.dump(stats, f, indent=4)
+    save_split_indices(model_dir, data_frame, train_idx, val_idx, test_idx)
+
+    stats_path = os.path.join(model_dir, 'dataset_stats.json')
+    if args.eval_only and os.path.exists(stats_path):
+        with open(stats_path, 'r', encoding='utf-8') as f:
+            stats = json.load(f)
+        print(f"[INFO] Loaded existing normalization stats: {stats_path}")
+    else:
+        stats = calculate_dataset_stats(data_frame, train_idx, PARAM_COLS)
+        with open(stats_path, 'w', encoding='utf-8') as f:
+            json.dump(stats, f, indent=4)
         
     train_ds = CFDFieldDataset(results_dir, data_frame, train_idx, stats, transform)
     val_ds = CFDFieldDataset(results_dir, data_frame, val_idx, stats, transform)
@@ -350,9 +529,28 @@ def main():
         'test': DataLoader(test_ds, batch_size=16, shuffle=False, collate_fn=collate_fn)
     }
     
-    model = CFDFieldToPerformanceCNN(num_fields=3, num_scalars=4, output_size=2)
+    model = CFDFieldToPerformanceCNN(num_fields=3, num_scalars=len(PARAM_COLS), output_size=2)
     optimizer = optim.Adam(model.parameters(), lr=0.0005, weight_decay=1e-4)
     criterion = nn.MSELoss()
+
+    if args.eval_only:
+        model_path = args.model_path or os.path.join(model_dir, 'cfd_cnn_model.pth')
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"Model file not found for --eval-only: {model_path}")
+        model.load_state_dict(torch.load(model_path, map_location=device))
+        print(f"[INFO] Loaded model for evaluation: {model_path}")
+
+        metrics, true_vals, pred_vals, case_ids = evaluate_model(model, loaders['test'], stats, device)
+        print("\n[INFO] Test metrics:")
+        for k, v in metrics.items():
+            print(f"  {k}: {v:.6f}")
+
+        with open(os.path.join(model_dir, 'metrics.json'), 'w', encoding='utf-8') as f:
+            json.dump({k: float(v) for k, v in metrics.items()}, f, indent=4)
+
+        save_evaluation_artifacts(metrics, true_vals, pred_vals, case_ids, model_dir)
+        plot_results(true_vals, pred_vals, model_dir)
+        return
     
     print("\n🚀 开始训练网络...")
     # 使用标准训练轮次
@@ -379,13 +577,14 @@ def main():
     # ==========================================
     # 评估并在测试集上生成预测散点图
     # ==========================================
-    metrics, true_vals, pred_vals = evaluate_model(model, loaders['test'], stats, device)
+    metrics, true_vals, pred_vals, case_ids = evaluate_model(model, loaders['test'], stats, device)
     
     print("\n✅ 评估指标 (测试集 - 物理真实值):")
     for k, v in metrics.items(): print(f"  {k}: {v:.6f}")
     
-    with open(os.path.join(model_dir, 'metrics.json'), 'w') as f:
+    with open(os.path.join(model_dir, 'metrics.json'), 'w', encoding='utf-8') as f:
         json.dump({k: float(v) for k, v in metrics.items()}, f, indent=4)
+    save_evaluation_artifacts(metrics, true_vals, pred_vals, case_ids, model_dir)
         
     # 调用绘图工具绘制 Nu/f 散点图
     plot_results(true_vals, pred_vals, model_dir)
