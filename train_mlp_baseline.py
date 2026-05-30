@@ -330,6 +330,8 @@ def main():
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
+    os.makedirs(args.output_dir, exist_ok=True)
+
     set_seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"[INFO] Device: {device}")
@@ -370,4 +372,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

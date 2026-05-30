@@ -32,7 +32,7 @@ def create_and_solve_thermal_model(args, outdir):
         
         model.parameter('chord', '0.01[m]') 
         model.parameter('u_in', '5[m/s]')
-        model.parameter('Q_heat', '5e7[W/m^3]')
+        model.parameter('Q_heat', f'{args.Q_heat}[W/m^3]')
         model.parameter('T_amb', '293.15[K]')
 
         func = pymodel.func()
@@ -69,11 +69,17 @@ def create_and_solve_thermal_model(args, outdir):
                 mov_feat.set("displ", JStringArray([x_expr, y_expr]))
 
         rect_w_expr = "(8 * (1+Ts) + Tad + 15) * chord"
-        rect_h_expr = "(3 * Tt + 10) * chord"
+        # Channel height is only slightly larger than the airfoil-tube array.
+        # Row centers are at -Tt*c, 0, +Tt*c; Ta and Tb cover camber/thickness,
+        # and 0.35*c leaves a small clearance to the upper/lower boundaries.
+        rect_h_expr = "2 * (Tt + Ta + Tb + 0.35) * chord"
         
         rect = geom1.feature().create('rect1', 'Rectangle')
         rect.set('size', JStringArray([rect_w_expr, rect_h_expr]))
-        rect.set('pos', JDoubleArray([-0.05, -0.05]))
+        # Keep the airfoil array centered in the y direction. The previous
+        # fixed lower-left corner [-0.05, -0.05] made the bottom clearance much
+        # smaller than the top clearance when Tt changed.
+        rect.set('pos', JStringArray(["-5 * chord", "-1 * (Tt + Ta + Tb + 0.35) * chord"]))
         geom1.run('fin')
 
         sel_in = comp1.selection().create('sel_inlet', 'Box')
@@ -158,8 +164,15 @@ def create_and_solve_thermal_model(args, outdir):
         intop_wings.selection().set(wing_ids)
 
         mesh1 = comp1.mesh().create('mesh1', 'geom1')
-        mesh1.feature('size').set('hauto', jint(4)) 
+        mesh1.feature('size').set('hauto', jint(args.mesh_hauto)) 
         mesh1.run()
+        try:
+            mesh_elems = int(mesh1.getNumElem())
+        except Exception:
+            try:
+                mesh_elems = int(mesh1.getNumElem("tri"))
+            except Exception:
+                mesh_elems = -1
 
         std = pymodel.study().create('std1')
         std.create('stat', 'Stationary')
@@ -177,96 +190,125 @@ def create_and_solve_thermal_model(args, outdir):
             dset.set("solution", "sol1")
         except: pass 
 
-        def purify_export_image(export_node):
-            for attr in ['axes', 'legend', 'title', 'showlegend', 'showaxes', 'colorlegend']:
-                try: export_node.set(attr, "off")
+        def set_boolean_attr(node, attrs, enabled):
+            text_value = "on" if enabled else "off"
+            for attr in attrs:
+                try: node.set(attr, text_value)
                 except: pass
-                try: export_node.set(attr, False)
+                try: node.set(attr, bool(enabled))
                 except: pass
+
+        def configure_plot_legend(plot_group):
+            set_boolean_attr(plot_group, ["legend", "showlegend", "showlegends", "colorlegend"], args.paper_legend)
+            if args.paper_legend:
+                for key, value in [("showlegends", "on"), ("titletype", "none")]:
+                    try: plot_group.set(key, value)
+                    except: pass
+
+        def configure_export_image(export_node):
+            if args.paper_legend:
+                set_boolean_attr(export_node, ["axes", "showaxes"], True)
+                try: export_node.set("unit", "px")
+                except: pass
+                try: export_node.set("width", "1100")
+                except: pass
+                try: export_node.set("height", "520")
+                except: pass
+            else:
+                set_boolean_attr(export_node, ["axes", "showaxes"], False)
+            set_boolean_attr(export_node, ["title"], False)
+            set_boolean_attr(export_node, ["legend", "showlegend", "colorlegend"], args.paper_legend)
 
         # --- 出图部分 ---
         try:
             pg_vel = res.create("pg_vel", "PlotGroup2D")
             pg_vel.set("data", "my_dset") 
-            try: pg_vel.set("showlegend", False)
-            except: pass
+            configure_plot_legend(pg_vel)
             surf_vel = pg_vel.create("surf_vel", "Surface")
             surf_vel.set("expr", "spf.U")
+            try: pg_vel.run()
+            except: pass
             exp_vel = res.export().create("exp_vel", "Image2D")
             exp_vel.set("plotgroup", "pg_vel")
             exp_vel.set("target", "file")  
             exp_vel.set("filename", f"{outdir}/velocity_magnitude.png")
             exp_vel.set("resolution", "150")
-            purify_export_image(exp_vel)
+            configure_export_image(exp_vel)
             exp_vel.run()
         except Exception as e: print(f"[WARN] 速度场导出失败: {e}")
 
         try:
             pg_p = res.create("pg_p", "PlotGroup2D")
             pg_p.set("data", "my_dset")
-            try: pg_p.set("showlegend", False)
-            except: pass
+            configure_plot_legend(pg_p)
             surf_p = pg_p.create("surf_p", "Surface")
             surf_p.set("expr", "p")
+            try: pg_p.run()
+            except: pass
             exp_p = res.export().create("exp_p", "Image2D")
             exp_p.set("plotgroup", "pg_p")
             exp_p.set("target", "file")  
             exp_p.set("filename", f"{outdir}/pressure.png")
             exp_p.set("resolution", "150")
-            purify_export_image(exp_p)
+            configure_export_image(exp_p)
             exp_p.run()
         except Exception as e: print(f"[WARN] 压力场导出失败: {e}")
 
         try:
             pg_T = res.create("pg_T", "PlotGroup2D")
             pg_T.set("data", "my_dset")
-            try: pg_T.set("showlegend", False)
-            except: pass
+            configure_plot_legend(pg_T)
             surf_T = pg_T.create("surf_T", "Surface")
             surf_T.set("expr", "T")
+            try: pg_T.run()
+            except: pass
             exp_T = res.export().create("exp_T", "Image2D")
             exp_T.set("plotgroup", "pg_T")
             exp_T.set("target", "file")  
             exp_T.set("filename", f"{outdir}/temperature.png")
             exp_T.set("resolution", "150")
-            purify_export_image(exp_T)
+            configure_export_image(exp_T)
             exp_T.run()
         except Exception as e: print(f"[WARN] 温度场导出失败: {e}")
 
         # --- 🌟 提取【所有】物理量原始源数据 ---
         try:
             eg = res.numerical().create("eg_perf", "EvalGlobal")
+
+            def first_scalar(value):
+                """Return the first numeric value from COMSOL's nested Java arrays."""
+                while hasattr(value, "__len__") and not isinstance(value, (str, bytes)):
+                    if len(value) == 0:
+                        return float("nan")
+                    value = value[0]
+                return float(value)
+
+            def eval_global(expr):
+                eg.set("expr", expr)
+                return first_scalar(eg.computeResult())
             
             # 压力
-            eg.set("expr", "aveop_in(p)")
-            p_in = eg.computeResult()[0][0]
-            eg.set("expr", "aveop_out(p)")
-            p_out = eg.computeResult()[0][0]
+            p_in = eval_global("aveop_in(p)")
+            p_out = eval_global("aveop_out(p)")
             
             # 温度
-            eg.set("expr", "aveop_wings(T)")
-            T_wing_avg = eg.computeResult()[0][0]
-            eg.set("expr", "aveop_in(T)")
-            T_in_val = eg.computeResult()[0][0]
-            eg.set("expr", "aveop_out(T)")
-            T_out_val = eg.computeResult()[0][0]
+            T_wing_avg = eval_global("aveop_wings(T)")
+            T_in_val = eval_global("aveop_in(T)")
+            T_out_val = eval_global("aveop_out(T)")
 
             # 速度
-            eg.set("expr", "aveop_in(spf.U)")
-            v_in_val = eg.computeResult()[0][0]
-            eg.set("expr", "aveop_out(spf.U)")
-            v_out_val = eg.computeResult()[0][0]
+            v_in_val = eval_global("aveop_in(spf.U)")
+            v_out_val = eval_global("aveop_out(spf.U)")
             
             # 面积/体积
-            eg.set("expr", "intop_wings(1)")
-            vol_total = eg.computeResult()[0][0]
+            vol_total = eval_global("intop_wings(1)")
             
             # 计算衍生的目标标签: Nu 和 f
             delta_p = abs(p_in - p_out)
             rho = 1.2
             u_in_set = 5.0
             k_air = 0.026
-            Q_vol_val = 5e7
+            Q_vol_val = args.Q_heat
             chord_val = 0.01
             
             f_val = delta_p / (0.5 * rho * u_in_set**2)
@@ -287,7 +329,7 @@ def create_and_solve_thermal_model(args, outdir):
             print(f"[WARN] 提取物理特征失败: {e}")
 
         # 将【所有的特征(共10项)】打包打印出来给主控脚本抓取
-        print(f"CFD_RESULT_DATA: Nu={nu_val:.6f}, f={f_val:.6f}, T_in={T_in_val:.6f}, T_out={T_out_val:.6f}, v_in={v_in_val:.6f}, v_out={v_out_val:.6f}, p_in={p_in:.6f}, p_out={p_out:.6f}, T_wing={T_wing_avg:.6f}, vol={vol_total:.9f}")
+        print(f"CFD_RESULT_DATA: mesh={mesh_elems}, Nu={nu_val:.6f}, f={f_val:.6f}, T_in={T_in_val:.6f}, T_out={T_out_val:.6f}, v_in={v_in_val:.6f}, v_out={v_out_val:.6f}, p_in={p_in:.6f}, p_out={p_out:.6f}, T_wing={T_wing_avg:.6f}, vol={vol_total:.9f}")
         model.save(f"{outdir}/model.mph")
         
     except Exception as e:
@@ -305,7 +347,10 @@ if __name__ == "__main__":
     parser.add_argument('--Tt', type=float, required=True)
     parser.add_argument('--Ts', type=float, required=True)
     parser.add_argument('--Tad', type=float, required=True)
+    parser.add_argument('--Q_heat', type=float, default=1e7)
+    parser.add_argument('--mesh_hauto', type=int, default=4)
     parser.add_argument('--outdir', type=str, required=True)
+    parser.add_argument('--paper_legend', action='store_true', help='导出论文云图时保留 COMSOL 原生颜色图例。')
     
     args = parser.parse_args()
     create_and_solve_thermal_model(args, args.outdir)

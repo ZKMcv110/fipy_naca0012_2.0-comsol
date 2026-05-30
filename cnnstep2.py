@@ -30,6 +30,7 @@ from PIL import Image
 from torchvision import transforms
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from sklearn.model_selection import KFold
 
 from cnn_model_definition import CFDFieldToPerformanceCNN
 
@@ -213,6 +214,18 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, num_epoch
     model.load_state_dict(torch.load(os.path.join(model_dir, 'best_model.pth')))
     return train_hist, val_hist
 
+
+def save_training_history(train_hist, val_hist, model_dir):
+    history = pd.DataFrame({
+        'epoch': np.arange(1, len(train_hist) + 1),
+        'train_loss': train_hist,
+        'val_loss': val_hist,
+    })
+    history_path = os.path.join(model_dir, 'cnn_training_history.csv')
+    history.to_csv(history_path, index=False, encoding='utf-8-sig')
+    print(f"[INFO] CNN training history saved to: {history_path}")
+    return history_path
+
 def _mape_percent(true_values, pred_values):
     true_values = np.asarray(true_values, dtype=float)
     pred_values = np.asarray(pred_values, dtype=float)
@@ -342,6 +355,90 @@ def save_split_indices(save_dir, data_frame, train_idx, val_idx, test_idx):
     split_df.to_csv(split_path, index=False, encoding='utf-8-sig')
     print(f"[INFO] Saved dataset split: {split_path}")
 
+
+def set_random_seed(seed):
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+
+def make_data_loader(data_dir, data_frame, indices, stats, transform, batch_size, shuffle):
+    dataset = CFDFieldDataset(data_dir, data_frame, indices, stats, transform)
+    return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, collate_fn=collate_fn)
+
+
+def save_kfold_metrics(rows, save_dir):
+    os.makedirs(save_dir, exist_ok=True)
+    metrics_path = os.path.join(save_dir, 'kfold_metrics.csv')
+    rows_df = pd.DataFrame(rows)
+    rows_df.to_csv(metrics_path, index=False, encoding='utf-8-sig')
+
+    metric_cols = [col for col in rows_df.columns if col not in ['fold', 'train_count', 'val_count']]
+    summary_rows = []
+    for col in metric_cols:
+        summary_rows.append({
+            'metric': col,
+            'mean': float(rows_df[col].mean()),
+            'std': float(rows_df[col].std(ddof=1)) if len(rows_df) > 1 else 0.0,
+        })
+    summary_df = pd.DataFrame(summary_rows)
+    summary_csv = os.path.join(save_dir, 'kfold_metrics_summary.csv')
+    summary_df.to_csv(summary_csv, index=False, encoding='utf-8-sig')
+
+    summary_json = os.path.join(save_dir, 'kfold_metrics_summary.json')
+    with open(summary_json, 'w', encoding='utf-8') as f:
+        json.dump(summary_rows, f, indent=4, ensure_ascii=False)
+
+    summary_md = os.path.join(save_dir, 'kfold_metrics_summary.md')
+    with open(summary_md, 'w', encoding='utf-8') as f:
+        f.write('| Metric | Mean | Std |\n')
+        f.write('|---|---:|---:|\n')
+        for row in summary_rows:
+            f.write(f"| {row['metric']} | {row['mean']:.6g} | {row['std']:.6g} |\n")
+
+    print(f"[INFO] Saved K-fold metrics: {metrics_path}")
+    print(f"[INFO] Saved K-fold summary: {summary_csv}")
+
+
+def run_kfold_cross_validation(data_dir, data_frame, transform, model_dir, args, device):
+    if args.k_folds < 2:
+        return
+    if args.k_folds > len(data_frame):
+        raise ValueError(f"--k-folds cannot exceed valid sample count: {len(data_frame)}")
+
+    kfold_dir = os.path.join(model_dir, f'kfold_{args.k_folds}')
+    kfold = KFold(n_splits=args.k_folds, shuffle=True, random_state=args.seed)
+    rows = []
+
+    for fold_id, (train_idx, val_idx) in enumerate(kfold.split(data_frame), start=1):
+        print(f"\n[INFO] K-fold {fold_id}/{args.k_folds}: train={len(train_idx)}, val={len(val_idx)}")
+        fold_dir = os.path.join(kfold_dir, f'fold_{fold_id}')
+        os.makedirs(fold_dir, exist_ok=True)
+        set_random_seed(args.seed + fold_id)
+
+        stats = calculate_dataset_stats(data_frame, train_idx, PARAM_COLS)
+        train_loader = make_data_loader(data_dir, data_frame, train_idx, stats, transform, 16, True)
+        val_loader = make_data_loader(data_dir, data_frame, val_idx, stats, transform, 16, False)
+
+        model = CFDFieldToPerformanceCNN(num_fields=3, num_scalars=len(PARAM_COLS), output_size=2)
+        optimizer = optim.Adam(model.parameters(), lr=0.0005, weight_decay=1e-4)
+        criterion = nn.MSELoss()
+        train_hist, val_hist = train_model(
+            model, train_loader, val_loader, criterion, optimizer,
+            num_epochs=args.kfold_epochs, device=device, model_dir=fold_dir
+        )
+        save_training_history(train_hist, val_hist, fold_dir)
+        metrics, _true_vals, _pred_vals, _case_ids = evaluate_model(model, val_loader, stats, device)
+        rows.append({
+            'fold': fold_id,
+            'train_count': len(train_idx),
+            'val_count': len(val_idx),
+            **{key: float(value) for key, value in metrics.items()},
+        })
+
+    save_kfold_metrics(rows, kfold_dir)
+
 # ==========================================
 # 绘图工具函数 (训练结束后生成并保存图表)
 # ==========================================
@@ -364,7 +461,7 @@ def plot_results(true_vals, pred_vals, save_dir):
     ax1.set_xlabel('CFD True Nu')
     ax1.set_ylabel('CNN Predicted Nu')
     ax1.legend()
-    ax1.grid(True, linestyle=':', alpha=0.6)
+    ax1.grid(False)
     
     # 绘制 f - 添加轻微抖动
     f_true = true_vals[:, 1]
@@ -380,7 +477,7 @@ def plot_results(true_vals, pred_vals, save_dir):
     ax2.set_xlabel('CFD True f')
     ax2.set_ylabel('CNN Predicted f')
     ax2.legend()
-    ax2.grid(True, linestyle=':', alpha=0.6)
+    ax2.grid(False)
     
     plt.tight_layout()
     save_path = os.path.join(save_dir, 'final_prediction.png')
@@ -396,11 +493,21 @@ def main():
                         help='How to choose cases when --num-samples is set. Default: first.')
     parser.add_argument('--seed', type=int, default=42,
                         help='Random seed for sampling and train/val/test split. Default: 42.')
+    parser.add_argument('--epochs', type=int, default=50,
+                        help='Epochs for final train/val/test training. Default: 50.')
+    parser.add_argument('--k-folds', type=int, default=0,
+                        help='Run K-fold cross validation before final training. Default: disabled.')
+    parser.add_argument('--kfold-epochs', type=int, default=None,
+                        help='Epochs per K-fold run. Default: same as --epochs.')
+    parser.add_argument('--kfold-only', action='store_true',
+                        help='Only run K-fold cross validation and do not overwrite final model outputs.')
     parser.add_argument('--eval-only', action='store_true',
                         help='Only evaluate an existing trained model and regenerate paper metrics.')
     parser.add_argument('--model-path', default=None,
                         help='Model .pth path for --eval-only. Default: ai_cnn_model_results/cfd_cnn_model.pth.')
     args = parser.parse_args()
+    if args.kfold_epochs is None:
+        args.kfold_epochs = args.epochs
 
     print(">>> 启动无数据泄露的严谨 CFD 参数预测模型训练 <<<")
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -479,12 +586,18 @@ def main():
         print("❌ 错误: 有效样本数太少,无法训练!")
         return
     
+    if args.k_folds:
+        run_kfold_cross_validation(results_dir, data_frame, transform, model_dir, args, device)
+        if args.kfold_only:
+            print("[INFO] K-fold cross validation finished. Final training skipped because --kfold-only was set.")
+            return
+
     valid_indices = list(range(len(data_frame)))
     
     # ---------------------------------------------------------
     # 【数据划分核心逻辑】：必须打乱数据后才能进行统计！
     # ---------------------------------------------------------
-    np.random.seed(args.seed)
+    set_random_seed(args.seed)
     shuffled_indices = np.random.permutation(valid_indices)
     
     # 小样本集调整:至少保证每个集合有 1 个样本
@@ -554,8 +667,9 @@ def main():
     
     print("\n🚀 开始训练网络...")
     # 使用标准训练轮次
-    num_epochs = 50
+    num_epochs = args.epochs
     train_hist, val_hist = train_model(model, loaders['train'], loaders['val'], criterion, optimizer, num_epochs=num_epochs, device=device, model_dir=model_dir)
+    save_training_history(train_hist, val_hist, model_dir)
     
     # ==========================================
     # 训练结束：生成并保存 Loss 收敛曲线
@@ -568,7 +682,7 @@ def main():
     plt.xlabel('Epochs')
     plt.ylabel('MSE Loss (Normalized)')
     plt.legend()
-    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.grid(False)
     loss_curve_path = os.path.join(model_dir, 'loss_curve.png')
     plt.savefig(loss_curve_path, dpi=300)
     plt.close()

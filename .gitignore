@@ -131,3 +131,26 @@ csv_data/
 solver_results/
 results/
 consol_cfddata/
+
+# Large COMSOL/CFD data directories
+comsol_3d_airfoil_radiator/
+new_model_runs/
+tmp_mesh_export_test/
+
+# Old FiPy pipeline (contains large results)
+fipy_pipeline/
+
+# Reference papers (PDFs)
+paper_reference/
+
+# Generated paper figures (reproducible from scripts)
+小论文图片初稿（带参数敏感性）/
+大论文初稿/
+
+# Model artifacts (weights .pth are large; keep metrics csv/json)
+ai_cnn_model_results/*.pth
+ai_cnn_model_results/*.png
+ai_cnn_model_results/*.joblib
+
+# Separate project with its own git
+CLIProxyAPI/

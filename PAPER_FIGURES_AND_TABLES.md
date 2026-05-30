@@ -2,7 +2,7 @@
 
 This checklist is based on the corrected label pipeline:
 
-`result.json -> rebuild_labels_from_results.py -> consol_cfddata/labels.csv -> cnnstep2.py`
+`result.json -> data_processing/rebuild_labels_from_results.py -> consol_cfddata/labels.csv -> cnnstep2.py`
 
 ## Figures
 
@@ -24,10 +24,15 @@ SVG versions generated from current data:
 | `paper_figures_svg/Fig2_Computational_Domain_BC.svg` | Computational domain and boundary conditions. |
 | `paper_figures_svg/Fig2_Workflow.svg` | Workflow figure for the method section. |
 | `paper_figures_svg/Fig3_Mesh_Schematic.svg` | Mesh/refinement schematic. |
-| `paper_figures_svg/Fig5_Multimodal_Fusion_Architecture.svg` | Multimodal feature-fusion surrogate architecture. |
+| `paper_figures_svg/Fig5_CBAM_DualStream_CNN_Architecture_CN.svg` | CBAM dual-stream multimodal CNN architecture. |
 | `paper_figures_svg/Fig6_CNN_Test_Prediction.svg` | Test-set prediction scatter for Table 7. |
 | `paper_figures_svg/Fig6_Test_Prediction.svg` | Same prediction scatter with the generic filename. |
+| `paper_figures_svg/Fig8_Baseline_Optimal_Field_Comparison.svg` | Baseline and optimized CFD velocity/temperature field comparison. |
+| `paper_figures_svg/Fig9_Heat_Dissipation_Evidence.svg` | Heat-dissipation evidence chain: velocity/temperature cloud maps with contour overlays. |
+| `paper_figures_svg/Fig9_Heat_Dissipation_Metrics.svg` | Optional preview only. Do not use as a numbered paper figure if Table 9 already reports these metrics. |
+| `paper_figures_svg/heat_dissipation_summary.csv` | Numeric source generated from current `labels.csv`; do not mix with Table 9 unless it uses the same baseline/optimal cases. |
 | `paper_figures_svg/Fig8_Model_Comparison.svg` | Visual comparison of the scalar-only MLP baseline and the multimodal fusion model. |
+| `paper_figures_svg/Fig_CBAM_CNN_Loss.svg` | CBAM attention CNN training/validation convergence curve. |
 | `paper_figures_svg/Fig_MLP_Baseline_Loss.svg` | MLP baseline convergence curve. |
 
 ## Tables
@@ -87,14 +92,25 @@ Current result: the multimodal fusion model performs better than the scalar-only
 
 ### Table 9 Optimization Verification
 
-Not ready yet. Fill this table only after baseline and optimized geometries are re-run in COMSOL. The final `Nu`, `f`, and `eta` values should come from independent CFD verification, not from CNN prediction.
+Use the paper's independent CFD verification table here. Do not replace it with
+the automatically selected `case_1` versus `case_195` summary unless the paper
+also changes to those cases.
+
+| Case | Nu/Nu0 | f/f0 | eta/eta0 | Q_total/Q0 | Delta_T_out/Delta_T0 | Delta_p/Delta_p0 |
+|---|---:|---:|---:|---:|---:|---:|
+| Baseline | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| Optimal | 1.277 | 1.080 | 1.245 | TBD | TBD | 1.080 |
+| Improvement | +27.7% | +8.0% | +24.5% | TBD | TBD | +8.0% |
+
+The six design parameters can be reported in the paragraph before Table 9 to
+keep the table narrow: `Xopt = [0.035, 0.40, 0.12, 1.10, 0.85, 0.50]`.
 
 ## Commands
 
 Regenerate labels:
 
 ```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe rebuild_labels_from_results.py
+.\myenvs_fipynaca2.0\Scripts\python.exe .\data_processing\rebuild_labels_from_results.py
 ```
 
 Train with all valid data:
@@ -130,5 +146,19 @@ Train the multimodal feature-fusion model and regenerate Table 8:
 Regenerate SVG figures:
 
 ```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe generate_paper_svgs.py
+.\myenvs_fipynaca2.0\Scripts\python.exe .\comsol论文图脚本\generate_paper_svgs.py
 ```
+
+Regenerate all COMSOL/CNN paper SVG figures from one entry point:
+
+```powershell
+.\myenvs_fipynaca2.0\Scripts\python.exe .\comsol论文图脚本\generate_comsol_svgs.py
+```
+
+Regenerate heat-dissipation evidence figures:
+
+```powershell
+.\myenvs_fipynaca2.0\Scripts\python.exe .\comsol论文图脚本\make_heat_dissipation_evidence.py
+```
+
+Note: `cnnstep2.py` now saves `ai_cnn_model_results/cnn_training_history.csv`. If this CSV exists, `generate_paper_svgs.py` redraws the CBAM attention CNN loss curve as a true vector SVG. For older runs that only have `loss_curve.png`, the script digitizes the existing curve into `cnn_training_history_digitized.csv` and redraws a clean no-grid SVG.

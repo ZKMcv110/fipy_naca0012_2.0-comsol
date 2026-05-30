@@ -1,0 +1,257 @@
+{
+  "demo": "mini_heat_exchanger_mcp_demo",
+  "parameters": {
+    "channel_length": "30[mm]",
+    "channel_height": "9[mm]",
+    "tube_radius": "0.45[mm]",
+    "streamwise_pitch": "4.0[mm]",
+    "transverse_pitch": "2.0[mm]",
+    "stagger_offset": "1.2[mm]",
+    "inlet_velocity": "5[m/s]",
+    "inlet_temperature": "293.15[K]",
+    "wall_temperature": "373.15[K]"
+  },
+  "tool_calls": [
+    {
+      "tool": "model_create",
+      "args": {
+        "name": "mcp_demo_staggered_tube_channel",
+        "set_current": true
+      }
+    },
+    {
+      "tool": "model_create_component",
+      "args": {
+        "component_name": "comp1"
+      }
+    },
+    {
+      "tool": "geometry_create",
+      "args": {
+        "geometry_name": "geom1",
+        "space_dimension": 2,
+        "component_name": "comp1"
+      }
+    },
+    {
+      "tool": "param_set",
+      "args": {
+        "name": "channel_length",
+        "value": "30[mm]",
+        "description": "MCP demo parameter"
+      }
+    },
+    {
+      "tool": "param_set",
+      "args": {
+        "name": "channel_height",
+        "value": "9[mm]",
+        "description": "MCP demo parameter"
+      }
+    },
+    {
+      "tool": "param_set",
+      "args": {
+        "name": "tube_radius",
+        "value": "0.45[mm]",
+        "description": "MCP demo parameter"
+      }
+    },
+    {
+      "tool": "param_set",
+      "args": {
+        "name": "streamwise_pitch",
+        "value": "4.0[mm]",
+        "description": "MCP demo parameter"
+      }
+    },
+    {
+      "tool": "param_set",
+      "args": {
+        "name": "transverse_pitch",
+        "value": "2.0[mm]",
+        "description": "MCP demo parameter"
+      }
+    },
+    {
+      "tool": "param_set",
+      "args": {
+        "name": "stagger_offset",
+        "value": "1.2[mm]",
+        "description": "MCP demo parameter"
+      }
+    },
+    {
+      "tool": "param_set",
+      "args": {
+        "name": "inlet_velocity",
+        "value": "5[m/s]",
+        "description": "MCP demo parameter"
+      }
+    },
+    {
+      "tool": "param_set",
+      "args": {
+        "name": "inlet_temperature",
+        "value": "293.15[K]",
+        "description": "MCP demo parameter"
+      }
+    },
+    {
+      "tool": "param_set",
+      "args": {
+        "name": "wall_temperature",
+        "value": "373.15[K]",
+        "description": "MCP demo parameter"
+      }
+    },
+    {
+      "tool": "geometry_add_rectangle",
+      "args": {
+        "feature_name": "channel",
+        "geometry_name": "geom1",
+        "position": [
+          0.0,
+          -0.0045
+        ],
+        "size": [
+          0.03,
+          0.009
+        ]
+      }
+    },
+    {
+      "tool": "geometry_add_circle",
+      "args": {
+        "geometry_name": "geom1",
+        "position": [
+          0.006,
+          -0.002
+        ],
+        "radius": 0.00045
+      },
+      "note": "heated tube 1"
+    },
+    {
+      "tool": "geometry_add_circle",
+      "args": {
+        "geometry_name": "geom1",
+        "position": [
+          0.01,
+          0.0
+        ],
+        "radius": 0.00045
+      },
+      "note": "heated tube 2"
+    },
+    {
+      "tool": "geometry_add_circle",
+      "args": {
+        "geometry_name": "geom1",
+        "position": [
+          0.014,
+          -0.002
+        ],
+        "radius": 0.00045
+      },
+      "note": "heated tube 3"
+    },
+    {
+      "tool": "geometry_add_circle",
+      "args": {
+        "geometry_name": "geom1",
+        "position": [
+          0.006,
+          0.002
+        ],
+        "radius": 0.00045
+      },
+      "note": "heated tube 4"
+    },
+    {
+      "tool": "geometry_add_circle",
+      "args": {
+        "geometry_name": "geom1",
+        "position": [
+          0.01,
+          0.004
+        ],
+        "radius": 0.00045
+      },
+      "note": "heated tube 5"
+    },
+    {
+      "tool": "geometry_add_circle",
+      "args": {
+        "geometry_name": "geom1",
+        "position": [
+          0.014,
+          0.002
+        ],
+        "radius": 0.00045
+      },
+      "note": "heated tube 6"
+    },
+    {
+      "tool": "geometry_build",
+      "args": {
+        "geometry_name": "geom1",
+        "component_name": "comp1"
+      }
+    },
+    {
+      "tool": "geometry_get_boundaries",
+      "args": {
+        "geometry_name": "geom1"
+      }
+    },
+    {
+      "tool": "physics_add_laminar_flow",
+      "args": {}
+    },
+    {
+      "tool": "physics_add_heat_transfer",
+      "args": {}
+    },
+    {
+      "tool": "physics_interactive_setup_flow",
+      "args": {
+        "physics_name": "Laminar Flow"
+      },
+      "note": "Use returned boundary numbers before setting inlet/outlet."
+    },
+    {
+      "tool": "physics_interactive_setup_heat",
+      "args": {
+        "physics_name": "Heat Transfer in Solids"
+      },
+      "note": "Use returned boundary numbers before setting wall/inlet temperature."
+    },
+    {
+      "tool": "mesh_create",
+      "args": {}
+    },
+    {
+      "tool": "study_solve",
+      "args": {
+        "wait": false
+      }
+    },
+    {
+      "tool": "results_global_evaluate",
+      "args": {
+        "expression": "maxop1(T)",
+        "unit": "K"
+      },
+      "note": "Example scalar result. Real expressions depend on created operators."
+    },
+    {
+      "tool": "results_export_image",
+      "args": {
+        "node_name": null,
+        "file_path": "F:\\pyProject\\fipy_naca0012_2.0\\mcp_comsol_demo\\demo_outputs\\temperature_field.png"
+      },
+      "note": "Requires a plot/export node in the model."
+    }
+  ]
+}
