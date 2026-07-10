@@ -1,0 +1,40 @@
+{
+  "case_id": 20133,
+  "Ta": 0.0040429929498227,
+  "Twa": 0.3259668827863627,
+  "Tb": 0.1222142562841177,
+  "Ts": 1.4108743657711609,
+  "Tt": 0.6967104277808522,
+  "Tad": 0.0915104630433167,
+  "theta": 5.7283468786794,
+  "image_complete": true,
+  "failure_reason": "",
+  "Nu": 41.953278,
+  "f": 0.118281,
+  "delta_p": 1.7742150000000017,
+  "delta_T": 18.189138,
+  "Q_total": 1984.044232012,
+  "image_status": {
+    "complete": true,
+    "min_image_bytes": 20000,
+    "files": {
+      "velocity_magnitude.png": {
+        "exists": true,
+        "size_bytes": 140981,
+        "valid": true
+      },
+      "pressure.png": {
+        "exists": true,
+        "size_bytes": 89396,
+        "valid": true
+      },
+      "temperature.png": {
+        "exists": true,
+        "size_bytes": 115340,
+        "valid": true
+      }
+    },
+    "invalid": []
+  },
+  "cfd_outdir": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\comsol_results_theta500_v2\\case_20133\\cfd_solution"
+}

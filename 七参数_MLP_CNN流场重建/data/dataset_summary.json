@@ -1,0 +1,21 @@
+{
+  "dataset": "七参数_MLP_CNN流场重建\\data\\field_reconstruction_dataset_320x96_full_pUt.npz",
+  "sample_count": 1000,
+  "field_shape": [
+    1000,
+    3,
+    96,
+    320
+  ],
+  "field_names": [
+    "p",
+    "U",
+    "T"
+  ],
+  "case_id_min": 20001,
+  "case_id_max": 30500,
+  "Nu0": 30.366123,
+  "f0": 0.092996,
+  "case_npz_dir": "七参数_MLP_CNN流场重建\\data\\standard_case_npz_320x96_full_pUt",
+  "case_npz_format": "params, p, U, T, Nu, f, eta"
+}

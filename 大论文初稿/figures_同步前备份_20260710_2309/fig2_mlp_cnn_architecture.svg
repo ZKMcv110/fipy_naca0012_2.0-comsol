@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="560" viewBox="0 0 1180 560">
+  <rect width="1180" height="560" fill="#ffffff"/>
+  <style>
+    .block{fill:#f7fbff;stroke:#2f5f8f;stroke-width:2;rx:8}
+    .latent{fill:#fff8f0;stroke:#b05a2a;stroke-width:2;rx:8}
+    .out{fill:#f5fff7;stroke:#3f7d4a;stroke-width:2;rx:8}
+    .loss{fill:#faf5ff;stroke:#6b46c1;stroke-width:2;rx:8}
+    .text{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:20px;fill:#1f2933}
+    .small{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:16px;fill:#405160}
+    .title{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:26px;font-weight:700;fill:#102a43}
+    .arrow{stroke:#52606d;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#52606d"/>
+    </marker>
+  </defs>
+  <text class="title" x="36" y="48">MLP-CNN流热场重建代理模型结构</text>
+  <rect class="block" x="50" y="120" width="180" height="82"/>
+  <text class="text" x="82" y="154">七参数输入</text>
+  <text class="small" x="75" y="182">归一化向量 X7</text>
+  <rect class="block" x="300" y="120" width="190" height="82"/>
+  <text class="text" x="342" y="154">MLP Encoder</text>
+  <text class="small" x="327" y="182">全连接特征编码</text>
+  <rect class="latent" x="560" y="120" width="180" height="82"/>
+  <text class="text" x="598" y="154">潜在特征 z</text>
+  <text class="small" x="602" y="182">共享表示</text>
+  <path class="arrow" d="M230 161 H300"/>
+  <path class="arrow" d="M490 161 H560"/>
+  <rect class="block" x="820" y="70" width="220" height="82"/>
+  <text class="text" x="872" y="104">CNN Decoder</text>
+  <text class="small" x="850" y="132">上采样 + 卷积解码</text>
+  <rect class="out" x="820" y="215" width="220" height="82"/>
+  <text class="text" x="875" y="249">MLP Head</text>
+  <text class="small" x="858" y="277">预测 Nu 与 f</text>
+  <path class="arrow" d="M740 145 C775 145 780 111 820 111"/>
+  <path class="arrow" d="M740 176 C775 176 780 256 820 256"/>
+  <rect class="out" x="820" y="370" width="220" height="82"/>
+  <text class="text" x="872" y="404">u/v/p/T 场</text>
+  <text class="small" x="858" y="432">4通道，50x80</text>
+  <path class="arrow" d="M930 152 V370"/>
+  <rect class="loss" x="300" y="385" width="440" height="88"/>
+  <text class="text" x="354" y="420">多任务损失函数</text>
+  <text class="small" x="333" y="449">场重建损失 + Nu/f预测损失 + eta定义一致性损失</text>
+  <path class="arrow" d="M820 411 H740"/>
+  <path class="arrow" d="M930 297 V370"/>
+  <path class="arrow" d="M820 256 C775 256 775 429 740 429"/>
+  <text class="small" x="50" y="520">说明：CFD数值场仅在训练阶段作为监督标签；优化阶段只输入七参数，由性能分支快速计算eta。</text>
+</svg>

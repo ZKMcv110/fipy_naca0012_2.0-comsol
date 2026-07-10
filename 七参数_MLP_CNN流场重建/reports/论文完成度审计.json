@@ -1,0 +1,70 @@
+{
+  "completed": {
+    "pvt_dataset": true,
+    "main_model_metrics": true,
+    "kfold": true,
+    "ablation": true,
+    "sensitivity": true,
+    "two_d_cfd_validation": true,
+    "three_d_migration": true,
+    "thesis_md": true,
+    "ppt": true,
+    "grid_runners": true,
+    "grid_logic_tests": true
+  },
+  "incomplete": {
+    "formal_grid_independence": true,
+    "two_d_coarse_medium_fine_real_results": false,
+    "three_d_coarse_medium_fine_real_results": false,
+    "two_d_grid_pass_thresholds": true,
+    "three_d_grid_pass_thresholds": true
+  },
+  "can_mark_goal_complete": false,
+  "forbidden_terms_found": [],
+  "main_metrics": {
+    "Nu_R2": 0.9693092703819275,
+    "f_R2": 0.9780381917953491,
+    "eta_R2": 0.9718881249427795,
+    "p_MAE": 0.9083741307258606,
+    "U_MAE": 0.1082267090678215,
+    "T_MAE": 0.439959853887558
+  },
+  "kfold_summary_keys": [
+    "Nu_MAE_mean",
+    "Nu_MAE_std",
+    "Nu_R2_mean",
+    "Nu_R2_std",
+    "T_MAE_mean",
+    "T_MAE_std",
+    "U_MAE_mean",
+    "U_MAE_std",
+    "boundary_MAE_mean",
+    "boundary_MAE_std",
+    "eta_MAE_mean",
+    "eta_MAE_std",
+    "eta_R2_mean",
+    "eta_R2_std",
+    "f_MAE_mean",
+    "f_MAE_std",
+    "f_R2_mean",
+    "f_R2_std",
+    "field_MAE_mean",
+    "field_MAE_std",
+    "field_RMSE_mean",
+    "field_RMSE_std",
+    "fold_count",
+    "folds",
+    "p_MAE_mean",
+    "p_MAE_std"
+  ],
+  "ablation_groups": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4"
+  ],
+  "ppt_slide_count": 23,
+  "thesis_path": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\基于MLP-CNN流热场重建代理模型的翼型柱阵列散热器优化研究.md",
+  "ppt_path": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\七参数MLP-CNN流热场重建答辩PPT.pptx"
+}

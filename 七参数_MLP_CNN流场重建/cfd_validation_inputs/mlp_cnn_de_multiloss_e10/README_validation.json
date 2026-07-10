@@ -1,0 +1,6 @@
+{
+  "compatible_best": "七参数_MLP_CNN流场重建\\cfd_validation_inputs\\mlp_cnn_de_multiloss_e10\\best_params_compatible.json",
+  "best_sample": "七参数_MLP_CNN流场重建\\cfd_validation_inputs\\mlp_cnn_de_multiloss_e10\\best_sample.csv",
+  "validation_output_dir": "七参数_MLP_CNN流场重建\\validation_results\\mlp_cnn_de_multiloss_e10",
+  "run_command": "python \"F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\08_COMSOL复核最优结构.py\" --best \"七参数_MLP_CNN流场重建\\cfd_validation_inputs\\mlp_cnn_de_multiloss_e10\\best_params_compatible.json\" --output-dir \"七参数_MLP_CNN流场重建\\validation_results\\mlp_cnn_de_multiloss_e10\" --batch-script \"F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\02_七参数COMSOL批量求解.py\" --single-script \"F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\02a_七参数COMSOL单工况求解.py\""
+}

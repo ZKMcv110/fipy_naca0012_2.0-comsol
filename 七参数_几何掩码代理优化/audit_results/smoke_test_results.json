@@ -1,0 +1,124 @@
+{
+  "status": "pass",
+  "passed_count": 7,
+  "total_count": 7,
+  "results": [
+    {
+      "name": "PI-CNN-CBAM预测",
+      "args": [
+        "10_预测_PI_CNN_CBAM性能.py"
+      ],
+      "expect_text": "[OK]",
+      "passed": true,
+      "command": [
+        "F:\\software\\anaconda\\python.exe",
+        "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\10_预测_PI_CNN_CBAM性能.py"
+      ],
+      "returncode": 0,
+      "stdout_tail": "[OK] PI-CNN-CBAM 七参数预测结果\nparams: {'Ta': 0.0, 'Twa': 0.4, 'Tb': 0.12, 'Ts': 1.1, 'Tt': 0.85, 'Tad': 0.0, 'theta': 0.0}\nbaseline: Nu0=30.366123, f0=0.09299600\nNu_pred=28.451721\nf_pred=0.08259753\neta_pred=0.974731\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "LHS采样入口",
+      "args": [
+        "01_七参数LHS采样.py",
+        "--help"
+      ],
+      "expect_text": "生成七参数LHS采样表",
+      "passed": true,
+      "command": [
+        "F:\\software\\anaconda\\python.exe",
+        "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\01_七参数LHS采样.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout_tail": "usage: 01_七参数LHS采样.py [-h] [--num-samples NUM_SAMPLES] [--seed SEED]\n                      [--output OUTPUT] [--case-id-start CASE_ID_START]\n\n生成七参数LHS采样表\n\noptions:\n  -h, --help            show this help message and exit\n  --num-samples NUM_SAMPLES\n                        样本数量，例如50、100、300、500\n  --seed SEED\n  --output OUTPUT\n  --case-id-start CASE_ID_START\n                        起始case_id，新增数据集建议使用20001等独立编号\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "COMSOL批量调度入口",
+      "args": [
+        "02_七参数COMSOL批量求解.py",
+        "--help"
+      ],
+      "expect_text": "dry-run",
+      "passed": true,
+      "command": [
+        "F:\\software\\anaconda\\python.exe",
+        "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\02_七参数COMSOL批量求解.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout_tail": "usage: 02_七参数COMSOL批量求解.py [-h] [--samples SAMPLES] [--output-dir OUTPUT_DIR]\n                           [--single-script SINGLE_SCRIPT] [--timeout TIMEOUT]\n                           [--q-heat Q_HEAT] [--force]\n                           [--pass-theta | --no-pass-theta]\n                           [--single-script-ignores-theta]\n                           [--allow-ignore-theta] [--start-index START_INDEX]\n                           [--limit LIMIT] [--dry-run]\n\n七参数COMSOL批量求解调度器\n\noptions:\n  -h, --help            show this help message and exit\n  --samples SAMPLES\n  --output-dir OUTPUT_DIR\n  --single-script SINGLE_SCRIPT\n  --timeout TIMEOUT\n  --q-heat Q_HEAT\n  --force\n  --pass-theta, --no-pass-theta\n                        调用单工况脚本时是否传入 --theta。\n  --single-script-ignores-theta\n                        当手动指定旧六参数脚本时启用，防止theta非零样本被错误求解。\n  --allow-ignore-theta  允许theta非零时仍调用旧六参数脚本；仅调试用，不建议生成论文标签。\n  --start-index START_INDEX\n                        从样本表的第几行开始调度，0表示从第一行开始。\n  --limit LIMIT         最多调度多少行，0表示调度从start-index开始的全部样本。\n  --dry-run             只检查样本并生成调度计划，不调用COMSOL、不写result.json。\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "标签重建入口",
+      "args": [
+        "03_从COMSOL结果重建标签.py",
+        "--help"
+      ],
+      "expect_text": "重建七参数 labels_7param.csv",
+      "passed": true,
+      "command": [
+        "F:\\software\\anaconda\\python.exe",
+        "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\03_从COMSOL结果重建标签.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout_tail": "usage: 03_从COMSOL结果重建标签.py [-h] [--existing-labels EXISTING_LABELS]\n                           [--results-dir RESULTS_DIR]\n                           [--mode {existing,results}] [--output OUTPUT]\n\n重建七参数 labels_7param.csv\n\noptions:\n  -h, --help            show this help message and exit\n  --existing-labels EXISTING_LABELS\n  --results-dir RESULTS_DIR\n  --mode {existing,results}\n  --output OUTPUT\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "几何掩码生成入口",
+      "args": [
+        "04_生成几何掩码图.py",
+        "--help"
+      ],
+      "expect_text": "生成七参数几何掩码图",
+      "passed": true,
+      "command": [
+        "F:\\software\\anaconda\\python.exe",
+        "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\04_生成几何掩码图.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout_tail": "usage: 04_生成几何掩码图.py [-h] [--labels LABELS] [--output-dir OUTPUT_DIR]\n                     [--image-size IMAGE_SIZE] [--limit LIMIT]\n\n生成七参数几何掩码图\n\noptions:\n  -h, --help            show this help message and exit\n  --labels LABELS\n  --output-dir OUTPUT_DIR\n  --image-size IMAGE_SIZE\n  --limit LIMIT         仅生成前N张；0表示全部\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "COMSOL复核入口",
+      "args": [
+        "08_COMSOL复核最优结构.py",
+        "--help"
+      ],
+      "expect_text": "COMSOL复核差分进化最优七参数",
+      "passed": true,
+      "command": [
+        "F:\\software\\anaconda\\python.exe",
+        "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\08_COMSOL复核最优结构.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout_tail": "usage: 08_COMSOL复核最优结构.py [-h] [--best BEST] [--output-dir OUTPUT_DIR]\n                          [--batch-script BATCH_SCRIPT]\n                          [--single-script SINGLE_SCRIPT]\n                          [--single-script-ignores-theta]\n                          [--allow-ignore-theta]\n\nCOMSOL复核差分进化最优七参数\n\noptions:\n  -h, --help            show this help message and exit\n  --best BEST\n  --output-dir OUTPUT_DIR\n  --batch-script BATCH_SCRIPT\n  --single-script SINGLE_SCRIPT\n                        可选：转发给批量脚本的单工况COMSOL脚本路径。\n  --single-script-ignores-theta\n                        当手动指定旧六参数脚本时启用。\n  --allow-ignore-theta  仅调试用：允许旧六参数脚本忽略theta。\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "PI-CNN-CBAM差分进化入口",
+      "args": [
+        "11_差分进化优化_PI_CNN_CBAM七参数.py",
+        "--help"
+      ],
+      "expect_text": "PI-CNN-CBAM差分进化优化七参数",
+      "passed": true,
+      "command": [
+        "F:\\software\\anaconda\\python.exe",
+        "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\11_差分进化优化_PI_CNN_CBAM七参数.py",
+        "--help"
+      ],
+      "returncode": 0,
+      "stdout_tail": "usage: 11_差分进化优化_PI_CNN_CBAM七参数.py [-h] [--model-dir MODEL_DIR]\n                                   [--labels LABELS] [--output-dir OUTPUT_DIR]\n                                   [--pop-size POP_SIZE]\n                                   [--generations GENERATIONS] [--seed SEED]\n                                   [--image-size IMAGE_SIZE]\n\nPI-CNN-CBAM差分进化优化七参数\n\noptions:\n  -h, --help            show this help message and exit\n  --model-dir MODEL_DIR\n  --labels LABELS\n  --output-dir OUTPUT_DIR\n  --pop-size POP_SIZE\n  --generations GENERATIONS\n  --seed SEED\n  --image-size IMAGE_SIZE\n",
+      "stderr_tail": ""
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#222"/>
+  </marker>
+  <style>
+    text { font-family: "Microsoft YaHei", "SimSun", Arial, sans-serif; fill: #1f2933; }
+    .box { fill: #ffffff; stroke: #2f5f9f; stroke-width: 2; rx: 8; }
+    .green { fill: #f3faf0; stroke: #4f8a3f; stroke-width: 2; rx: 8; }
+    .blue { fill: #edf5ff; stroke: #2f5f9f; stroke-width: 2; rx: 8; }
+    .orange { fill: #fff6eb; stroke: #c46a1a; stroke-width: 2; rx: 8; }
+    .red { fill: #fff1f1; stroke: #c4372f; stroke-width: 2; rx: 8; }
+    .line { stroke: #222; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .thin { stroke: #61758a; stroke-width: 1.4; fill: none; }
+    .title { font-size: 25px; font-weight: 700; fill: #123a73; }
+    .node { font-size: 20px; font-weight: 600; }
+    .small { font-size: 16px; }
+    .tiny { font-size: 14px; }
+  </style>
+</defs>
+
+<rect width="1180" height="620" fill="#ffffff"/>
+
+<text class="title" x="590" y="42" text-anchor="middle">七参数几何掩码 PI-CNN-CBAM 代理模型架构</text>
+
+<!-- 输入 -->
+<rect class="green" x="38" y="92" width="220" height="150"/>
+<text class="node" x="148" y="124" text-anchor="middle">七参数向量</text>
+<text class="small" x="148" y="156" text-anchor="middle">Ta, Twa, Tb</text>
+<text class="small" x="148" y="184" text-anchor="middle">Ts, Tt, Tad, θg</text>
+<text class="tiny" x="148" y="216" text-anchor="middle">当前样本：θg = 0°</text>
+
+<rect class="blue" x="38" y="330" width="220" height="190"/>
+<text class="node" x="148" y="362" text-anchor="middle">几何掩码图</text>
+<rect x="82" y="392" width="132" height="76" fill="#f8fbff" stroke="#7aa3d8" stroke-width="1.4"/>
+<path d="M98,430 C118,415 142,415 168,430 C142,445 118,445 98,430 Z" fill="#2f5f9f" opacity="0.82"/>
+<path d="M130,450 C150,438 176,438 202,450 C176,462 150,462 130,450 Z" fill="#2f5f9f" opacity="0.82"/>
+<text class="tiny" x="148" y="498" text-anchor="middle">由参数即时生成，不调用CFD</text>
+
+<!-- 双流 -->
+<path class="line" d="M258,167 L330,167"/>
+<rect class="green" x="330" y="98" width="210" height="138"/>
+<text class="node" x="435" y="132" text-anchor="middle">参数 MLP 分支</text>
+<text class="small" x="435" y="164" text-anchor="middle">全连接 + BN + ReLU</text>
+<text class="small" x="435" y="194" text-anchor="middle">输出参数特征 dg</text>
+
+<path class="line" d="M258,425 L330,425"/>
+<rect class="blue" x="330" y="330" width="210" height="190"/>
+<text class="node" x="435" y="362" text-anchor="middle">几何 CNN 分支</text>
+<text class="small" x="435" y="394" text-anchor="middle">卷积块提取通道拓扑</text>
+<rect x="365" y="415" width="50" height="36" fill="#9dc3ee" stroke="#2f5f9f"/>
+<rect x="390" y="430" width="50" height="36" fill="#6fa8dc" stroke="#2f5f9f"/>
+<rect x="415" y="445" width="50" height="36" fill="#3d85c6" stroke="#2f5f9f"/>
+<text class="small" x="435" y="502" text-anchor="middle">输出图像特征 dv</text>
+
+<!-- CBAM -->
+<path class="line" d="M540,425 L600,425"/>
+<rect class="red" x="600" y="330" width="190" height="190"/>
+<text class="node" x="695" y="362" text-anchor="middle">CBAM 注意力</text>
+<rect x="632" y="390" width="126" height="42" fill="#ffffff" stroke="#c4372f" stroke-width="1.5"/>
+<text class="small" x="695" y="417" text-anchor="middle">通道注意力</text>
+<rect x="632" y="452" width="126" height="42" fill="#ffffff" stroke="#c4372f" stroke-width="1.5"/>
+<text class="small" x="695" y="479" text-anchor="middle">空间注意力</text>
+
+<!-- 融合 -->
+<path class="line" d="M540,167 L850,252"/>
+<path class="line" d="M790,425 L850,335"/>
+<rect class="orange" x="850" y="230" width="160" height="130"/>
+<text class="node" x="930" y="264" text-anchor="middle">特征拼接</text>
+<text class="small" x="930" y="294" text-anchor="middle">dg + dv</text>
+<text class="small" x="930" y="324" text-anchor="middle">融合全连接层</text>
+
+<!-- 输出 -->
+<path class="line" d="M1010,295 L1080,295"/>
+<rect class="box" x="1080" y="220" width="70" height="150"/>
+<text class="node" x="1115" y="262" text-anchor="middle">Nu</text>
+<line x1="1098" y1="292" x2="1132" y2="292" stroke="#2f5f9f" stroke-width="2"/>
+<text class="node" x="1115" y="330" text-anchor="middle">f</text>
+
+<!-- 物理一致性与优化 -->
+<path class="line" d="M1115,370 L1115,430"/>
+<rect class="red" x="1010" y="430" width="210" height="78"/>
+<text class="node" x="1115" y="462" text-anchor="middle">η一致性约束</text>
+<text class="tiny" x="1115" y="490" text-anchor="middle">η=(Nu/Nu0)/(f/f0)^(1/3)</text>
+
+<path class="line" d="M930,360 L930,510"/>
+<rect class="orange" x="790" y="510" width="280" height="76"/>
+<text class="node" x="930" y="542" text-anchor="middle">差分进化适应度评估</text>
+<text class="tiny" x="930" y="570" text-anchor="middle">优化阶段只调用代理模型，最终由COMSOL复核</text>
+
+</svg>

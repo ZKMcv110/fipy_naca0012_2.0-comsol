@@ -1,0 +1,62 @@
+# 七参数最优结构COMSOL复核报告
+
+## 最优参数
+{
+  "Ta": 0.0,
+  "Twa": 0.6,
+  "Tb": 0.15,
+  "Ts": 1.5,
+  "Tt": 0.9609194261752046,
+  "Tad": 1.0,
+  "theta": -2.224429452033541
+}
+
+## 代理模型预测
+{
+  "Nu_pred": 45.453880310058594,
+  "f_pred": 0.10586466640233994,
+  "eta_pred": 1.433571509869985
+}
+
+## COMSOL复核结果
+{
+  "case_id": 1,
+  "Ta": 0.0,
+  "Twa": 0.6,
+  "Tb": 0.15,
+  "Ts": 1.5,
+  "Tt": 0.9609194261752046,
+  "Tad": 1.0,
+  "theta": -2.224429452033541,
+  "image_complete": true,
+  "failure_reason": "",
+  "Nu": 46.022427,
+  "f": 0.106658,
+  "delta_p": 1.5998660000000005,
+  "delta_T": 20.317542,
+  "Q_total": 2431.162766577,
+  "image_status": {
+    "complete": true,
+    "min_image_bytes": 20000,
+    "files": {
+      "velocity_magnitude.png": {
+        "exists": true,
+        "size_bytes": 147953,
+        "valid": true
+      },
+      "pressure.png": {
+        "exists": true,
+        "size_bytes": 101377,
+        "valid": true
+      },
+      "temperature.png": {
+        "exists": true,
+        "size_bytes": 125797,
+        "valid": true
+      }
+    },
+    "invalid": []
+  },
+  "cfd_outdir": "七参数_MLP_CNN流场重建\\validation_results\\mlp_cnn_de_multiloss_e10\\comsol\\case_1\\cfd_solution",
+  "eta_cfd": 1.4478951556247979
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+<style>
+text { font-family: "Microsoft YaHei", Arial, sans-serif; fill: #1f2937; }
+.title { font-size: 28px; font-weight: 700; }
+.label { font-size: 19px; font-weight: 600; }
+.small { font-size: 15px; }
+.box { fill: #f8fafc; stroke: #2563eb; stroke-width: 2; rx: 12; }
+.green { stroke: #16a34a; }
+.orange { stroke: #f97316; }
+.red { stroke: #dc2626; }
+.line { stroke: #334155; stroke-width: 2; fill: none; }
+.arrow { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+</marker>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="500" y="45" text-anchor="middle" class="title">压力场对比</text>
+<image href="fig4_10_pressure_comparison.png" x="45" y="75" width="910" height="430" preserveAspectRatio="xMidYMid meet"/>
+<text x="500" y="535" text-anchor="middle" class="small">由COMSOL后处理云图裁剪生成，基准结构与优化结构保持同一视图来源</text>
+</svg>

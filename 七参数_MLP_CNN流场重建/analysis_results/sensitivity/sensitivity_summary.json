@@ -1,0 +1,59 @@
+{
+  "data_source": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\data\\field_reconstruction_dataset_full.npz",
+  "model_dir": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\results\\mlp_cnn_field_multiloss_e10",
+  "method": [
+    "Pearson/Spearman correlation on 1000 CFD labels",
+    "RandomForest impurity and permutation importance",
+    "Local one-factor perturbation around DE optimum using current MLP-CNN model"
+  ],
+  "eta_top_rf_permutation": [
+    {
+      "target": "eta",
+      "parameter": "Ts",
+      "rf_impurity_importance": 0.7249957211686553,
+      "rf_permutation_importance": 1.3616276106409637
+    },
+    {
+      "target": "eta",
+      "parameter": "theta",
+      "rf_impurity_importance": 0.12704290347925246,
+      "rf_permutation_importance": 0.2314644694584499
+    },
+    {
+      "target": "eta",
+      "parameter": "Tb",
+      "rf_impurity_importance": 0.07897696028684834,
+      "rf_permutation_importance": 0.1478257934366658
+    }
+  ],
+  "eta_top_local": [
+    {
+      "parameter": "Ts",
+      "value_min": 1.3002127170562745,
+      "value_max": 1.4998046159744263,
+      "eta_min": 1.3892923405305895,
+      "eta_max": 1.4335342036765122,
+      "eta_range": 0.04424186314592271,
+      "eta_center": 1.433571509869985
+    },
+    {
+      "parameter": "Tb",
+      "value_min": 0.13601515293121338,
+      "value_max": 0.14993256330490112,
+      "eta_min": 1.4160717198319799,
+      "eta_max": 1.4334898985941473,
+      "eta_range": 0.017418178762167447,
+      "eta_center": 1.433571509869985
+    },
+    {
+      "parameter": "theta",
+      "value_min": -6.217168855667115,
+      "value_max": 1.7683101177215579,
+      "eta_min": 1.4186791548433635,
+      "eta_max": 1.433571509869985,
+      "eta_range": 0.014892355026621562,
+      "eta_center": 1.433571509869985
+    }
+  ],
+  "notes": "敏感性分析是数据驱动统计分析和代理模型局部扰动分析，不等同于固定其余参数的严格 CFD 单因素扫描。"
+}

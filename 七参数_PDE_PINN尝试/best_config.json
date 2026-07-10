@@ -1,0 +1,35 @@
+{
+  "case_id": 20001,
+  "epochs": 2000,
+  "lr": 5e-5,
+  "data_weights": {
+    "data_u": 50.0,
+    "data_v": 1.0,
+    "data_p": 1.0,
+    "data_T": 1.0
+  },
+  "pde_weights": {
+    "continuity": 0.0,
+    "momentum": 0.0,
+    "energy_air": 0.0,
+    "energy_solid": 0.0
+  },
+  "training_strategy": "two_phase",
+  "phase1_end": 200,
+  "phase2_end": 600,
+  "pde_max_factor": 1e8,
+  "results": {
+    "u_R2": 0.002832,
+    "u_MAE": 0.918068,
+    "u_RMSE": 1.394811,
+    "v_R2": -0.014651,
+    "v_MAE": 0.130008,
+    "v_RMSE": 0.238228,
+    "p_R2": 0.662812,
+    "p_MAE": 5.825191,
+    "p_RMSE": 7.155442,
+    "T_R2": 0.333038,
+    "T_MAE": 3.409464,
+    "T_RMSE": 5.485559
+  }
+}

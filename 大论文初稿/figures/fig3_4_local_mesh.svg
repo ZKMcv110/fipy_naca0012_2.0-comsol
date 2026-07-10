@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+<style>
+text { font-family: "Microsoft YaHei", Arial, sans-serif; fill: #1f2937; }
+.title { font-size: 28px; font-weight: 700; }
+.label { font-size: 19px; font-weight: 600; }
+.small { font-size: 15px; }
+.box { fill: #f8fafc; stroke: #2563eb; stroke-width: 2; rx: 12; }
+.green { stroke: #16a34a; }
+.orange { stroke: #f97316; }
+.red { stroke: #dc2626; }
+.line { stroke: #334155; stroke-width: 2; fill: none; }
+.arrow { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+</marker>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="500" y="58" text-anchor="middle" class="title">翼型近壁面局部加密示意</text>
+<rect x="70" y="110" width="860" height="360" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+<path d="M250,285 C330,205 565,235 690,285 C560,350 335,360 250,285 Z" fill="#e0f2fe" stroke="#075985" stroke-width="2"/>
+<path d="M250.0,285 C330,205.0 565,235.0 690.0,285 C560,350.0 335,360.0 250.0,285 Z" fill="none" stroke="#60a5fa" stroke-width="1.2"/>
+<path d="M241.0,285 C312,199.0 583,230.5 699.0,285 C578,354.5 317,366.0 241.0,285 Z" fill="none" stroke="#60a5fa" stroke-width="1.2"/>
+<path d="M232.0,285 C294,193.0 601,226.0 708.0,285 C596,359.0 299,372.0 232.0,285 Z" fill="none" stroke="#60a5fa" stroke-width="1.2"/>
+<path d="M221.0,285 C272,185.66666666666666 623,220.5 719.0,285 C618,364.5 277,379.3333333333333 221.0,285 Z" fill="none" stroke="#60a5fa" stroke-width="1.2"/>
+<path d="M208.0,285 C246,177.0 649,214.0 732.0,285 C644,371.0 251,388.0 208.0,285 Z" fill="none" stroke="#60a5fa" stroke-width="1.2"/>
+<path d="M115,130 L140,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M115,455 L140,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M153,130 L178,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M153,455 L178,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M191,130 L216,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M191,455 L216,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M229,130 L254,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M229,455 L254,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M267,130 L292,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M267,455 L292,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M305,130 L330,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M305,455 L330,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M343,130 L368,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M343,455 L368,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M381,130 L406,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M381,455 L406,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M419,130 L444,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M419,455 L444,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M457,130 L482,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M457,455 L482,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M495,130 L520,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M495,455 L520,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M533,130 L558,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M533,455 L558,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M571,130 L596,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M571,455 L596,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M609,130 L634,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M609,455 L634,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M647,130 L672,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M647,455 L672,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M685,130 L710,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M685,455 L710,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M723,130 L748,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M723,455 L748,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M761,130 L786,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M761,455 L786,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M799,130 L824,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M799,455 L824,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M837,130 L862,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M837,455 L862,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<path d="M875,130 L900,455" stroke="#cbd5e1" stroke-width="0.8"/>
+<path d="M875,455 L900,130" stroke="#e2e8f0" stroke-width="0.8"/>
+<text x="500" y="505" text-anchor="middle" class="small">前缘、尾缘和窄通道区域采用更密集的近壁面网格</text>
+</svg>

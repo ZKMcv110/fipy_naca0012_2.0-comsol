@@ -1,0 +1,7 @@
+﻿dimension,case,mesh_level,element_count,Nu,f,eta,Tmax,Tavg,pressure_drop,thermal_resistance,relative_to_fine_percent,status
+2D,baseline,G3,43668,16.064036,0.034127,1,,343.091618,0.511908,,,真实 COMSOL 求解；mesh_hauto=4; local_size=True
+2D,DE_optimum,G3,44455,17.330959,0.035262,1.06716519,,350.697776,0.528931,,,真实 COMSOL 求解；mesh_hauto=4; local_size=True
+2D,baseline,G4,57736,13.47097,0.030878,1,,351.070652,0.463169,,,真实 COMSOL 求解；mesh_hauto=4; local_size=True
+2D,DE_optimum,G4,61496,13.579919,0.029872,1.01927944,,363.92662,0.448086,,,真实 COMSOL 求解；mesh_hauto=4; local_size=True
+2D,baseline,G5,80498,11.126585,0.027008,1,,361.377869,0.405123,,,真实 COMSOL 求解；mesh_hauto=4; local_size=True
+2D,DE_optimum,G5,88638,11.706189,0.026736,1.05564762,,374.241575,0.401036,,,真实 COMSOL 求解；mesh_hauto=4; local_size=True

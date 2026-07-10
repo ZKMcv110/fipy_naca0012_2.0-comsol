@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+<style>
+text { font-family: "Microsoft YaHei", Arial, sans-serif; fill: #1f2937; }
+.title { font-size: 28px; font-weight: 700; }
+.label { font-size: 19px; font-weight: 600; }
+.small { font-size: 15px; }
+.box { fill: #f8fafc; stroke: #2563eb; stroke-width: 2; rx: 12; }
+.green { stroke: #16a34a; }
+.orange { stroke: #f97316; }
+.red { stroke: #dc2626; }
+.line { stroke: #334155; stroke-width: 2; fill: none; }
+.arrow { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+</marker>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="42" y="46" width="916" height="420" rx="20" fill="#f8fafc" stroke="#dbeafe" stroke-width="1.5"/>
+<rect x="90" y="150" width="820" height="220" rx="8" fill="#ffffff" stroke="#334155" stroke-width="1.8"/>
+<path d="M118,260 L252,260" class="arrow"/>
+<text x="118" y="230" class="label" fill="#2563eb">空气入口</text>
+<path d="M748,260 L885,260" class="arrow"/>
+<text x="785" y="230" class="label" fill="#2563eb">空气出口</text>
+<ellipse cx="310" cy="210" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="370" cy="210" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="430" cy="210" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="490" cy="210" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="550" cy="210" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="610" cy="210" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="670" cy="210" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="730" cy="210" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="328" cy="268" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="388" cy="268" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="448" cy="268" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="508" cy="268" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="568" cy="268" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="628" cy="268" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="688" cy="268" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="748" cy="268" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="310" cy="326" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="370" cy="326" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="430" cy="326" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="490" cy="326" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="550" cy="326" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="610" cy="326" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="670" cy="326" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<ellipse cx="730" cy="326" rx="27" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.3"/>
+<rect x="376" y="384" width="248" height="54" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.5"/>
+<text x="500" y="406" text-anchor="middle" class="small">入口速度 uin = 5 m/s</text>
+<text x="500" y="424" text-anchor="middle" class="small">出口相对压力 pout = 0 Pa</text>
+<text x="500" y="442" text-anchor="middle" class="small">翼型管固体区设置体积热源 qv</text>
+<text x="500" y="505" text-anchor="middle" class="small" fill="#64748b">二维计算域边界条件与等效热源设置</text>
+</svg>

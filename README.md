@@ -1,216 +1,154 @@
-# NACA0012 翼型管阵列流热耦合仿真、代理建模与论文写作项目
+# NACA 翼型管阵列流热仿真与代理建模项目
 
-本项目当前包含 COMSOL 批量仿真、多模态 CNN/MLP 代理建模、论文图生成、大论文写作，以及早期 FiPy/Gmsh 旧流程归档。根目录主要保留当前 COMSOL/CNN 主流程；旧流程和论文材料已分别整理到专门文件夹。
+> 当前目录状态：七参数论文主线保留在 `七参数_MLP_CNN流场重建/`；旧六参数模型结果已移至 `归档/旧六参数模型结果/`；旧论文材料已移至 `归档/旧论文材料/`；旧图件已移至 `归档/旧论文图件/`；历史答辩输出已移至 `归档/历史答辩材料/`；外部 skill 包集中在 `skills/`。
 
-更完整的项目地图见：
+本项目用于翼型柱阵列散热器流动换热数值模拟、二维 CFD 数据集构建、七参数 MLP-CNN / Conditional U-Net 流热场重建代理模型训练，以及二维优化结果向三维芯片级散热器模型的迁移验证。
 
-```text
-项目总说明.md
-```
-
-重新跑数据、训练模型和生成论文图的推荐顺序见：
-
-```text
-EXPERIMENT_WORKFLOW.md
-```
-
-## 当前目录结构
-
-```text
-fipy_naca0012_2.0/
-├── consol_cfddata/             # COMSOL 批量仿真结果，正式 case 数据
-├── csv_data/                   # 当前 COMSOL/CNN 使用的数据表
-├── data_processing/            # 标签重建、数据整理和完整性检查脚本
-├── ai_cnn_model_results/       # CNN、MLP、多模态模型训练结果
-├── paper_figures_svg/          # 论文图输出
-├── comsol论文图脚本/           # 论文 SVG/PNG 图生成脚本
-├── comsol单工况测试/           # 单个 COMSOL case 调试入口
-├── thesis_writing/             # 大论文写作工作区
-├── fipy_pipeline/              # 早期 FiPy/Gmsh 旧流程归档
-├── mcp_comsol_demo/            # COMSOL skill/MCP 自动建模演示
-├── research-writing-skill-main/# 研究写作 skill 源文件
-└── myenvs_fipynaca2.0/         # Python 虚拟环境
-```
+当前论文主线已经从旧六参数 CNN/几何掩码流程转为七参数 PVT 流热场重建流程。旧 FiPy、旧六参数 CNN 和旧答辩材料保留作追溯，不作为当前论文默认运行入口。
 
 ## 当前主流程
 
-当前建议以 COMSOL 批量仿真和多模态代理模型为主线。
+1. 七参数参数化建模。
+2. 二维 COMSOL 流热耦合仿真。
+3. 导出 p/U/T 高分辨率 PVT 数值场数据集。
+4. 建立 MLP-CNN / Conditional U-Net 流热场重建代理模型。
+5. 输出 p/U/T 场、Nu、f，并计算 eta。
+6. 采用差分进化 DE 搜索 eta 最大的结构。
+7. 对最优结构进行二维 CFD 复算验证。
+8. 将二维优化结构迁移到三维芯片级散热器中验证。
+9. 将可信数据、图件、证据链、论文正文和答辩 PPT 整理到 `大论文初稿/`。
 
-### 1. 批量 COMSOL 仿真
+## 关键入口
+
+- [运行入口说明.md](docs/运行入口说明.md)：主命令和运行顺序。
+- [项目目录说明.md](docs/项目目录说明.md)：当前主线、旧流程边界和哪些目录不能删。
+- [docs/项目目录当前审查.md](docs/项目目录当前审查.md)：当前目录是否合理、哪些目录冻结、剩余小问题和验证结果。
+- [docs/项目目录整理方案.md](docs/项目目录整理方案.md)：项目整理原则、保留目录、归档目录和清理建议。
+- [docs/项目目录迁移清单.md](docs/项目目录迁移清单.md)：后续真实移动旧材料时使用的迁移清单和验证命令。
+- [数据说明.md](docs/数据说明.md)：二维标签、结果文件、图像和训练结果说明。
+- [论文证据链.md](docs/论文证据链.md)：论文图表与数据来源对应关系。
+- 旧六参数实验流程文档已归档到 `归档/旧论文材料/`，旧论文图件生成脚本已归档到 `归档/旧论文图件/`。
+
+## 核心目录
+
+```text
+fipy_naca0012_2.0/
+├─ 七参数_MLP_CNN流场重建/
+├─ 七参数_几何掩码代理优化/
+├─ 七参数_PDE_PINN尝试/
+├─ comsol_3d_airfoil_radiator/
+├─ 大论文初稿/
+├─ docs/
+├─ tests/
+├─ 工具脚本/
+├─ 旧六参数流程/
+├─ consol_cfddata/
+├─ paper_reference/
+├─ 第三方工具/
+└─ 归档/
+```
+
+当前不要移动或删除：
+
+- `七参数_MLP_CNN流场重建/`
+- `七参数_几何掩码代理优化/`
+- `七参数_PDE_PINN尝试/`
+- `comsol_3d_airfoil_radiator/`
+- `大论文初稿/`
+- `consol_cfddata/`
+
+旧六参数模型结果、旧论文材料和历史答辩输出可以按 `docs/项目目录迁移清单.md` 逐项归档。
+
+## 二维 COMSOL 数据
+
+以下为旧六参数二维流程入口，保留作历史追溯；当前七参数论文主线以 `七参数_MLP_CNN流场重建/` 和 `七参数_几何掩码代理优化/` 下的结果为准。
+
+单工况：
 
 ```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe consol500组参数.py
+python 工具脚本/comsol单次执行脚本.py --Ta 0 --Twa 0.4 --Tb 0.12 --Ts 1.1 --Tt 0.85 --Tad 0 --outdir consol_cfddata/case_test_cfd_solution
 ```
 
-主要输出：
-
-```text
-consol_cfddata/
-csv_data/final_results.csv
-```
-
-### 2. 重建/检查标签
+批量工况：
 
 ```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe .\data_processing\rebuild_labels_from_results.py
+python 工具脚本/consol500组参数.py --num-samples 500
 ```
 
-主要输出：
+当前二维数据集状态：
 
-```text
-consol_cfddata/labels.csv
-```
+- 样本数：500
+- 标签文件：`consol_cfddata/labels.csv`
+- 工况目录：`consol_cfddata/case_{编号}_cfd_solution/`
+- 每个正式工况包含：`model.mph`、`result.json`、`velocity_magnitude.png`、`pressure.png`、`temperature.png`
 
-### 3. 训练 CNN 模型
+## 神经网络模型
+
+当前神经网络脚本集中在 `旧六参数流程/模型脚本/`。
 
 ```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe cnnstep2.py
+python 旧六参数流程/模型脚本/MLP基线_训练.py
+python 旧六参数流程/模型脚本/多模态特征融合_训练.py
+python 旧六参数流程/模型脚本/CNN_CBAM_训练.py
+python 旧六参数流程/模型脚本/物理信息CNN_训练.py
 ```
 
-主要输出：
-
-```text
-ai_cnn_model_results/
-```
-
-### 4. 单 case 预测
+预测示例：
 
 ```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe cnnstep3.py
+python 旧六参数流程/模型脚本/CNN_CBAM_预测.py --case-id 1
+python 旧六参数流程/模型脚本/物理信息CNN_预测.py --case-id 1
 ```
 
-## 对比模型与表格
+当前主要结果文件：
 
-训练标量 MLP 基线：
+- `归档/旧六参数模型结果/ai_cnn_model_results/mlp_baseline_metrics.json`
+- `归档/旧六参数模型结果/ai_cnn_model_results/multimodal_feature_metrics.json`
+- `归档/旧六参数模型结果/cnn_big_results/cnn_big_metrics.json`
+- `归档/旧六参数模型结果/cnn_cbam_gap_results/cnn_cbam_gap_metrics.json`
+- `归档/旧六参数模型结果/pi_cnn_nuf_results/pi_cnn_nuf_metrics.json`
+- `归档/旧六参数模型结果/ai_cnn_model_results/feature_fusion_kfold_5/feature_fusion_kfold_summary.json`
+
+## 三维 COMSOL 模型
+
+三维脚本集中在 `comsol_3d_airfoil_radiator/`。
+
+主建模脚本：
 
 ```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe train_mlp_baseline.py
+python comsol_3d_airfoil_radiator/build_airfoil_pillar_heat_sink.py --all --mesh-hauto 4 --solve
 ```
 
-训练多模态特征融合模型：
+后处理：
 
 ```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe train_multimodal_feature_model.py
+python comsol_3d_airfoil_radiator/05_结果后处理.py
+python comsol_3d_airfoil_radiator/10_绘制结果汇总.py
 ```
 
-这些脚本会更新 `ai_cnn_model_results/` 中的模型指标和论文表格数据。
+当前三维结果：
 
-## 论文图生成
+- `comsol_3d_airfoil_radiator/generated_pillar_heat_sink/results/pillar_heat_sink_summary.csv`
+- `comsol_3d_airfoil_radiator/generated_pillar_heat_sink/results/pillar_heat_sink_summary.json`
 
-论文图脚本集中在：
+注意：当前三维结果显示优化结构优势不明显，论文中不能写成“已验证三维显著最优”。
 
-```text
-comsol论文图脚本/
-```
+## 不能随意删除的内容
 
-一键生成当前论文图：
+- `consol_cfddata/`
+- `归档/旧六参数模型结果/ai_cnn_model_results/`
+- `归档/旧六参数模型结果/cnn_big_results/`
+- `归档/旧六参数模型结果/cnn_cbam_gap_results/`
+- `归档/旧六参数模型结果/pi_cnn_nuf_results/`
+- `comsol_3d_airfoil_radiator/generated_pillar_heat_sink/`
+- `大论文初稿/`
+- 任何仍需要复现的 `.mph`、`.json`、`.csv`、`.pth`
 
-```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe .\comsol论文图脚本\generate_comsol_svgs.py
-```
+## Git 管理原则
 
-只生成某一类图：
-
-```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe .\comsol论文图脚本\generate_comsol_svgs.py --only base
-.\myenvs_fipynaca2.0\Scripts\python.exe .\comsol论文图脚本\generate_comsol_svgs.py --only cbam
-.\myenvs_fipynaca2.0\Scripts\python.exe .\comsol论文图脚本\generate_comsol_svgs.py --only fig8
-.\myenvs_fipynaca2.0\Scripts\python.exe .\comsol论文图脚本\generate_comsol_svgs.py --only heat
-```
-
-输出目录：
-
-```text
-paper_figures_svg/
-```
-
-注意：请从项目根目录运行图脚本，不要先 `cd comsol论文图脚本`。
-
-## 单工况调试
-
-如果只想测试一个固定参数的 COMSOL case：
-
-```powershell
-.\myenvs_fipynaca2.0\Scripts\python.exe .\comsol单工况测试\test_single_case.py
-```
-
-输出默认进入：
-
-```text
-comsol单工况测试/test_case_debug/
-```
-
-这只是调试产物，不是正式 500 组数据集。
-
-## 大论文写作
-
-大论文工作区：
-
-```text
-thesis_writing/
-```
-
-主要入口：
-
-```text
-thesis_writing/README.md
-thesis_writing/plan/outline.md
-thesis_writing/plan/progress.md
-thesis_writing/chapters/
-```
-
-建议把论文原始草稿、图表说明和证据记录继续整理进 `thesis_writing/source_drafts/` 和 `thesis_writing/notes/`。
-
-## FiPy 旧流程
-
-早期 FiPy/Gmsh 流程已迁入：
-
-```text
-fipy_pipeline/
-```
-
-如果需要运行旧流程，请先进入该目录：
-
-```powershell
-cd fipy_pipeline
-python run_all_cases_refactored.py
-```
-
-不要从根目录直接运行 `python fipy_pipeline/run_all_cases_refactored.py`，因为旧脚本大量依赖相对路径。详细说明见：
-
-```text
-fipy_pipeline/README.md
-```
-
-## 重要数据目录
-
-暂时不要随意删除：
-
-```text
-consol_cfddata/
-csv_data/
-ai_cnn_model_results/
-paper_figures_svg/
-thesis_writing/
-fipy_pipeline/
-myenvs_fipynaca2.0/
-```
-
-其中 `consol_cfddata/` 和 `fipy_pipeline/results/` 体积较大，但重建成本高。
-
-## 清理建议
-
-可清理缓存：
-
-```text
-__pycache__/
-```
-
-旧副本脚本建议归档到 `archive/old_scripts/`，不要混在根目录。详细清单见：
-
-```text
-项目总说明.md
-```
+- 大型 CFD 数据、`.mph`、训练权重、论文中间文件默认不提交。
+- 可提交脚本、轻量说明文档、指标 JSON/CSV、必要的图表脚本。
+- 当前 Git 状态中旧根目录神经网络脚本显示删除，新脚本集中在 `旧六参数流程/模型脚本/`。提交前需要确认这是正式迁移。
 
 ## 许可证
 

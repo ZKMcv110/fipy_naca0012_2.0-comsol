@@ -1,0 +1,18 @@
+{
+  "updated_figures": [
+    "图3-7_全局敏感性排序图.png",
+    "图3-8_局部扰动敏感性图.png",
+    "图4-2_损失收敛曲线.png",
+    "图4-9a_三折交叉验证结果图.svg",
+    "图4-9a_三折交叉验证结果图.png",
+    "图4-9b_A0-A4消融实验结果图.png",
+    "图4-10_DE收敛曲线.png"
+  ],
+  "data_sources": {
+    "sensitivity": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\analysis_results\\sensitivity",
+    "training": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\results\\unet_pUt_320x96_full_e50\\train_history.csv",
+    "kfold": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\results\\pvt_unet_kfold_3_e20\\kfold_metrics.csv",
+    "ablation": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\results\\pvt_ablation\\ablation_summary.csv",
+    "de": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\optimization_results\\mlp_cnn_de_multiloss_e10\\de_history.csv"
+  }
+}

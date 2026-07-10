@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="820" viewBox="0 0 1100 820">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#111111"/>
+  </marker>
+  <style>
+    text { font-family: "SimSun", "Microsoft YaHei", Arial, sans-serif; fill: #111111; }
+    .box { fill: #ffffff; stroke: #111111; stroke-width: 1.8; }
+    .line { stroke: #111111; stroke-width: 1.8; fill: none; marker-end: url(#arrow); }
+    .plain { stroke: #111111; stroke-width: 1.8; fill: none; }
+    .title { font-size: 23px; }
+    .node { font-size: 21px; }
+    .small { font-size: 18px; }
+    .note { font-size: 17px; }
+  </style>
+</defs>
+
+<rect width="1100" height="820" fill="#ffffff"/>
+
+<!-- 顶部研究主题 -->
+<rect class="box" x="275" y="22" width="550" height="58"/>
+<text class="title" x="550" y="58" text-anchor="middle">翼型管翅片散热器气侧强化与代理模型优化研究</text>
+
+<!-- 三条研究主线标题 -->
+<path class="plain" d="M550,80 L550,116"/>
+<path class="plain" d="M245,116 L855,116"/>
+<path class="line" d="M245,116 L245,147"/>
+<path class="line" d="M550,116 L550,147"/>
+<path class="line" d="M855,116 L855,147"/>
+
+<rect class="box" x="142" y="147" width="206" height="78"/>
+<text class="node" x="245" y="178" text-anchor="middle">数值建模</text>
+<text class="node" x="245" y="207" text-anchor="middle">与样本构建</text>
+
+<rect class="box" x="447" y="147" width="206" height="78"/>
+<text class="node" x="550" y="178" text-anchor="middle">多模态代理模型</text>
+<text class="node" x="550" y="207" text-anchor="middle">训练与验证</text>
+
+<rect class="box" x="752" y="147" width="206" height="78"/>
+<text class="node" x="855" y="178" text-anchor="middle">参数优化</text>
+<text class="node" x="855" y="207" text-anchor="middle">与三维验证</text>
+
+<!-- 左路：建模与样本 -->
+<path class="line" d="M245,225 L245,257"/>
+<rect class="box" x="132" y="257" width="226" height="86"/>
+<text class="node" x="245" y="289" text-anchor="middle">七参数化建模</text>
+<text class="small" x="245" y="318" text-anchor="middle">形状、阵列布局与倾斜角</text>
+
+<path class="line" d="M245,343 L245,375"/>
+<rect class="box" x="132" y="375" width="226" height="86"/>
+<text class="node" x="245" y="407" text-anchor="middle">二维COMSOL计算</text>
+<text class="small" x="245" y="436" text-anchor="middle">速度场、温度场、压力场</text>
+
+<path class="line" d="M245,461 L245,493"/>
+<rect class="box" x="132" y="493" width="226" height="106"/>
+<text class="node" x="245" y="526" text-anchor="middle">CFD结果整理</text>
+<text class="small" x="245" y="555" text-anchor="middle">Nu、f、η、压降</text>
+<text class="small" x="245" y="584" text-anchor="middle">云图与标量标签</text>
+
+<path class="line" d="M245,599 L245,631"/>
+<rect class="box" x="132" y="631" width="226" height="72"/>
+<text class="node" x="245" y="662" text-anchor="middle">七参数样本库</text>
+<text class="small" x="245" y="691" text-anchor="middle">参数 + 几何掩码 + 标签</text>
+
+<!-- 中路：模型训练 -->
+<path class="line" d="M550,225 L550,257"/>
+<rect class="box" x="437" y="257" width="226" height="86"/>
+<text class="node" x="550" y="289" text-anchor="middle">数据预处理</text>
+<text class="small" x="550" y="318" text-anchor="middle">归一化与训练/测试划分</text>
+
+<path class="line" d="M550,343 L550,375"/>
+<rect class="box" x="402" y="375" width="296" height="86"/>
+<text class="node" x="550" y="407" text-anchor="middle">双分支特征提取</text>
+<text class="small" x="550" y="436" text-anchor="middle">七参数分支 + 几何掩码分支</text>
+
+<path class="line" d="M550,461 L550,493"/>
+<rect class="box" x="437" y="493" width="226" height="106"/>
+<text class="node" x="550" y="526" text-anchor="middle">特征融合回归</text>
+<text class="small" x="550" y="555" text-anchor="middle">预测Nu与f</text>
+<text class="small" x="550" y="584" text-anchor="middle">计算综合评价因子η</text>
+
+<path class="line" d="M550,599 L550,631"/>
+<rect class="box" x="437" y="631" width="226" height="72"/>
+<text class="node" x="550" y="662" text-anchor="middle">模型可信度评价</text>
+<text class="small" x="550" y="691" text-anchor="middle">消融实验 + K折交叉验证</text>
+
+<!-- 右路：优化与三维验证 -->
+<path class="line" d="M855,225 L855,257"/>
+<rect class="box" x="742" y="257" width="226" height="86"/>
+<text class="node" x="855" y="289" text-anchor="middle">代理辅助参数优化</text>
+<text class="small" x="855" y="318" text-anchor="middle">差分进化搜索候选结构</text>
+
+<path class="line" d="M855,343 L855,375"/>
+<rect class="box" x="742" y="375" width="226" height="86"/>
+<text class="node" x="855" y="407" text-anchor="middle">二维CFD独立复核</text>
+<text class="small" x="855" y="436" text-anchor="middle">基准结构与优化结构对比</text>
+
+<path class="line" d="M855,461 L855,493"/>
+<rect class="box" x="742" y="493" width="226" height="106"/>
+<text class="node" x="855" y="526" text-anchor="middle">三维代表性模型</text>
+<text class="small" x="855" y="555" text-anchor="middle">底座、翼型柱阵列</text>
+<text class="small" x="855" y="584" text-anchor="middle">和空气流道耦合计算</text>
+
+<path class="line" d="M855,599 L855,631"/>
+<rect class="box" x="742" y="631" width="226" height="72"/>
+<text class="node" x="855" y="662" text-anchor="middle">工程适用性分析</text>
+<text class="small" x="855" y="691" text-anchor="middle">散热能力与流动阻力权衡</text>
+
+<!-- 横向数据与验证关系 -->
+<path class="line" d="M358,667 L437,667"/>
+<text class="note" x="397" y="650" text-anchor="middle">提供训练数据</text>
+
+<path class="line" d="M663,546 L742,418"/>
+<text class="note" x="704" y="486" text-anchor="middle">提供候选方案</text>
+
+<path class="line" d="M742,667 L663,667"/>
+<text class="note" x="703" y="650" text-anchor="middle">反馈验证结果</text>
+
+<!-- 底部结论 -->
+<path class="plain" d="M245,703 L245,735"/>
+<path class="plain" d="M550,703 L550,735"/>
+<path class="plain" d="M855,703 L855,735"/>
+<path class="plain" d="M245,735 L855,735"/>
+<path class="line" d="M550,735 L550,760"/>
+<rect class="box" x="420" y="760" width="260" height="46"/>
+<text class="node" x="550" y="791" text-anchor="middle">结论与展望</text>
+</svg>

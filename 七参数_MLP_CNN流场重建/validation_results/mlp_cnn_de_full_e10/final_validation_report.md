@@ -1,0 +1,62 @@
+# 七参数最优结构COMSOL复核报告
+
+## 最优参数
+{
+  "Ta": 0.0,
+  "Twa": 0.4293756204788678,
+  "Tb": 0.14990611846370408,
+  "Ts": 1.5,
+  "Tt": 0.8336603546590564,
+  "Tad": 1.0,
+  "theta": -1.8929064292176863
+}
+
+## 代理模型预测
+{
+  "Nu_pred": 45.61371612548828,
+  "f_pred": 0.10468743741512299,
+  "eta_pred": 1.4439849747691313
+}
+
+## COMSOL复核结果
+{
+  "case_id": 1,
+  "Ta": 0.0,
+  "Twa": 0.4293756204788678,
+  "Tb": 0.149906118463704,
+  "Ts": 1.5,
+  "Tt": 0.8336603546590564,
+  "Tad": 1.0,
+  "theta": -1.8929064292176865,
+  "image_complete": true,
+  "failure_reason": "",
+  "Nu": 47.387804,
+  "f": 0.112331,
+  "delta_p": 1.6849600000000002,
+  "delta_T": 19.719812,
+  "Q_total": 2429.644340382,
+  "image_status": {
+    "complete": true,
+    "min_image_bytes": 20000,
+    "files": {
+      "velocity_magnitude.png": {
+        "exists": true,
+        "size_bytes": 140400,
+        "valid": true
+      },
+      "pressure.png": {
+        "exists": true,
+        "size_bytes": 93597,
+        "valid": true
+      },
+      "temperature.png": {
+        "exists": true,
+        "size_bytes": 120478,
+        "valid": true
+      }
+    },
+    "invalid": []
+  },
+  "cfd_outdir": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\validation_results\\mlp_cnn_de_full_e10\\comsol\\case_1\\cfd_solution",
+  "eta_cfd": 1.4653187874536988
+}

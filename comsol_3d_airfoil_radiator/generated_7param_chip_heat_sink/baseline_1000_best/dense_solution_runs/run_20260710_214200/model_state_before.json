@@ -1,0 +1,57 @@
+{
+  "model_label": "baseline_1000_best_realistic_airfoil_heat_sink.mph",
+  "components": [
+    "comp1"
+  ],
+  "studies": [
+    "std1"
+  ],
+  "solutions": [
+    "sol1"
+  ],
+  "materials": [
+    "mat_air",
+    "mat_al",
+    "mat_chip"
+  ],
+  "physics": [
+    "ht",
+    "spf"
+  ],
+  "multiphysics": [
+    "nitf1"
+  ],
+  "selections": [
+    "geom1_air_fluid_pnt",
+    "geom1_air_fluid_edg",
+    "geom1_air_fluid_bnd",
+    "geom1_air_fluid_dom",
+    "sel_chip",
+    "sel_air",
+    "sel_aluminum",
+    "sel_solid",
+    "sel_inlet",
+    "sel_outlet"
+  ],
+  "result_groups": [
+    "pg_geometry_preview",
+    "pg_clean_temp",
+    "pg_clean_vel",
+    "pg_mesh_check"
+  ],
+  "exports": [],
+  "geometry_domains": {
+    "label": "geom1",
+    "count": 27
+  },
+  "mesh_tags": [
+    "mesh1"
+  ],
+  "mesh_feature_tags": [
+    "size",
+    "ftet1",
+    "size_air",
+    "size_solid",
+    "size_chip"
+  ]
+}

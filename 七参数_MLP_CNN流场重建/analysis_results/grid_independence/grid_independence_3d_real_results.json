@@ -1,0 +1,5 @@
+{
+  "source": "comsol_3d_airfoil_radiator/20_三维网格无关性运行器.py",
+  "output": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\analysis_results\\grid_independence\\grid_independence_3d_real_results.csv",
+  "note": "该 CSV 只包含三维真实网格结果；二维粗/中/细网格仍需单独补算。"
+}

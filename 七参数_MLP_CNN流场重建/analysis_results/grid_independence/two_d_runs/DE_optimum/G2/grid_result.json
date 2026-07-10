@@ -1,0 +1,43 @@
+{
+  "case": "DE_optimum",
+  "level": "G2",
+  "params": {
+    "Ta": 0.0,
+    "Twa": 0.6,
+    "Tb": 0.15,
+    "Ts": 1.5,
+    "Tt": 0.9609194261752046,
+    "Tad": 1.0,
+    "theta": -2.224429452033541
+  },
+  "parsed": {
+    "mesh": 33097.0,
+    "Nu": 21.085108,
+    "f": 0.042072,
+    "T_in": 297.41686,
+    "T_out": 297.960884,
+    "v_in": 5.858325,
+    "v_out": 5.85833,
+    "p_in": 4.625625,
+    "p_out": 3.994543,
+    "T_wing": 342.036768,
+    "vol": 0.000244612,
+    "Q_total": 2446.120500393,
+    "delta_T": 44.619908
+  },
+  "row": {
+    "dimension": "2D",
+    "case": "DE_optimum",
+    "mesh_level": "G2",
+    "element_count": "33097",
+    "Nu": "21.085108",
+    "f": "0.042072",
+    "eta": "",
+    "Tmax": "",
+    "Tavg": "342.036768",
+    "pressure_drop": "0.631082",
+    "thermal_resistance": "",
+    "relative_to_fine_percent": "",
+    "status": "真实 COMSOL 求解；mesh_hauto=4; local_size=True"
+  }
+}

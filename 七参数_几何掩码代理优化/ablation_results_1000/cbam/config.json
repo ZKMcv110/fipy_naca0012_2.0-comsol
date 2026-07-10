@@ -1,0 +1,6 @@
+{
+  "use_cbam": true,
+  "use_params": true,
+  "use_pi": false,
+  "desc": "+ CBAM 注意力"
+}

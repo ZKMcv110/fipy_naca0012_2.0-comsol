@@ -1,0 +1,7 @@
+{
+  "use_cbam": true,
+  "use_params": true,
+  "use_pi": true,
+  "use_gp": true,
+  "desc": "+ 梯度惩罚（完整模型）"
+}

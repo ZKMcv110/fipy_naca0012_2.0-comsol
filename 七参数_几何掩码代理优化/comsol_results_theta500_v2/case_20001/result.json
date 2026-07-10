@@ -1,0 +1,40 @@
+{
+  "case_id": 20001,
+  "Ta": 0.0206596516298032,
+  "Twa": 0.4421020271834263,
+  "Tb": 0.1311899234732347,
+  "Ts": 1.1290142628742748,
+  "Tt": 0.9764889131289148,
+  "Tad": 0.6044189371152605,
+  "theta": 7.691357016092006,
+  "image_complete": true,
+  "failure_reason": "",
+  "Nu": 34.78175,
+  "f": 0.094229,
+  "delta_p": 1.4134420000000016,
+  "delta_T": 23.56272,
+  "Q_total": 2130.836852309,
+  "image_status": {
+    "complete": true,
+    "min_image_bytes": 20000,
+    "files": {
+      "velocity_magnitude.png": {
+        "exists": true,
+        "size_bytes": 162007,
+        "valid": true
+      },
+      "pressure.png": {
+        "exists": true,
+        "size_bytes": 106656,
+        "valid": true
+      },
+      "temperature.png": {
+        "exists": true,
+        "size_bytes": 130458,
+        "valid": true
+      }
+    },
+    "invalid": []
+  },
+  "cfd_outdir": "七参数_几何掩码代理优化\\comsol_results_theta500_v2\\case_20001\\cfd_solution"
+}

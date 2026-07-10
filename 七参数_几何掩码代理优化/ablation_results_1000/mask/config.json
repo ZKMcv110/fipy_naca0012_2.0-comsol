@@ -1,0 +1,7 @@
+{
+  "use_cbam": false,
+  "use_params": true,
+  "use_pi": false,
+  "use_gp": false,
+  "desc": "+ 几何掩码编码器"
+}

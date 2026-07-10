@@ -1,0 +1,1530 @@
+{
+  "status": "pass",
+  "errors": [],
+  "warnings": [
+    "数据划分 train 数量为 750，与论文口径 375 不一致",
+    "数据划分 val 数量为 150，与论文口径 75 不一致",
+    "数据划分 test 数量为 100，与论文口径 50 不一致",
+    "三维倾斜角建模记录theta=9.27235911523071与二维候选theta=-4.432188902936487不一致",
+    "f_R2 当前最高模型是 baseline，论文不得写 PI-CNN-CBAM 全指标最优",
+    "优化结果 theta 非零，请确认训练标签是否已包含非零 theta 样本",
+    "三维候选结构 eta_3d 存在小于 1 的情况，不能写成三维综合最优",
+    "论文存在未知来源图片: ../七参数_几何掩码代理优化/ablation_results/pi_cnn_cbam/loss_curve.png, ../七参数_几何掩码代理优化/ablation_results/ablation_bar.png, ../七参数_几何掩码代理优化/ablation_results/pi_cnn_cbam/prediction_scatter.png, ../七参数_几何掩码代理优化/optimization_results_pi_cbam/de_convergence.png, ../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/velocity_magnitude.png, ../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/temperature.png, ../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/pressure.png",
+    "论文未找到关键数值: 二维COMSOL复核Nu=42.02412",
+    "论文未找到关键数值: 二维COMSOL复核f=0.095287",
+    "论文未找到关键数值: 二维COMSOL复核eta=1.372733248568721"
+  ],
+  "required_files": [
+    {
+      "name": "七参数标签",
+      "path": "七参数_几何掩码代理优化\\samples\\labels_7param_1000.csv",
+      "exists": true
+    },
+    {
+      "name": "七参数数据划分",
+      "path": "七参数_几何掩码代理优化\\samples\\dataset_split_1000.csv",
+      "exists": true
+    },
+    {
+      "name": "消融实验汇总",
+      "path": "七参数_几何掩码代理优化\\ablation_results_1000\\ablation_summary.csv",
+      "exists": true
+    },
+    {
+      "name": "K折汇总",
+      "path": "七参数_几何掩码代理优化\\kfold_results_1000\\kfold_summary.json",
+      "exists": true
+    },
+    {
+      "name": "PI-CNN-CBAM优化参数",
+      "path": "七参数_几何掩码代理优化\\optimization_results_1000_gp\\best_params.json",
+      "exists": true
+    },
+    {
+      "name": "COMSOL复核报告",
+      "path": "七参数_几何掩码代理优化\\validation_results_1000_gp\\final_validation_report.json",
+      "exists": true
+    },
+    {
+      "name": "三维结果汇总",
+      "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\results\\seven_param_3d_summary.csv",
+      "exists": true
+    },
+    {
+      "name": "三维建模记录",
+      "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\pi_cbam_best_realistic_build_notes.json",
+      "exists": true
+    },
+    {
+      "name": "三维外观图",
+      "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\exports\\pi_cbam_best_appearance.png",
+      "exists": true
+    },
+    {
+      "name": "三维网格图",
+      "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\exports\\pi_cbam_best_mesh.png",
+      "exists": true
+    },
+    {
+      "name": "三维速度图",
+      "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\exports\\pi_cbam_best_velocity.png",
+      "exists": true
+    },
+    {
+      "name": "三维温度图",
+      "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\exports\\pi_cbam_best_temperature.png",
+      "exists": true
+    },
+    {
+      "name": "七参数版论文",
+      "path": "大论文初稿\\基于物理信息CNN的翼型管翅片散热器论文_七参数版.md",
+      "exists": true
+    }
+  ],
+  "scripts": [
+    {
+      "name": "common.py",
+      "path": "七参数_几何掩码代理优化\\common.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "01_七参数LHS采样.py",
+      "path": "七参数_几何掩码代理优化\\01_七参数LHS采样.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "02a_七参数COMSOL单工况求解.py",
+      "path": "七参数_几何掩码代理优化\\02a_七参数COMSOL单工况求解.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "02_七参数COMSOL批量求解.py",
+      "path": "七参数_几何掩码代理优化\\02_七参数COMSOL批量求解.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "03_从COMSOL结果重建标签.py",
+      "path": "七参数_几何掩码代理优化\\03_从COMSOL结果重建标签.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "04_生成几何掩码图.py",
+      "path": "七参数_几何掩码代理优化\\04_生成几何掩码图.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "08_COMSOL复核最优结构.py",
+      "path": "七参数_几何掩码代理优化\\08_COMSOL复核最优结构.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "09_消融实验_PI_CNN_CBAM.py",
+      "path": "七参数_几何掩码代理优化\\09_消融实验_PI_CNN_CBAM.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "10_预测_PI_CNN_CBAM性能.py",
+      "path": "七参数_几何掩码代理优化\\10_预测_PI_CNN_CBAM性能.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "11_差分进化优化_PI_CNN_CBAM七参数.py",
+      "path": "七参数_几何掩码代理优化\\11_差分进化优化_PI_CNN_CBAM七参数.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "12_七参数PI_CNN_CBAM_K折验证.py",
+      "path": "七参数_几何掩码代理优化\\12_七参数PI_CNN_CBAM_K折验证.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "13_七参数项目完整性检查.py",
+      "path": "七参数_几何掩码代理优化\\13_七参数项目完整性检查.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "18_七参数轻量冒烟测试.py",
+      "path": "七参数_几何掩码代理优化\\18_七参数轻量冒烟测试.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "20_1000组PINN全流程.py",
+      "path": "七参数_几何掩码代理优化\\20_1000组PINN全流程.py",
+      "exists": true,
+      "py_compile": true
+    }
+  ],
+  "scripts_3d": [
+    {
+      "name": "13_七参数真实芯片散热器建模.py",
+      "path": "comsol_3d_airfoil_radiator\\13_七参数真实芯片散热器建模.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "14_导出七参数三维结果图.py",
+      "path": "comsol_3d_airfoil_radiator\\14_导出七参数三维结果图.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "15_提取七参数三维指标.py",
+      "path": "comsol_3d_airfoil_radiator\\15_提取七参数三维指标.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "16_导出三维倾斜角几何预览.py",
+      "path": "comsol_3d_airfoil_radiator\\16_导出三维倾斜角几何预览.py",
+      "exists": true,
+      "py_compile": true
+    }
+  ],
+  "legacy_files": [
+    {
+      "name": "旧六参数标签",
+      "path": "consol_cfddata\\labels.csv",
+      "exists": true,
+      "size_bytes": 196754
+    },
+    {
+      "name": "旧CNN最佳权重",
+      "path": "ai_cnn_model_results\\best_model.pth",
+      "exists": true,
+      "size_bytes": 30740600
+    },
+    {
+      "name": "旧CNN完整权重",
+      "path": "ai_cnn_model_results\\cfd_cnn_model.pth",
+      "exists": true,
+      "size_bytes": 30740927
+    },
+    {
+      "name": "旧CFD结果目录",
+      "path": "consol_cfddata",
+      "exists": true,
+      "item_count": 505
+    }
+  ],
+  "legacy_scripts": [
+    {
+      "name": "cnnstep1.py",
+      "path": "cnnstep1.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "cnnstep2.py",
+      "path": "cnnstep2.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "cnnstep3.py",
+      "path": "cnnstep3.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "comsol单次执行脚本.py",
+      "path": "comsol单次执行脚本.py",
+      "exists": true,
+      "py_compile": true
+    },
+    {
+      "name": "consol500组参数.py",
+      "path": "consol500组参数.py",
+      "exists": true,
+      "py_compile": true
+    }
+  ],
+  "labels": {
+    "sample_count": 1000,
+    "columns": [
+      "case_id",
+      "Ta",
+      "Twa",
+      "Tb",
+      "Ts",
+      "Tt",
+      "Tad",
+      "theta",
+      "Nu",
+      "f",
+      "delta_p",
+      "delta_T",
+      "Q_total",
+      "image_complete",
+      "failure_reason"
+    ],
+    "Nu": {
+      "min": 21.178439,
+      "max": 46.747379,
+      "mean": 34.10419421499999
+    },
+    "f": {
+      "min": 0.046168,
+      "max": 0.162019,
+      "mean": 0.095341438
+    },
+    "delta_p": {
+      "min": 0.6925249999999998,
+      "max": 2.4302850000000014,
+      "mean": 1.430121376
+    },
+    "delta_T": {
+      "min": 13.326794,
+      "max": 39.857521,
+      "mean": 21.34759258
+    },
+    "Q_total": {
+      "min": 1300.724086315,
+      "max": 2440.246159781,
+      "mean": 1870.815885535278
+    },
+    "theta_unique_values": [
+      -9.982847754160996,
+      -9.967549427647644,
+      -9.946175523989815,
+      -9.926088896962174,
+      -9.91252543170646,
+      -9.907450225042092,
+      -9.875171949047925,
+      -9.870403947818012,
+      -9.813288556198945,
+      -9.80573350812079,
+      -9.779607374220674,
+      -9.776266213586274,
+      -9.753754755911304,
+      -9.749275444053996,
+      -9.7141032430615,
+      -9.71156702677544,
+      -9.66348167476528,
+      -9.642823664321805,
+      -9.630018696805973,
+      -9.618564877666284
+    ],
+    "theta_unique_count": 1000,
+    "theta_nonzero_count": 1000,
+    "image_complete_count": 1000
+  },
+  "baseline_reference": {
+    "case_id": 30232,
+    "Nu0": 30.366123,
+    "f0": 0.092996,
+    "delta_p": 1.3949339999999992,
+    "distance_to_default_baseline": 0.01802018970945566,
+    "default_baseline": {
+      "Ta": 0.0,
+      "Twa": 0.4,
+      "Tb": 0.12,
+      "Ts": 1.1,
+      "Tt": 0.85,
+      "Tad": 0.0,
+      "theta": 0.0
+    },
+    "Ta": 0.0162292149166838,
+    "Twa": 0.3295512375051549,
+    "Tb": 0.0891428894432053,
+    "Ts": 0.9998546034819557,
+    "Tt": 0.8780217268683435,
+    "Tad": 0.0320514471316665,
+    "Nu0_diff_vs_optimization": 0.0,
+    "f0_diff_vs_optimization": 0.0
+  },
+  "dataset_split": {
+    "exists": true,
+    "row_count": 1000,
+    "counts": {
+      "train": 750,
+      "val": 150,
+      "test": 100
+    },
+    "case_id_min": 20001,
+    "case_id_max": 30500
+  },
+  "theta500_v2_samples": {
+    "exists": true,
+    "sample_count": 500,
+    "case_id_min": 20001,
+    "case_id_max": 20500,
+    "theta_min": -9.967549427647644,
+    "theta_max": 9.980848853027208,
+    "min_abs_theta": 0.0013672432847613
+  },
+  "theta500_v2_labels": {
+    "sample_count": 500,
+    "columns": [
+      "case_id",
+      "Ta",
+      "Twa",
+      "Tb",
+      "Ts",
+      "Tt",
+      "Tad",
+      "theta",
+      "Nu",
+      "f",
+      "delta_p",
+      "delta_T",
+      "Q_total",
+      "image_complete",
+      "failure_reason"
+    ],
+    "Nu": {
+      "min": 21.434601,
+      "max": 46.714471,
+      "mean": 34.124246752000005
+    },
+    "f": {
+      "min": 0.047904,
+      "max": 0.162019,
+      "mean": 0.09541676799999999
+    },
+    "delta_p": {
+      "min": 0.718559,
+      "max": 2.4302850000000014,
+      "mean": 1.431251314
+    },
+    "delta_T": {
+      "min": 13.917484,
+      "max": 39.857521,
+      "mean": 21.330098179999997
+    },
+    "Q_total": {
+      "min": 1301.990692904,
+      "max": 2440.246159781,
+      "mean": 1870.8262497617918
+    },
+    "theta_unique_values": [
+      -9.967549427647644,
+      -9.946175523989815,
+      -9.91252543170646,
+      -9.875171949047925,
+      -9.813288556198945,
+      -9.776266213586274,
+      -9.753754755911304,
+      -9.71156702677544,
+      -9.642823664321805,
+      -9.618564877666284,
+      -9.586043926210714,
+      -9.556534761112715,
+      -9.507636778539537,
+      -9.458813291525326,
+      -9.428964958416506,
+      -9.395022777638054,
+      -9.347818225410398,
+      -9.30377245422618,
+      -9.240304917848023,
+      -9.207357255193216
+    ],
+    "theta_unique_count": 500,
+    "theta_nonzero_count": 500,
+    "image_complete_count": 500,
+    "summary_row_count": 500,
+    "summary_success_count": 500
+  },
+  "theta500_v2_plan": {
+    "exists": true,
+    "row_count": 500,
+    "theta_min": -9.967549427647644,
+    "theta_max": 9.980848853027208
+  },
+  "theta500_v2_results": {
+    "exists": true,
+    "row_count": 500,
+    "success_count": 500,
+    "image_complete_count": 500,
+    "case_id_min": 20001,
+    "case_id_max": 20500,
+    "theta_min": -9.967549427647644,
+    "theta_max": 9.980848853027208,
+    "Nu_min": 21.434601,
+    "Nu_max": 46.714471,
+    "f_min": 0.047904,
+    "f_max": 0.162019,
+    "delta_p_min": 0.718559,
+    "delta_p_max": 2.4302850000000014,
+    "delta_T_min": 13.917484,
+    "delta_T_max": 39.857521,
+    "Q_total_min": 1301.990692904,
+    "Q_total_max": 2440.246159781
+  },
+  "smoke_test": {
+    "exists": true,
+    "status": "pass",
+    "passed_count": 7,
+    "total_count": 7,
+    "results": [
+      {
+        "name": "PI-CNN-CBAM预测",
+        "args": [
+          "10_预测_PI_CNN_CBAM性能.py"
+        ],
+        "expect_text": "[OK]",
+        "passed": true,
+        "command": [
+          "F:\\software\\anaconda\\python.exe",
+          "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\10_预测_PI_CNN_CBAM性能.py"
+        ],
+        "returncode": 0,
+        "stdout_tail": "[OK] PI-CNN-CBAM 七参数预测结果\nparams: {'Ta': 0.0, 'Twa': 0.4, 'Tb': 0.12, 'Ts': 1.1, 'Tt': 0.85, 'Tad': 0.0, 'theta': 0.0}\nbaseline: Nu0=30.366123, f0=0.09299600\nNu_pred=28.451721\nf_pred=0.08259753\neta_pred=0.974731\n",
+        "stderr_tail": ""
+      },
+      {
+        "name": "LHS采样入口",
+        "args": [
+          "01_七参数LHS采样.py",
+          "--help"
+        ],
+        "expect_text": "生成七参数LHS采样表",
+        "passed": true,
+        "command": [
+          "F:\\software\\anaconda\\python.exe",
+          "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\01_七参数LHS采样.py",
+          "--help"
+        ],
+        "returncode": 0,
+        "stdout_tail": "usage: 01_七参数LHS采样.py [-h] [--num-samples NUM_SAMPLES] [--seed SEED]\n                      [--output OUTPUT] [--case-id-start CASE_ID_START]\n\n生成七参数LHS采样表\n\noptions:\n  -h, --help            show this help message and exit\n  --num-samples NUM_SAMPLES\n                        样本数量，例如50、100、300、500\n  --seed SEED\n  --output OUTPUT\n  --case-id-start CASE_ID_START\n                        起始case_id，新增数据集建议使用20001等独立编号\n",
+        "stderr_tail": ""
+      },
+      {
+        "name": "COMSOL批量调度入口",
+        "args": [
+          "02_七参数COMSOL批量求解.py",
+          "--help"
+        ],
+        "expect_text": "dry-run",
+        "passed": true,
+        "command": [
+          "F:\\software\\anaconda\\python.exe",
+          "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\02_七参数COMSOL批量求解.py",
+          "--help"
+        ],
+        "returncode": 0,
+        "stdout_tail": "usage: 02_七参数COMSOL批量求解.py [-h] [--samples SAMPLES] [--output-dir OUTPUT_DIR]\n                           [--single-script SINGLE_SCRIPT] [--timeout TIMEOUT]\n                           [--q-heat Q_HEAT] [--force]\n                           [--pass-theta | --no-pass-theta]\n                           [--single-script-ignores-theta]\n                           [--allow-ignore-theta] [--start-index START_INDEX]\n                           [--limit LIMIT] [--dry-run]\n\n七参数COMSOL批量求解调度器\n\noptions:\n  -h, --help            show this help message and exit\n  --samples SAMPLES\n  --output-dir OUTPUT_DIR\n  --single-script SINGLE_SCRIPT\n  --timeout TIMEOUT\n  --q-heat Q_HEAT\n  --force\n  --pass-theta, --no-pass-theta\n                        调用单工况脚本时是否传入 --theta。\n  --single-script-ignores-theta\n                        当手动指定旧六参数脚本时启用，防止theta非零样本被错误求解。\n  --allow-ignore-theta  允许theta非零时仍调用旧六参数脚本；仅调试用，不建议生成论文标签。\n  --start-index START_INDEX\n                        从样本表的第几行开始调度，0表示从第一行开始。\n  --limit LIMIT         最多调度多少行，0表示调度从start-index开始的全部样本。\n  --dry-run             只检查样本并生成调度计划，不调用COMSOL、不写result.json。\n",
+        "stderr_tail": ""
+      },
+      {
+        "name": "标签重建入口",
+        "args": [
+          "03_从COMSOL结果重建标签.py",
+          "--help"
+        ],
+        "expect_text": "重建七参数 labels_7param.csv",
+        "passed": true,
+        "command": [
+          "F:\\software\\anaconda\\python.exe",
+          "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\03_从COMSOL结果重建标签.py",
+          "--help"
+        ],
+        "returncode": 0,
+        "stdout_tail": "usage: 03_从COMSOL结果重建标签.py [-h] [--existing-labels EXISTING_LABELS]\n                           [--results-dir RESULTS_DIR]\n                           [--mode {existing,results}] [--output OUTPUT]\n\n重建七参数 labels_7param.csv\n\noptions:\n  -h, --help            show this help message and exit\n  --existing-labels EXISTING_LABELS\n  --results-dir RESULTS_DIR\n  --mode {existing,results}\n  --output OUTPUT\n",
+        "stderr_tail": ""
+      },
+      {
+        "name": "几何掩码生成入口",
+        "args": [
+          "04_生成几何掩码图.py",
+          "--help"
+        ],
+        "expect_text": "生成七参数几何掩码图",
+        "passed": true,
+        "command": [
+          "F:\\software\\anaconda\\python.exe",
+          "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\04_生成几何掩码图.py",
+          "--help"
+        ],
+        "returncode": 0,
+        "stdout_tail": "usage: 04_生成几何掩码图.py [-h] [--labels LABELS] [--output-dir OUTPUT_DIR]\n                     [--image-size IMAGE_SIZE] [--limit LIMIT]\n\n生成七参数几何掩码图\n\noptions:\n  -h, --help            show this help message and exit\n  --labels LABELS\n  --output-dir OUTPUT_DIR\n  --image-size IMAGE_SIZE\n  --limit LIMIT         仅生成前N张；0表示全部\n",
+        "stderr_tail": ""
+      },
+      {
+        "name": "COMSOL复核入口",
+        "args": [
+          "08_COMSOL复核最优结构.py",
+          "--help"
+        ],
+        "expect_text": "COMSOL复核差分进化最优七参数",
+        "passed": true,
+        "command": [
+          "F:\\software\\anaconda\\python.exe",
+          "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\08_COMSOL复核最优结构.py",
+          "--help"
+        ],
+        "returncode": 0,
+        "stdout_tail": "usage: 08_COMSOL复核最优结构.py [-h] [--best BEST] [--output-dir OUTPUT_DIR]\n                          [--batch-script BATCH_SCRIPT]\n                          [--single-script SINGLE_SCRIPT]\n                          [--single-script-ignores-theta]\n                          [--allow-ignore-theta]\n\nCOMSOL复核差分进化最优七参数\n\noptions:\n  -h, --help            show this help message and exit\n  --best BEST\n  --output-dir OUTPUT_DIR\n  --batch-script BATCH_SCRIPT\n  --single-script SINGLE_SCRIPT\n                        可选：转发给批量脚本的单工况COMSOL脚本路径。\n  --single-script-ignores-theta\n                        当手动指定旧六参数脚本时启用。\n  --allow-ignore-theta  仅调试用：允许旧六参数脚本忽略theta。\n",
+        "stderr_tail": ""
+      },
+      {
+        "name": "PI-CNN-CBAM差分进化入口",
+        "args": [
+          "11_差分进化优化_PI_CNN_CBAM七参数.py",
+          "--help"
+        ],
+        "expect_text": "PI-CNN-CBAM差分进化优化七参数",
+        "passed": true,
+        "command": [
+          "F:\\software\\anaconda\\python.exe",
+          "F:\\pyProject\\fipy_naca0012_2.0\\七参数_几何掩码代理优化\\11_差分进化优化_PI_CNN_CBAM七参数.py",
+          "--help"
+        ],
+        "returncode": 0,
+        "stdout_tail": "usage: 11_差分进化优化_PI_CNN_CBAM七参数.py [-h] [--model-dir MODEL_DIR]\n                                   [--labels LABELS] [--output-dir OUTPUT_DIR]\n                                   [--pop-size POP_SIZE]\n                                   [--generations GENERATIONS] [--seed SEED]\n                                   [--image-size IMAGE_SIZE]\n\nPI-CNN-CBAM差分进化优化七参数\n\noptions:\n  -h, --help            show this help message and exit\n  --model-dir MODEL_DIR\n  --labels LABELS\n  --output-dir OUTPUT_DIR\n  --pop-size POP_SIZE\n  --generations GENERATIONS\n  --seed SEED\n  --image-size IMAGE_SIZE\n",
+        "stderr_tail": ""
+      }
+    ]
+  },
+  "tilted_3d_status": {
+    "source_report_exists": true,
+    "model_exists": true,
+    "model_path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\tilted_theta9\\tilted_theta9_realistic_airfoil_heat_sink.mph",
+    "build_notes_exists": true,
+    "build_notes_path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\tilted_theta9\\tilted_theta9_realistic_build_notes.json",
+    "preview_exists": true,
+    "preview_path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\tilted_theta9\\exports\\tilted_theta9_geometry_preview.png",
+    "preview_size_bytes": 104991,
+    "top_view_exists": true,
+    "top_view_path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\tilted_theta9\\exports\\tilted_theta9_top_view.png",
+    "top_view_size_bytes": 39822,
+    "source_params": {
+      "Ta": 0.0013568387757985788,
+      "Twa": 0.2,
+      "Tb": 0.15,
+      "Ts": 1.5,
+      "Tt": 1.1378950877700762,
+      "Tad": 1.0,
+      "theta": -4.432188902936487
+    },
+    "theta": -4.432188902936487,
+    "source_eta_cfd": 1.372733248568721,
+    "build_params": {
+      "Ta": 0.008532134499560634,
+      "Twa": 0.2,
+      "Tb": 0.08,
+      "Ts": 1.214044140555588,
+      "Tt": 1.18238349187132,
+      "Tad": 0.46636763421596594,
+      "theta": 9.27235911523071
+    },
+    "mesh_generated": true,
+    "plot_created": true,
+    "solved": false,
+    "mesh_failed": [],
+    "solver_failed": [],
+    "boundary_conditions": {
+      "inlet": {
+        "selection": [
+          1
+        ],
+        "type": "VelocityInlet",
+        "U0": "0.5 m/s",
+        "T": "293.15 K"
+      },
+      "outlet": {
+        "selection": [
+          1506
+        ],
+        "type": "Pressure",
+        "p0": "0 Pa"
+      },
+      "heat_source": {
+        "selection": [
+          9
+        ],
+        "type": "HeatRate",
+        "P0": "1 W"
+      },
+      "other_walls": "COMSOL default no-slip wall / thermal wall treatment in closed channel model"
+    }
+  },
+  "tilted_3d_export_risks": {
+    "checked_count": 4,
+    "unusable_count": 4,
+    "files": [
+      {
+        "name": "tilted_theta9_appearance.png",
+        "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\tilted_theta9\\exports\\tilted_theta9_appearance.png",
+        "exists": true,
+        "size_bytes": 8390,
+        "usable_as_evidence": false,
+        "reason": "未求解模型导出的疑似空白图，不能作为论文证据"
+      },
+      {
+        "name": "tilted_theta9_mesh.png",
+        "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\tilted_theta9\\exports\\tilted_theta9_mesh.png",
+        "exists": true,
+        "size_bytes": 8390,
+        "usable_as_evidence": false,
+        "reason": "未求解模型导出的疑似空白图，不能作为论文证据"
+      },
+      {
+        "name": "tilted_theta9_velocity.png",
+        "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\tilted_theta9\\exports\\tilted_theta9_velocity.png",
+        "exists": true,
+        "size_bytes": 8390,
+        "usable_as_evidence": false,
+        "reason": "未求解模型导出的疑似空白图，不能作为论文证据"
+      },
+      {
+        "name": "tilted_theta9_temperature.png",
+        "path": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\tilted_theta9\\exports\\tilted_theta9_temperature.png",
+        "exists": true,
+        "size_bytes": 8390,
+        "usable_as_evidence": false,
+        "reason": "未求解模型导出的疑似空白图，不能作为论文证据"
+      }
+    ]
+  },
+  "ablation": [
+    {
+      "model": "baseline",
+      "Nu_R2": 0.9716753363609314,
+      "Nu_MAE": 0.7062222361564636,
+      "Nu_RMSE": 0.9277301025292244,
+      "f_R2": 0.9807738065719604,
+      "f_MAE": 0.0025056730955839,
+      "f_RMSE": 0.0031430339228563,
+      "eta_R2": 0.9705432057380676,
+      "eta_MAE": 0.0171426422894001,
+      "desc": "基线：纯参数 MLP"
+    },
+    {
+      "model": "mask",
+      "Nu_R2": 0.9704648852348328,
+      "Nu_MAE": 0.7580399513244629,
+      "Nu_RMSE": 0.9473460055196526,
+      "f_R2": 0.9788056015968324,
+      "f_MAE": 0.0027227432001382,
+      "f_RMSE": 0.0032999926101432,
+      "eta_R2": 0.9696999192237854,
+      "eta_MAE": 0.0173493325710296,
+      "desc": "+ 几何掩码编码器 + 参数融合"
+    },
+    {
+      "model": "cbam",
+      "Nu_R2": 0.9733235836029052,
+      "Nu_MAE": 0.709707498550415,
+      "Nu_RMSE": 0.9003326662155988,
+      "f_R2": 0.977852702140808,
+      "f_MAE": 0.002664748346433,
+      "f_RMSE": 0.0033733604045965,
+      "eta_R2": 0.96592515707016,
+      "eta_MAE": 0.0190485268831253,
+      "desc": "+ CBAM 注意力"
+    },
+    {
+      "model": "pi",
+      "Nu_R2": 0.9709481596946716,
+      "Nu_MAE": 0.7108062505722046,
+      "Nu_RMSE": 0.9395632292689412,
+      "f_R2": 0.976170778274536,
+      "f_MAE": 0.0027756886556744,
+      "f_RMSE": 0.0034991081345753,
+      "eta_R2": 0.9673649072647096,
+      "eta_MAE": 0.0174737498164176,
+      "desc": "+ 物理约束损失"
+    },
+    {
+      "model": "gp",
+      "Nu_R2": 0.9661601781845092,
+      "Nu_MAE": 0.7908055186271667,
+      "Nu_RMSE": 1.0140365503220774,
+      "f_R2": 0.9709200859069824,
+      "f_MAE": 0.0030929031781852,
+      "f_RMSE": 0.0038654402402712,
+      "eta_R2": 0.9681454300880432,
+      "eta_MAE": 0.0176400784403085,
+      "desc": "+ 梯度惩罚（完整模型）"
+    }
+  ],
+  "kfold": {
+    "config": {
+      "labels": "七参数_几何掩码代理优化\\samples\\labels_7param_1000.csv",
+      "mask_dir": "七参数_几何掩码代理优化\\masks_1000",
+      "output_dir": "七参数_几何掩码代理优化\\kfold_results_1000",
+      "model_name": "gp",
+      "k_folds": 5,
+      "val_ratio": 0.15,
+      "epochs": 30,
+      "batch_size": 64,
+      "image_size": 64,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "pi_weight": 0.05,
+      "gp_weight": 0.01,
+      "seed": 42
+    },
+    "summary": {
+      "Nu_R2_mean": 0.9604182004928589,
+      "Nu_R2_std": 0.005842561211266394,
+      "Nu_MAE_mean": 0.8071174860000611,
+      "Nu_MAE_std": 0.04277159710212053,
+      "Nu_RMSE_mean": 1.0540368487680234,
+      "Nu_RMSE_std": 0.061516461749212874,
+      "f_R2_mean": 0.9600274682044982,
+      "f_R2_std": 0.0039043752960660717,
+      "f_MAE_mean": 0.003424654668197036,
+      "f_MAE_std": 0.00012848113786556974,
+      "f_RMSE_mean": 0.0045223460107581765,
+      "f_RMSE_std": 0.00024966333628497243,
+      "eta_R2_mean": 0.9544081330299378,
+      "eta_R2_std": 0.010457114310866076,
+      "eta_MAE_mean": 0.02043290063738823,
+      "eta_MAE_std": 0.0025625929544450124
+    }
+  },
+  "optimization": {
+    "best_params": {
+      "Ta": 0.0013568387757985788,
+      "Twa": 0.2,
+      "Tb": 0.15,
+      "Ts": 1.5,
+      "Tt": 1.1378950877700762,
+      "Tad": 1.0,
+      "theta": -4.432188902936487
+    },
+    "prediction": {
+      "Nu_pred": 37.372371673583984,
+      "f_pred": 0.090020090341568,
+      "eta_pred": 1.2441409570640243
+    },
+    "baseline": {
+      "Nu0": 30.366123,
+      "f0": 0.092996
+    },
+    "search_bounds": {
+      "Ta": [
+        0.0,
+        0.05
+      ],
+      "Twa": [
+        0.2,
+        0.6
+      ],
+      "Tb": [
+        0.08,
+        0.15
+      ],
+      "Ts": [
+        0.5,
+        1.5
+      ],
+      "Tt": [
+        0.5,
+        1.2
+      ],
+      "Tad": [
+        0.0,
+        1.0
+      ],
+      "theta": [
+        -10.0,
+        10.0
+      ]
+    },
+    "model_source": "七参数_几何掩码代理优化\\ablation_results_1000\\gp",
+    "note": "该结果由PI-CNN-CBAM几何掩码代理模型预测，必须回到COMSOL复核。训练标签包含多个theta取值，按PARAM_RANGES搜索。"
+  },
+  "validation": {
+    "comsol_result": {
+      "case_id": 1,
+      "Ta": 0.0013568387757985,
+      "Twa": 0.2,
+      "Tb": 0.15,
+      "Ts": 1.5,
+      "Tt": 1.1378950877700762,
+      "Tad": 1.0,
+      "theta": -4.432188902936487,
+      "image_complete": true,
+      "failure_reason": "",
+      "Nu": 42.02412,
+      "f": 0.095287,
+      "delta_p": 1.4293060000000004,
+      "delta_T": 22.253745,
+      "Q_total": 2431.50450546,
+      "image_status": {
+        "complete": true,
+        "min_image_bytes": 20000,
+        "files": {
+          "velocity_magnitude.png": {
+            "exists": true,
+            "size_bytes": 159782,
+            "valid": true
+          },
+          "pressure.png": {
+            "exists": true,
+            "size_bytes": 113751,
+            "valid": true
+          },
+          "temperature.png": {
+            "exists": true,
+            "size_bytes": 125994,
+            "valid": true
+          }
+        },
+        "invalid": []
+      },
+      "cfd_outdir": "七参数_几何掩码代理优化\\validation_results_1000_gp\\comsol\\case_1\\cfd_solution",
+      "eta_cfd": 1.372733248568721
+    },
+    "proxy_error": {
+      "Nu_pred_minus_cfd": -4.651748326416019,
+      "f_pred_minus_cfd": -0.0052669096584320035,
+      "eta_pred_minus_cfd": -0.12859229150469664
+    }
+  },
+  "three_dimensional": [
+    {
+      "case": "baseline",
+      "model_path": "F:\\pyProject\\fipy_naca0012_2.0\\comsol_3d_airfoil_radiator\\generated_realistic_heat_sink\\baseline\\baseline_realistic_airfoil_heat_sink.mph",
+      "t_chip_avg_k": 310.90253809576,
+      "t_chip_max_k": 312.71179382015566,
+      "t_chip_min_k": 309.34795582210864,
+      "t_out_avg_k": 299.80989924748144,
+      "p_in_avg_pa": 0.5280118145995385,
+      "p_out_avg_pa": 0.2034476611425601,
+      "delta_p_pa": 0.3245641534569784,
+      "r_th_k_per_w": 17.75253809576003,
+      "delta_t_out_k": 6.659899247481462,
+      "r_th_ratio": 1.0,
+      "delta_p_ratio": 1.0,
+      "eta_3d": 1.0
+    },
+    {
+      "case": "pi_cbam_best",
+      "model_path": "F:\\pyProject\\fipy_naca0012_2.0\\comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\pi_cbam_best_realistic_airfoil_heat_sink.mph",
+      "t_chip_avg_k": 309.76665030467444,
+      "t_chip_max_k": 311.2694279845841,
+      "t_chip_min_k": 308.18434995091354,
+      "t_out_avg_k": 299.08288305177194,
+      "p_in_avg_pa": 0.6240992858500939,
+      "p_out_avg_pa": 0.1799888258761676,
+      "delta_p_pa": 0.4441104599739263,
+      "r_th_k_per_w": 16.616650304674465,
+      "delta_t_out_k": 5.932883051771967,
+      "r_th_ratio": 0.9360154708606508,
+      "delta_p_ratio": 1.3683287425417852,
+      "eta_3d": 0.9623214282488745
+    }
+  ],
+  "thesis_images": {
+    "image_count": 25,
+    "missing": [
+      "../七参数_几何掩码代理优化/ablation_results/pi_cnn_cbam/loss_curve.png",
+      "../七参数_几何掩码代理优化/ablation_results/ablation_bar.png",
+      "../七参数_几何掩码代理优化/ablation_results/pi_cnn_cbam/prediction_scatter.png",
+      "../七参数_几何掩码代理优化/optimization_results_pi_cbam/de_convergence.png",
+      "../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/velocity_magnitude.png",
+      "../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/temperature.png",
+      "../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/pressure.png"
+    ],
+    "source_counts": {
+      "论文figures目录": 14,
+      "未知来源": 7,
+      "七参数三维COMSOL结果": 4
+    },
+    "images": [
+      {
+        "alt": "图1-1 本文技术路线图",
+        "path": "figures/fig1_2_technical_route.svg",
+        "resolved": "大论文初稿\\figures\\fig1_2_technical_route.svg",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图2-1 翼型管翅片散热器换热路径示意图",
+        "path": "figures/fig2_1_chip_airfoil_heat_path.svg",
+        "resolved": "大论文初稿\\figures\\fig2_1_chip_airfoil_heat_path.svg",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图2-2 翼型形状参数与阵列排布参数定义图",
+        "path": "figures/fig2_3_parameter_definition.svg",
+        "resolved": "大论文初稿\\figures\\fig2_3_parameter_definition.svg",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-1 二维翼型管阵列计算域示意图",
+        "path": "figures/fig3_1_2d_domain.svg",
+        "resolved": "大论文初稿\\figures\\fig3_1_2d_domain.svg",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-2 二维模型整体网格划分图",
+        "path": "figures/fig3_3_mesh_comsol.png",
+        "resolved": "大论文初稿\\figures\\fig3_3_mesh_comsol.png",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-3 翼型近壁面局部加密网格图",
+        "path": "figures/fig3_4_local_mesh_comsol.png",
+        "resolved": "大论文初稿\\figures\\fig3_4_local_mesh_comsol.png",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-4 典型工况速度场云图",
+        "path": "figures/fig3_7_velocity_field.png",
+        "resolved": "大论文初稿\\figures\\fig3_7_velocity_field.png",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-5 典型工况温度场云图",
+        "path": "figures/fig3_8_temperature_field.png",
+        "resolved": "大论文初稿\\figures\\fig3_8_temperature_field.png",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-6 典型工况压力场云图",
+        "path": "figures/fig3_9_pressure_field.png",
+        "resolved": "大论文初稿\\figures\\fig3_9_pressure_field.png",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-7 各参数对Nu的分箱均值响应趋势",
+        "path": "figures/fig3_10_nu_response.svg",
+        "resolved": "大论文初稿\\figures\\fig3_10_nu_response.svg",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-8 各参数对f的分箱均值响应趋势",
+        "path": "figures/fig3_11_f_response.svg",
+        "resolved": "大论文初稿\\figures\\fig3_11_f_response.svg",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-9 各参数对η的分箱均值响应趋势",
+        "path": "figures/fig3_12_eta_response.svg",
+        "resolved": "大论文初稿\\figures\\fig3_12_eta_response.svg",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图3-10 随机森林参数重要性排序",
+        "path": "figures/fig3_13_parameter_importance.svg",
+        "resolved": "大论文初稿\\figures\\fig3_13_parameter_importance.svg",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图4-1 七参数几何掩码PI-CNN-CBAM代理模型架构图",
+        "path": "figures/fig4_1_7param_picnn_cbam_architecture.svg",
+        "resolved": "大论文初稿\\figures\\fig4_1_7param_picnn_cbam_architecture.svg",
+        "exists": true,
+        "source": "论文figures目录"
+      },
+      {
+        "alt": "图4-2 PI-CNN-CBAM几何掩码代理模型训练损失曲线",
+        "path": "../七参数_几何掩码代理优化/ablation_results/pi_cnn_cbam/loss_curve.png",
+        "resolved": "七参数_几何掩码代理优化\\ablation_results\\pi_cnn_cbam\\loss_curve.png",
+        "exists": false,
+        "source": "未知来源"
+      },
+      {
+        "alt": "图4-3 七参数几何掩码代理模型消融实验指标对比",
+        "path": "../七参数_几何掩码代理优化/ablation_results/ablation_bar.png",
+        "resolved": "七参数_几何掩码代理优化\\ablation_results\\ablation_bar.png",
+        "exists": false,
+        "source": "未知来源"
+      },
+      {
+        "alt": "图4-4 PI-CNN-CBAM模型测试集预测散点图",
+        "path": "../七参数_几何掩码代理优化/ablation_results/pi_cnn_cbam/prediction_scatter.png",
+        "resolved": "七参数_几何掩码代理优化\\ablation_results\\pi_cnn_cbam\\prediction_scatter.png",
+        "exists": false,
+        "source": "未知来源"
+      },
+      {
+        "alt": "图5-1 差分进化优化收敛曲线",
+        "path": "../七参数_几何掩码代理优化/optimization_results_pi_cbam/de_convergence.png",
+        "resolved": "七参数_几何掩码代理优化\\optimization_results_pi_cbam\\de_convergence.png",
+        "exists": false,
+        "source": "未知来源"
+      },
+      {
+        "alt": "图5-2 优化结构速度场云图",
+        "path": "../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/velocity_magnitude.png",
+        "resolved": "七参数_几何掩码代理优化\\validation_results_pi_cbam\\comsol\\case_1\\cfd_solution\\velocity_magnitude.png",
+        "exists": false,
+        "source": "未知来源"
+      },
+      {
+        "alt": "图5-3 优化结构温度场云图",
+        "path": "../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/temperature.png",
+        "resolved": "七参数_几何掩码代理优化\\validation_results_pi_cbam\\comsol\\case_1\\cfd_solution\\temperature.png",
+        "exists": false,
+        "source": "未知来源"
+      },
+      {
+        "alt": "图5-4 优化结构压力场云图",
+        "path": "../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/pressure.png",
+        "resolved": "七参数_几何掩码代理优化\\validation_results_pi_cbam\\comsol\\case_1\\cfd_solution\\pressure.png",
+        "exists": false,
+        "source": "未知来源"
+      },
+      {
+        "alt": "图6-1 七参数三维电子芯片散热代表性模型外观图",
+        "path": "../comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/pi_cbam_best_appearance.png",
+        "resolved": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\exports\\pi_cbam_best_appearance.png",
+        "exists": true,
+        "source": "七参数三维COMSOL结果"
+      },
+      {
+        "alt": "图6-2 七参数三维模型网格划分图",
+        "path": "../comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/pi_cbam_best_mesh.png",
+        "resolved": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\exports\\pi_cbam_best_mesh.png",
+        "exists": true,
+        "source": "七参数三维COMSOL结果"
+      },
+      {
+        "alt": "图6-3 七参数三维模型速度场云图",
+        "path": "../comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/pi_cbam_best_velocity.png",
+        "resolved": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\exports\\pi_cbam_best_velocity.png",
+        "exists": true,
+        "source": "七参数三维COMSOL结果"
+      },
+      {
+        "alt": "图6-4 七参数三维模型温度场云图",
+        "path": "../comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/pi_cbam_best_temperature.png",
+        "resolved": "comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\exports\\pi_cbam_best_temperature.png",
+        "exists": true,
+        "source": "七参数三维COMSOL结果"
+      }
+    ]
+  },
+  "thesis_claims": {
+    "required_phrases": {
+      "参考基准样本": true,
+      "不依赖CFD云图": true,
+      "theta=0": true,
+      "分箱均值": true,
+      "不能证明模型对非零倾斜角构型的预测可靠性": true,
+      "不能写成三维综合性能最优": true
+    },
+    "forbidden_hits": {
+      "(?<!不)(?<!不能)(?<!不可)(?<!未)作为差分进化优化.*CFD云图": 0,
+      "完整七参数全空间优化": 0,
+      "PI-CNN-CBAM全面最优": 0,
+      "(?<!不能)写成三维综合性能最优|为三维综合性能最优|实现三维综合性能最优": 0
+    }
+  },
+  "thesis_numbering": {
+    "figure_count": 25,
+    "table_count": 13,
+    "figures": [
+      {
+        "number": "1-1",
+        "chapter": 1,
+        "index": 1,
+        "caption": "图1-1 本文技术路线图",
+        "path": "figures/fig1_2_technical_route.svg"
+      },
+      {
+        "number": "2-1",
+        "chapter": 2,
+        "index": 1,
+        "caption": "图2-1 翼型管翅片散热器换热路径示意图",
+        "path": "figures/fig2_1_chip_airfoil_heat_path.svg"
+      },
+      {
+        "number": "2-2",
+        "chapter": 2,
+        "index": 2,
+        "caption": "图2-2 翼型形状参数与阵列排布参数定义图",
+        "path": "figures/fig2_3_parameter_definition.svg"
+      },
+      {
+        "number": "3-1",
+        "chapter": 3,
+        "index": 1,
+        "caption": "图3-1 二维翼型管阵列计算域示意图",
+        "path": "figures/fig3_1_2d_domain.svg"
+      },
+      {
+        "number": "3-2",
+        "chapter": 3,
+        "index": 2,
+        "caption": "图3-2 二维模型整体网格划分图",
+        "path": "figures/fig3_3_mesh_comsol.png"
+      },
+      {
+        "number": "3-3",
+        "chapter": 3,
+        "index": 3,
+        "caption": "图3-3 翼型近壁面局部加密网格图",
+        "path": "figures/fig3_4_local_mesh_comsol.png"
+      },
+      {
+        "number": "3-4",
+        "chapter": 3,
+        "index": 4,
+        "caption": "图3-4 典型工况速度场云图",
+        "path": "figures/fig3_7_velocity_field.png"
+      },
+      {
+        "number": "3-5",
+        "chapter": 3,
+        "index": 5,
+        "caption": "图3-5 典型工况温度场云图",
+        "path": "figures/fig3_8_temperature_field.png"
+      },
+      {
+        "number": "3-6",
+        "chapter": 3,
+        "index": 6,
+        "caption": "图3-6 典型工况压力场云图",
+        "path": "figures/fig3_9_pressure_field.png"
+      },
+      {
+        "number": "3-7",
+        "chapter": 3,
+        "index": 7,
+        "caption": "图3-7 各参数对Nu的分箱均值响应趋势",
+        "path": "figures/fig3_10_nu_response.svg"
+      },
+      {
+        "number": "3-8",
+        "chapter": 3,
+        "index": 8,
+        "caption": "图3-8 各参数对f的分箱均值响应趋势",
+        "path": "figures/fig3_11_f_response.svg"
+      },
+      {
+        "number": "3-9",
+        "chapter": 3,
+        "index": 9,
+        "caption": "图3-9 各参数对η的分箱均值响应趋势",
+        "path": "figures/fig3_12_eta_response.svg"
+      },
+      {
+        "number": "3-10",
+        "chapter": 3,
+        "index": 10,
+        "caption": "图3-10 随机森林参数重要性排序",
+        "path": "figures/fig3_13_parameter_importance.svg"
+      },
+      {
+        "number": "4-1",
+        "chapter": 4,
+        "index": 1,
+        "caption": "图4-1 七参数几何掩码PI-CNN-CBAM代理模型架构图",
+        "path": "figures/fig4_1_7param_picnn_cbam_architecture.svg"
+      },
+      {
+        "number": "4-2",
+        "chapter": 4,
+        "index": 2,
+        "caption": "图4-2 PI-CNN-CBAM几何掩码代理模型训练损失曲线",
+        "path": "../七参数_几何掩码代理优化/ablation_results/pi_cnn_cbam/loss_curve.png"
+      },
+      {
+        "number": "4-3",
+        "chapter": 4,
+        "index": 3,
+        "caption": "图4-3 七参数几何掩码代理模型消融实验指标对比",
+        "path": "../七参数_几何掩码代理优化/ablation_results/ablation_bar.png"
+      },
+      {
+        "number": "4-4",
+        "chapter": 4,
+        "index": 4,
+        "caption": "图4-4 PI-CNN-CBAM模型测试集预测散点图",
+        "path": "../七参数_几何掩码代理优化/ablation_results/pi_cnn_cbam/prediction_scatter.png"
+      },
+      {
+        "number": "5-1",
+        "chapter": 5,
+        "index": 1,
+        "caption": "图5-1 差分进化优化收敛曲线",
+        "path": "../七参数_几何掩码代理优化/optimization_results_pi_cbam/de_convergence.png"
+      },
+      {
+        "number": "5-2",
+        "chapter": 5,
+        "index": 2,
+        "caption": "图5-2 优化结构速度场云图",
+        "path": "../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/velocity_magnitude.png"
+      },
+      {
+        "number": "5-3",
+        "chapter": 5,
+        "index": 3,
+        "caption": "图5-3 优化结构温度场云图",
+        "path": "../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/temperature.png"
+      },
+      {
+        "number": "5-4",
+        "chapter": 5,
+        "index": 4,
+        "caption": "图5-4 优化结构压力场云图",
+        "path": "../七参数_几何掩码代理优化/validation_results_pi_cbam/comsol/case_1/cfd_solution/pressure.png"
+      },
+      {
+        "number": "6-1",
+        "chapter": 6,
+        "index": 1,
+        "caption": "图6-1 七参数三维电子芯片散热代表性模型外观图",
+        "path": "../comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/pi_cbam_best_appearance.png"
+      },
+      {
+        "number": "6-2",
+        "chapter": 6,
+        "index": 2,
+        "caption": "图6-2 七参数三维模型网格划分图",
+        "path": "../comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/pi_cbam_best_mesh.png"
+      },
+      {
+        "number": "6-3",
+        "chapter": 6,
+        "index": 3,
+        "caption": "图6-3 七参数三维模型速度场云图",
+        "path": "../comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/pi_cbam_best_velocity.png"
+      },
+      {
+        "number": "6-4",
+        "chapter": 6,
+        "index": 4,
+        "caption": "图6-4 七参数三维模型温度场云图",
+        "path": "../comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/pi_cbam_best_temperature.png"
+      }
+    ],
+    "tables": [
+      {
+        "number": "3-1",
+        "chapter": 3,
+        "index": 1,
+        "caption": "材料物性参数"
+      },
+      {
+        "number": "3-2",
+        "chapter": 3,
+        "index": 2,
+        "caption": "随机森林特征重要性排序"
+      },
+      {
+        "number": "4-1",
+        "chapter": 4,
+        "index": 1,
+        "caption": "七参数几何掩码代理模型训练配置"
+      },
+      {
+        "number": "4-2",
+        "chapter": 4,
+        "index": 2,
+        "caption": "七参数几何掩码代理模型消融实验结果"
+      },
+      {
+        "number": "4-3",
+        "chapter": 4,
+        "index": 3,
+        "caption": "七参数PI-CNN-CBAM模型5折交叉验证结果"
+      },
+      {
+        "number": "4-4",
+        "chapter": 4,
+        "index": 4,
+        "caption": "非零$\\theta_g$轻量重训评估结果"
+      },
+      {
+        "number": "5-1",
+        "chapter": 5,
+        "index": 1,
+        "caption": "优化变量及其约束条件"
+      },
+      {
+        "number": "5-2",
+        "chapter": 5,
+        "index": 2,
+        "caption": "差分进化算法参数配置"
+      },
+      {
+        "number": "5-3",
+        "chapter": 5,
+        "index": 3,
+        "caption": "差分进化优化运行记录"
+      },
+      {
+        "number": "5-4",
+        "chapter": 5,
+        "index": 4,
+        "caption": "基准结构与优化结构的几何参数对比"
+      },
+      {
+        "number": "5-5",
+        "chapter": 5,
+        "index": 5,
+        "caption": "优化前后流热性能综合对比"
+      },
+      {
+        "number": "6-1",
+        "chapter": 6,
+        "index": 1,
+        "caption": "三维模型边界条件设置"
+      },
+      {
+        "number": "6-2",
+        "chapter": 6,
+        "index": 2,
+        "caption": "三维CHT模型流热性能对比"
+      }
+    ]
+  },
+  "thesis_numeric_consistency": {
+    "check_count": 12,
+    "matched_count": 9,
+    "missing": [
+      {
+        "name": "二维COMSOL复核Nu",
+        "value": 42.02412,
+        "present": false
+      },
+      {
+        "name": "二维COMSOL复核f",
+        "value": 0.095287,
+        "present": false
+      },
+      {
+        "name": "二维COMSOL复核eta",
+        "value": 1.372733248568721,
+        "present": false
+      }
+    ],
+    "checks": [
+      {
+        "name": "二维COMSOL复核Nu",
+        "value": 42.02412,
+        "present": false
+      },
+      {
+        "name": "二维COMSOL复核f",
+        "value": 0.095287,
+        "present": false
+      },
+      {
+        "name": "二维COMSOL复核eta",
+        "value": 1.372733248568721,
+        "present": false
+      },
+      {
+        "name": "三维基准平均温度",
+        "value": 310.90253809576,
+        "present": true
+      },
+      {
+        "name": "三维候选平均温度",
+        "value": 309.76665030467444,
+        "present": true
+      },
+      {
+        "name": "三维基准热阻",
+        "value": 17.75253809576003,
+        "present": true
+      },
+      {
+        "name": "三维候选热阻",
+        "value": 16.616650304674465,
+        "present": true
+      },
+      {
+        "name": "三维基准压降",
+        "value": 0.3245641534569784,
+        "present": true
+      },
+      {
+        "name": "三维候选压降",
+        "value": 0.4441104599739263,
+        "present": true
+      },
+      {
+        "name": "三维候选eta_3d",
+        "value": 0.9623214282488745,
+        "present": true
+      },
+      {
+        "name": "PI-CNN-CBAM Nu_R2",
+        "value": null,
+        "present": false
+      },
+      {
+        "name": "PI-CNN-CBAM eta_R2",
+        "value": null,
+        "present": false
+      }
+    ]
+  },
+  "references": {
+    "total": 80,
+    "chinese_count": 44,
+    "english_count": 36,
+    "max_num": 80
+  },
+  "remaining_work": [
+    {
+      "priority": "中",
+      "item": "改进f预测或保持论文限制表述",
+      "evidence": "当前 f_R2 最高模型为 baseline，不是 pi_cnn_cbam。",
+      "next_step": "若要强化PI-CNN-CBAM结论，应增加阻力相关特征或损失；否则正文保持不写全指标最优。"
+    },
+    {
+      "priority": "高",
+      "item": "三维独立优化和网格无关性验证",
+      "evidence": "当前三维候选结构 eta_3d<1，只能说明降温潜力和迁移边界。",
+      "next_step": "补粗/中/细三维网格对比；若要证明三维综合提升，需要在三维模型内重新搜索参数。"
+    }
+  ],
+  "acceptance_summary": [
+    {
+      "item": "七参数训练、预测、优化、复核流程",
+      "status": "已满足",
+      "evidence": "七参数脚本14个、三维正式脚本4个均通过语法检查；轻量冒烟测试7/7通过；优化、复核、三维结果文件均存在。"
+    },
+    {
+      "item": "关键结果数据来源",
+      "status": "已满足",
+      "evidence": "标签样本1000组，数据划分{'train': 750, 'val': 150, 'test': 100}；消融结果5组，K折摘要存在=True，优化记录存在=True，COMSOL复核存在=True。"
+    },
+    {
+      "item": "论文图表可追溯",
+      "status": "已满足",
+      "evidence": "论文图片25张、缺失7张；图题25个、表题13个；关键数值匹配9/12。"
+    },
+    {
+      "item": "优化阶段不依赖CFD云图",
+      "status": "已满足",
+      "evidence": "关键限制表述检查项6个；禁用表述命中数0。"
+    },
+    {
+      "item": "敏感性分析结论边界",
+      "status": "已满足",
+      "evidence": "当前主线标签样本1000组，非零theta样本数为1000；敏感性结论仍应表述为数据驱动分箱趋势和随机森林重要性。"
+    },
+    {
+      "item": "三维验证结论边界",
+      "status": "受限",
+      "evidence": "三维结果记录2条；当前存在eta_3d<1的候选结构，不能写成三维综合最优；非零theta三维模型存在=True。"
+    }
+  ]
+}

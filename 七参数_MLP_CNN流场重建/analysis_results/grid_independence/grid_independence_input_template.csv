@@ -1,0 +1,13 @@
+﻿dimension,case,mesh_level,element_count,Nu,f,eta,Tmax,Tavg,pressure_drop,thermal_resistance,relative_to_fine_percent,status
+2D,baseline,coarse,,,,,,,,,,待填入真实 COMSOL 求解结果
+2D,baseline,medium,,,,,,,,,,待填入真实 COMSOL 求解结果
+2D,baseline,fine,,,,,,,,,,待填入真实 COMSOL 求解结果
+2D,DE_optimum,coarse,,,,,,,,,,待填入真实 COMSOL 求解结果
+2D,DE_optimum,medium,,,,,,,,,,待填入真实 COMSOL 求解结果
+2D,DE_optimum,fine,,,,,,,,,,待填入真实 COMSOL 求解结果
+3D,baseline,coarse,,,,,,,,,,待填入真实 COMSOL 求解结果
+3D,baseline,medium,,,,,,,,,,待填入真实 COMSOL 求解结果
+3D,baseline,fine,,,,,,,,,,待填入真实 COMSOL 求解结果
+3D,chip_mlp_cnn_de_multiloss_e10,coarse,,,,,,,,,,待填入真实 COMSOL 求解结果
+3D,chip_mlp_cnn_de_multiloss_e10,medium,,,,,,,,,,待填入真实 COMSOL 求解结果
+3D,chip_mlp_cnn_de_multiloss_e10,fine,,,,,,,,,,待填入真实 COMSOL 求解结果

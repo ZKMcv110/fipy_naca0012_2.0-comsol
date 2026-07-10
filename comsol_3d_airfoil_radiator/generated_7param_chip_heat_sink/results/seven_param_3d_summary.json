@@ -1,0 +1,34 @@
+[
+  {
+    "case": "baseline",
+    "model_path": "F:\\pyProject\\fipy_naca0012_2.0\\comsol_3d_airfoil_radiator\\generated_realistic_heat_sink\\baseline\\baseline_realistic_airfoil_heat_sink.mph",
+    "t_chip_avg_k": 310.90253809576,
+    "t_chip_max_k": 312.71179382015566,
+    "t_chip_min_k": 309.34795582210864,
+    "t_out_avg_k": 299.80989924748144,
+    "p_in_avg_pa": 0.5280118145995385,
+    "p_out_avg_pa": 0.2034476611425601,
+    "delta_p_pa": 0.3245641534569784,
+    "r_th_k_per_w": 17.75253809576003,
+    "delta_t_out_k": 6.659899247481462,
+    "r_th_ratio": 1.0,
+    "delta_p_ratio": 1.0,
+    "eta_3d": 1.0
+  },
+  {
+    "case": "pi_cbam_best",
+    "model_path": "F:\\pyProject\\fipy_naca0012_2.0\\comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\pi_cbam_best_realistic_airfoil_heat_sink.mph",
+    "t_chip_avg_k": 309.76665030467444,
+    "t_chip_max_k": 311.2694279845841,
+    "t_chip_min_k": 308.18434995091354,
+    "t_out_avg_k": 299.08288305177194,
+    "p_in_avg_pa": 0.6240992858500939,
+    "p_out_avg_pa": 0.1799888258761676,
+    "delta_p_pa": 0.4441104599739263,
+    "r_th_k_per_w": 16.616650304674465,
+    "delta_t_out_k": 5.932883051771967,
+    "r_th_ratio": 0.9360154708606507,
+    "delta_p_ratio": 1.3683287425417852,
+    "eta_3d": 0.9623214282488745
+  }
+]

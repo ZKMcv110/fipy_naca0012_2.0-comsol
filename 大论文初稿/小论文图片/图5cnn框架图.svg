@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+<defs>
+<marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+<path d="M1.5,1.5 L7,4 L1.5,6.5 z" fill="#083b91"/>
+</marker>
+<filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
+<feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#9aa8bd" flood-opacity="0.25"/>
+</filter>
+<style><![CDATA[
+text{font-family:"Microsoft YaHei","SimHei","Noto Sans CJK SC",Arial,sans-serif;}
+.panel{filter:url(#shadow)}
+]]></style>
+</defs>
+<rect width="1600" height="1080" fill="#ffffff"/>
+<g class="panel"><rect x="24" y="34" width="228" height="990" rx="18" ry="18" fill="#fbfdff" stroke="#1f5fd0" stroke-width="2"/></g>
+<text x="138" y="80" fill="#083b91" font-size="27" font-weight="700" text-anchor="middle" >输入（多模态）</text>
+<rect x="36" y="106" width="204" height="565" rx="12" ry="12" fill="#ffffff" stroke="#1f5fd0" stroke-width="2"/>
+<text x="138" y="148" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >速度场云图</text>
+<image x="52" y="166" width="172" height="112" href="data:image/jpeg;base64,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"/>
+<text x="138" y="318" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >温度场云图</text>
+<image x="52" y="336" width="172" height="112" href="data:image/jpeg;base64,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"/>
+<text x="138" y="488" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >压力场云图</text>
+<image x="52" y="506" width="172" height="112" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCABwAKwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7+ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKM/WgAooz9aM/WgAooooAKKKKACiiigAoozRn60AFFGfrRn60AFFGfrRn60AFFGfrRn60AFFGfrRn60AFFFFAFPV3ZNAvXRirLbyEMpwQdpr4wXxF4i8tf8AiodX6D/l+m/+Kr7Q1OKSfRLyCJd0jwOqr6kqQBXyavwr+IQRQfCt5wB/HH/8VX5/xxQxtV0PqkZO3Nflv/dtex91wZWwlNVvrUor4bc1vO9rmF/wkXiH/oYdX/8AA6X/AOKo/t3xPJ8sPiTVkc9Ga9lIH4bua3h8LPiD/wBCref99R//ABVOHwr+IhOI/Dl3C3Z2MbBffG7mvgfqWc/8+6n3TPt/ruUr7dP74neeH/EEV5aI03iBpDxCY3do3EmB3385z6d+tXtRmubWZJ5dda3h3Y8t3f5vUZ35z7/pWhpXh3xFY2EVtLp0hjSMKFjtip3dyTvI9aWfQ/FL3C7LCTyQwJVrc7sdxnfjPviurJMLnCzGnKUKiiovmbjKzXaK5Ek+m199T+d+IoOVKu6EXZy91K7frdJ6dTNvZ7i50pbiy1maCLaXM3nMwI9c7qp2uoTXunyR22szSzoNrSJM+A3rt3cfnW7f6F4mktRHY6VOjH7xki3flhhVf/hHfEyacVTR5zcbMbvLwufpuzj8a/V+H6deGBcayabn7qe613k30+7Q/Mc0w2ZyrR9nCe2rSlb/ANJ1+9+hx9lq1za6vJp9x4iu7uXJ2r9ocEY6jhsHFc54g1XWtH15Li58T6kkMpz5AupNoXPB4bj8c13mm+DfFsU0suoaLcSO7bgUjA/P5jmub1D4efEC/wDEpu5vD07W6khVAXp2xluK/XcDWwir+/OOi1elm/LX/M8vDYPN1Vm5Qq8tu0tfT3dPuRx/jHU/EsthHf2HiTWrSJAP9TfSjcfcbufzFc3N4m8S6r4bK2fifXxIPvSR6nNGwx15ya7vxd8MfiRqghtdO8J3Rt1wWLSR9fdS3P6Vkap8I/iWPDxtdP8ABN6878NtuIoyBjsSxr6nCYrK1SSlOnv3jf7+b/I+iy/DZnGjRUoz5r9U9F/e01/E8vsPGvjGJprG58W+JZJwDt8zUZ1bHY/e/Wuffxj4/wBM1tvtHjPxatvIcIJtWnkXd6Btw/LFek2HwI+K9pZP5ngW7ebB2qJ4R+u+ufg/Z3+Mr6295N4BvY43/he7gkbP1DD+Ve19cybng/aUrrd3jb7ubfz1PrqFPEc1RtSt8/wK0fjTxoUBPi/xByP+glP/APF1IPGnjLP/ACN/iD/wZT//ABddKnwI+LSoAfBd5/3+h/8Ai6d/wor4s/8AQlXn/f6H/wCLrrePyP8A5+UvvgcbpYv+WX4nM/8ACaeMv+hv8Qf+DKf/AOLpf+Ez8Y/9Df4g/wDBlP8A/FV03/Civiz/ANCXef8Af6H/AOLpf+FF/Fn/AKEq8/7/AEP/AMXS+v5H/wA/KX3wJ9ji/wCWX4nMf8Jn4x/6G/xB/wCDKf8A+Ko/4TPxj/0N/iD/AMGU/wD8VXT/APCjPiz/ANCVef8Af6H/AOLo/wCFGfFn/oSrz/v9D/8AF0fX8j/5+UvvgHscX/LL8T1n9ljXdc1bxN4lj1bWtSv0jtbdkW7upJghLvkgMTj8K+na+d/2bvh/4x8GeIfEFx4n0KbTorm2gSFpHRt5V3JA2segI/Ovoivxbi6pQqZrVlhmnD3bctrfCtrabn1OWxnHDxVS99d/UKMD0FFFfNncGB6CjA9BRRQAUUUUAFFFFABRgelFFABgelGB6CiigAwPQUYHoKKKADA9BRgegoooAMD0FGB6CiigAwPQUYHoKKKADAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Z"/>
+<text x="138" y="642" fill="#111827" font-size="34" font-weight="700" text-anchor="middle" >...</text>
+<rect x="36" y="704" width="204" height="240" rx="12" ry="12" fill="#f2fbef" stroke="#4a8a34" stroke-width="2"/>
+<text x="138" y="748" fill="#1f6b25" font-size="25" font-weight="700" text-anchor="middle" >6 维几何参数</text>
+<text x="63" y="790" fill="#111827" font-size="18" font-weight="400" text-anchor="start" >• Ta   弯度系数</text>
+<text x="63" y="816" fill="#111827" font-size="18" font-weight="400" text-anchor="start" >• Twa  最大弯位</text>
+<text x="63" y="842" fill="#111827" font-size="18" font-weight="400" text-anchor="start" >• Tb   厚度系数</text>
+<text x="63" y="868" fill="#111827" font-size="18" font-weight="400" text-anchor="start" >• Ts   横向间距</text>
+<text x="63" y="894" fill="#111827" font-size="18" font-weight="400" text-anchor="start" >• Tt   纵向间距</text>
+<text x="63" y="920" fill="#111827" font-size="18" font-weight="400" text-anchor="start" >• Tad  交错位移</text>
+<rect x="285" y="34" width="1290" height="560" rx="18" ry="18" fill="#fbfdff" stroke="#1f5fd0" stroke-width="2"/>
+<rect x="285" y="34" width="1290" height="64" fill="#eef5ff" stroke="#1f5fd0" stroke-width="2"/>
+<text x="930" y="76" fill="#083b91" font-size="29" font-weight="700" text-anchor="middle" >视觉流：物理场图像编码（CNN主干 + CBAM）</text>
+<text x="930" y="562" fill="#083b91" font-size="21" font-weight="700" text-anchor="middle" >物理场图像特征：尾流速度亏损 + 热尾迹扩展 + 压力梯度/局部压降扰动</text>
+<line x1="252" y1="330" x2="304" y2="330" stroke="#083b91" stroke-width="2.8" marker-end="url(#arrow)"/>
+<rect x="320" y="135" width="158" height="380" rx="14" ry="14" fill="#ffffff" stroke="#1f5fd0" stroke-width="2"/>
+<text x="399" y="171" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >卷积块 1</text>
+<polygon points="355.0,253.0 400.36,253.0 427.24,226.12 381.88,226.12" fill="#b9dcff" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<polygon points="400.36,253.0 427.24,226.12 427.24,305.08 400.36,331.96" fill="#4f8cc8" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<rect x="355.0" y="253.0" width="45.36" height="78.96" fill="#b9dcff" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<polygon points="385.24,274.84 430.6,274.84 457.48,247.95999999999998 412.12,247.95999999999998" fill="#b9dcff" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<polygon points="430.6,274.84 457.48,247.95999999999998 457.48,326.91999999999996 430.6,353.79999999999995" fill="#4f8cc8" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<rect x="385.24" y="274.84" width="45.36" height="78.96" fill="#b9dcff" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<polygon points="415.48,296.68 460.84000000000003,296.68 487.72,269.8 442.36,269.8" fill="#b9dcff" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<polygon points="460.84000000000003,296.68 487.72,269.8 487.72,348.76 460.84000000000003,375.64" fill="#4f8cc8" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<rect x="415.48" y="296.68" width="45.36" height="78.96" fill="#b9dcff" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<text x="399" y="390" fill="#111827" font-size="19" font-weight="500" text-anchor="middle" >卷积 + BN</text>
+<text x="399" y="417" fill="#111827" font-size="19" font-weight="500" text-anchor="middle" >+ ReLU + 池化</text>
+<text x="399" y="485" fill="#111827" font-size="18" font-weight="400" text-anchor="middle" >输出通道： 32</text>
+<rect x="505" y="135" width="158" height="380" rx="14" ry="14" fill="#ffffff" stroke="#1f5fd0" stroke-width="2"/>
+<text x="584" y="171" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >卷积块 2</text>
+<polygon points="540.0,253.0 585.36,253.0 612.24,226.12 566.88,226.12" fill="#8fc4f8" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<polygon points="585.36,253.0 612.24,226.12 612.24,305.08 585.36,331.96" fill="#4f8cc8" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<rect x="540.0" y="253.0" width="45.36" height="78.96" fill="#8fc4f8" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<polygon points="570.24,274.84 615.6,274.84 642.48,247.95999999999998 597.12,247.95999999999998" fill="#8fc4f8" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<polygon points="615.6,274.84 642.48,247.95999999999998 642.48,326.91999999999996 615.6,353.79999999999995" fill="#4f8cc8" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<rect x="570.24" y="274.84" width="45.36" height="78.96" fill="#8fc4f8" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<polygon points="600.48,296.68 645.84,296.68 672.72,269.8 627.36,269.8" fill="#8fc4f8" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<polygon points="645.84,296.68 672.72,269.8 672.72,348.76 645.84,375.64" fill="#4f8cc8" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<rect x="600.48" y="296.68" width="45.36" height="78.96" fill="#8fc4f8" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<text x="584" y="390" fill="#111827" font-size="19" font-weight="500" text-anchor="middle" >卷积 + BN</text>
+<text x="584" y="417" fill="#111827" font-size="19" font-weight="500" text-anchor="middle" >+ ReLU + 池化</text>
+<text x="584" y="485" fill="#111827" font-size="18" font-weight="400" text-anchor="middle" >输出通道： 64</text>
+<rect x="690" y="135" width="158" height="380" rx="14" ry="14" fill="#ffffff" stroke="#1f5fd0" stroke-width="2"/>
+<text x="769" y="171" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >卷积块 3</text>
+<polygon points="725.0,253.0 770.36,253.0 797.24,226.12 751.88,226.12" fill="#2f75bd" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<polygon points="770.36,253.0 797.24,226.12 797.24,305.08 770.36,331.96" fill="#4f8cc8" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<rect x="725.0" y="253.0" width="45.36" height="78.96" fill="#2f75bd" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<polygon points="755.24,274.84 800.6,274.84 827.48,247.95999999999998 782.12,247.95999999999998" fill="#2f75bd" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<polygon points="800.6,274.84 827.48,247.95999999999998 827.48,326.91999999999996 800.6,353.79999999999995" fill="#4f8cc8" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<rect x="755.24" y="274.84" width="45.36" height="78.96" fill="#2f75bd" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<polygon points="785.48,296.68 830.84,296.68 857.72,269.8 812.36,269.8" fill="#2f75bd" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<polygon points="830.84,296.68 857.72,269.8 857.72,348.76 830.84,375.64" fill="#4f8cc8" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<rect x="785.48" y="296.68" width="45.36" height="78.96" fill="#2f75bd" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<text x="769" y="390" fill="#111827" font-size="19" font-weight="500" text-anchor="middle" >卷积 + BN</text>
+<text x="769" y="417" fill="#111827" font-size="19" font-weight="500" text-anchor="middle" >+ ReLU + 池化</text>
+<text x="769" y="485" fill="#111827" font-size="18" font-weight="400" text-anchor="middle" >输出通道： 128</text>
+<rect x="1070" y="135" width="158" height="380" rx="14" ry="14" fill="#ffffff" stroke="#1f5fd0" stroke-width="2"/>
+<text x="1149" y="171" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >卷积块 4</text>
+<polygon points="1105.0,253.0 1150.36,253.0 1177.24,226.12 1131.88,226.12" fill="#1c5da7" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<polygon points="1150.36,253.0 1177.24,226.12 1177.24,305.08 1150.36,331.96" fill="#4f8cc8" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<rect x="1105.0" y="253.0" width="45.36" height="78.96" fill="#1c5da7" opacity="1.0" stroke="#174577" stroke-width="2"/>
+<polygon points="1135.24,274.84 1180.6,274.84 1207.48,247.95999999999998 1162.1200000000001,247.95999999999998" fill="#1c5da7" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<polygon points="1180.6,274.84 1207.48,247.95999999999998 1207.48,326.91999999999996 1180.6,353.79999999999995" fill="#4f8cc8" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<rect x="1135.24" y="274.84" width="45.36" height="78.96" fill="#1c5da7" opacity="0.88" stroke="#174577" stroke-width="2"/>
+<polygon points="1165.48,296.68 1210.84,296.68 1237.72,269.8 1192.3600000000001,269.8" fill="#1c5da7" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<polygon points="1210.84,296.68 1237.72,269.8 1237.72,348.76 1210.84,375.64" fill="#4f8cc8" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<rect x="1165.48" y="296.68" width="45.36" height="78.96" fill="#1c5da7" opacity="0.76" stroke="#174577" stroke-width="2"/>
+<text x="1149" y="390" fill="#111827" font-size="19" font-weight="500" text-anchor="middle" >卷积 + BN</text>
+<text x="1149" y="417" fill="#111827" font-size="19" font-weight="500" text-anchor="middle" >+ ReLU + 池化</text>
+<text x="1149" y="485" fill="#111827" font-size="18" font-weight="400" text-anchor="middle" >输出通道： 256</text>
+<line x1="478" y1="330" x2="505" y2="330" stroke="#111827" stroke-width="2.8" marker-end="url(#arrow)"/>
+<line x1="663" y1="330" x2="690" y2="330" stroke="#111827" stroke-width="2.8" marker-end="url(#arrow)"/>
+<line x1="848" y1="330" x2="878" y2="330" stroke="#111827" stroke-width="2.8" marker-end="url(#arrow)"/>
+<rect x="878" y="114" width="170" height="430" rx="14" ry="14" fill="#ffffff" stroke="#d92323" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="963" y="154" fill="#d92323" font-size="29" font-weight="700" text-anchor="middle" >CBAM</text>
+<text x="963" y="189" fill="#d92323" font-size="23" font-weight="700" text-anchor="middle" >注意力模块</text>
+<rect x="889" y="216" width="148" height="136" rx="10" ry="10" fill="#fff4f2" stroke="#d92323" stroke-width="2"/>
+<text x="963" y="248" fill="#111827" font-size="15" font-weight="600" text-anchor="middle" >通道注意力</text>
+<text x="963" y="271" fill="#111827" font-size="15" font-weight="600" text-anchor="middle" >(Channel Attention)</text>
+<rect x="908" y="302" width="13" height="42" fill="#ff755c" stroke="#9c1d16" stroke-width="1"/>
+<rect x="929" y="316" width="13" height="28" fill="#ff755c" stroke="#9c1d16" stroke-width="1"/>
+<rect x="950" y="320" width="13" height="24" fill="#ff755c" stroke="#9c1d16" stroke-width="1"/>
+<rect x="971" y="308" width="13" height="36" fill="#ff755c" stroke="#9c1d16" stroke-width="1"/>
+<rect x="992" y="326" width="13" height="18" fill="#ff755c" stroke="#9c1d16" stroke-width="1"/>
+<rect x="1013" y="319" width="13" height="25" fill="#ff755c" stroke="#9c1d16" stroke-width="1"/>
+<text x="963" y="380" fill="#111827" font-size="25" font-weight="700" text-anchor="middle" >×</text>
+<rect x="889" y="395" width="148" height="145" rx="10" ry="10" fill="#fff4f2" stroke="#d92323" stroke-width="2"/>
+<text x="963" y="425" fill="#111827" font-size="14" font-weight="600" text-anchor="middle" >空间注意力</text>
+<text x="963" y="447" fill="#111827" font-size="14" font-weight="600" text-anchor="middle" >(Spatial Attention)</text>
+<rect x="925" y="472" width="14" height="14" fill="#b37ae8" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="942" y="472" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="959" y="472" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="976" y="472" width="14" height="14" fill="#b37ae8" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="925" y="489" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="942" y="489" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="959" y="489" width="14" height="14" fill="#b37ae8" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="976" y="489" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="925" y="506" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="942" y="506" width="14" height="14" fill="#b37ae8" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="959" y="506" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="976" y="506" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="925" y="523" width="14" height="14" fill="#b37ae8" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="942" y="523" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="959" y="523" width="14" height="14" fill="#b37ae8" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="976" y="523" width="14" height="14" fill="#b37ae8" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<line x1="1048" y1="330" x2="1070" y2="330" stroke="#111827" stroke-width="2.8" marker-end="url(#arrow)"/>
+<line x1="1228" y1="330" x2="1264" y2="330" stroke="#083b91" stroke-width="2.8" marker-end="url(#arrow)"/>
+<rect x="1264" y="221" width="136" height="248" rx="14" ry="14" fill="#ffffff" stroke="#1f5fd0" stroke-width="2"/>
+<text x="1332" y="272" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >全局平均池化</text>
+<text x="1332" y="303" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >(GAP)</text>
+<rect x="1300" y="330" width="14" height="14" fill="#d9e6ff" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="1317" y="330" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1334" y="330" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1351" y="330" width="14" height="14" fill="#d9e6ff" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="1300" y="347" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1317" y="347" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1334" y="347" width="14" height="14" fill="#d9e6ff" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="1351" y="347" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1300" y="364" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1317" y="364" width="14" height="14" fill="#d9e6ff" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="1334" y="364" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1351" y="364" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1300" y="381" width="14" height="14" fill="#d9e6ff" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<rect x="1317" y="381" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1334" y="381" width="14" height="14" fill="#d9e6ff" opacity="0.55" stroke="#5a238c" stroke-width="1"/>
+<rect x="1351" y="381" width="14" height="14" fill="#d9e6ff" opacity="0.95" stroke="#5a238c" stroke-width="1"/>
+<text x="1332" y="442" fill="#111827" font-size="32" font-weight="700" text-anchor="middle" >...</text>
+<line x1="1400" y1="330" x2="1470" y2="330" stroke="#083b91" stroke-width="2.8" marker-end="url(#arrow)"/>
+<rect x="1470" y="286" width="66" height="208" rx="22" ry="22" fill="#ffffff" stroke="#083b91" stroke-width="2"/>
+<circle cx="1503.0" cy="310.0" r="7" fill="#083b91"/>
+<circle cx="1503.0" cy="342.0" r="7" fill="#083b91"/>
+<circle cx="1503.0" cy="374.0" r="3" fill="#083b91"/>
+<circle cx="1503.0" cy="406.0" r="3" fill="#083b91"/>
+<circle cx="1503.0" cy="438.0" r="3" fill="#083b91"/>
+<circle cx="1503.0" cy="470.0" r="7" fill="#083b91"/>
+<text x="1503" y="250" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >视觉特征向量</text>
+<text x="1503" y="281" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >d_v</text>
+<text x="1503" y="526" fill="#111827" font-size="19" font-weight="400" text-anchor="middle" >维度： D_v</text>
+<rect x="285" y="660" width="630" height="280" rx="18" ry="18" fill="#fbfffb" stroke="#4a8a34" stroke-width="2"/>
+<rect x="285" y="660" width="630" height="55" fill="#f2fbef" stroke="#4a8a34" stroke-width="2"/>
+<text x="600" y="696" fill="#1f6b25" font-size="27" font-weight="700" text-anchor="middle" >参数流：几何参数编码（MLP）</text>
+<line x1="252" y1="805" x2="304" y2="805" stroke="#4a8a34" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="315" y="740" width="110" height="160" rx="12" ry="12" fill="#ffffff" stroke="#4a8a34" stroke-width="2"/>
+<text x="370" y="775" fill="#111827" font-size="18" font-weight="700" text-anchor="middle" >参数嵌入</text>
+<rect x="352" y="815" width="38" height="86" rx="22" ry="22" fill="#ffffff" stroke="#4a8a34" stroke-width="2"/>
+<circle cx="371.0" cy="839.0" r="7" fill="#4a8a34"/>
+<circle cx="371.0" cy="851.6666666666666" r="7" fill="#4a8a34"/>
+<circle cx="371.0" cy="864.3333333333334" r="3" fill="#4a8a34"/>
+<circle cx="371.0" cy="877.0" r="7" fill="#4a8a34"/>
+<text x="370" y="928" fill="#111827" font-size="18" font-weight="400" text-anchor="middle" >输入维度：6</text>
+<rect x="465" y="740" width="110" height="160" rx="12" ry="12" fill="#ffffff" stroke="#4a8a34" stroke-width="2"/>
+<text x="520" y="775" fill="#111827" font-size="18" font-weight="700" text-anchor="middle" >全连接 1</text>
+<text x="520" y="799" fill="#111827" font-size="18" font-weight="700" text-anchor="middle" >（128）</text>
+<rect x="502" y="815" width="38" height="86" rx="22" ry="22" fill="#ffffff" stroke="#4a8a34" stroke-width="2"/>
+<circle cx="521.0" cy="839.0" r="7" fill="#4a8a34"/>
+<circle cx="521.0" cy="851.6666666666666" r="7" fill="#4a8a34"/>
+<circle cx="521.0" cy="864.3333333333334" r="3" fill="#4a8a34"/>
+<circle cx="521.0" cy="877.0" r="7" fill="#4a8a34"/>
+<text x="520" y="928" fill="#111827" font-size="18" font-weight="400" text-anchor="middle" >ReLU</text>
+<rect x="615" y="740" width="110" height="160" rx="12" ry="12" fill="#ffffff" stroke="#4a8a34" stroke-width="2"/>
+<text x="670" y="775" fill="#111827" font-size="18" font-weight="700" text-anchor="middle" >全连接 2</text>
+<text x="670" y="799" fill="#111827" font-size="18" font-weight="700" text-anchor="middle" >（128）</text>
+<rect x="652" y="815" width="38" height="86" rx="22" ry="22" fill="#ffffff" stroke="#4a8a34" stroke-width="2"/>
+<circle cx="671.0" cy="839.0" r="7" fill="#4a8a34"/>
+<circle cx="671.0" cy="851.6666666666666" r="7" fill="#4a8a34"/>
+<circle cx="671.0" cy="864.3333333333334" r="3" fill="#4a8a34"/>
+<circle cx="671.0" cy="877.0" r="7" fill="#4a8a34"/>
+<text x="670" y="928" fill="#111827" font-size="18" font-weight="400" text-anchor="middle" >ReLU</text>
+<rect x="765" y="740" width="110" height="160" rx="12" ry="12" fill="#ffffff" stroke="#4a8a34" stroke-width="2"/>
+<text x="820" y="775" fill="#111827" font-size="18" font-weight="700" text-anchor="middle" >几何特征向量</text>
+<text x="820" y="799" fill="#111827" font-size="18" font-weight="700" text-anchor="middle" >d_g</text>
+<rect x="802" y="815" width="38" height="86" rx="22" ry="22" fill="#ffffff" stroke="#4a8a34" stroke-width="2"/>
+<circle cx="821.0" cy="839.0" r="7" fill="#4a8a34"/>
+<circle cx="821.0" cy="851.6666666666666" r="7" fill="#4a8a34"/>
+<circle cx="821.0" cy="864.3333333333334" r="3" fill="#4a8a34"/>
+<circle cx="821.0" cy="877.0" r="7" fill="#4a8a34"/>
+<text x="820" y="928" fill="#111827" font-size="18" font-weight="400" text-anchor="middle" >维度： D_g</text>
+<line x1="425" y1="815" x2="465" y2="815" stroke="#4a8a34" stroke-width="2.8" marker-end="url(#arrow)"/>
+<line x1="575" y1="815" x2="615" y2="815" stroke="#4a8a34" stroke-width="2.8" marker-end="url(#arrow)"/>
+<line x1="725" y1="815" x2="765" y2="815" stroke="#4a8a34" stroke-width="2.8" marker-end="url(#arrow)"/>
+<polyline points="1332,469 1332,630 1030,630 1030,720" fill="none" stroke="#083b91" stroke-width="2.6" marker-end="url(#arrow)"/>
+<polyline points="875,815 910,815 910,885 945,885" fill="none" stroke="#4a8a34" stroke-width="2.6" marker-end="url(#arrow)"/>
+<rect x="945" y="720" width="170" height="240" rx="14" ry="14" fill="#ffffff" stroke="#f07a22" stroke-width="2"/>
+<text x="1030" y="770" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >特征拼接</text>
+<text x="1030" y="800" fill="#111827" font-size="21" font-weight="700" text-anchor="middle" >（拼接）</text>
+<rect x="964" y="814" width="132" height="34" rx="10" ry="10" fill="#ffffff" stroke="#083b91" stroke-width="2"/>
+<circle cx="984" cy="831" r="7" fill="#083b91"/>
+<circle cx="1003" cy="831" r="7" fill="#083b91"/>
+<circle cx="1022" cy="831" r="7" fill="#083b91"/>
+<circle cx="1041" cy="831" r="7" fill="#083b91"/>
+<circle cx="1060" cy="831" r="7" fill="#083b91"/>
+<circle cx="1079" cy="831" r="7" fill="#083b91"/>
+<text x="1082" y="836" fill="#111827" font-size="22" font-weight="700" text-anchor="middle" >...</text>
+<rect x="964" y="868" width="132" height="34" rx="10" ry="10" fill="#ffffff" stroke="#4a8a34" stroke-width="2"/>
+<circle cx="984" cy="885" r="7" fill="#4a8a34"/>
+<circle cx="1003" cy="885" r="7" fill="#4a8a34"/>
+<circle cx="1022" cy="885" r="7" fill="#4a8a34"/>
+<circle cx="1041" cy="885" r="7" fill="#4a8a34"/>
+<circle cx="1060" cy="885" r="7" fill="#4a8a34"/>
+<circle cx="1079" cy="885" r="7" fill="#4a8a34"/>
+<text x="1082" y="890" fill="#111827" font-size="22" font-weight="700" text-anchor="middle" >...</text>
+<text x="1030" y="930" fill="#111827" font-size="18" font-weight="400" text-anchor="middle" >维度： D_v + D_g</text>
+<line x1="1115" y1="820" x2="1165" y2="820" stroke="#111827" stroke-width="2.8" marker-end="url(#arrow)"/>
+<rect x="1165" y="675" width="205" height="345" rx="14" ry="14" fill="#fff4ea" stroke="#f07a22" stroke-width="2"/>
+<text x="1268" y="715" fill="#d9480f" font-size="24" font-weight="700" text-anchor="middle" >融合全连接层</text>
+<rect x="1192" y="740" width="150" height="105" rx="10" ry="10" fill="#ffffff" stroke="#f07a22" stroke-width="2"/>
+<text x="1267" y="768" fill="#111827" font-size="18" font-weight="500" text-anchor="middle" >融合全连接 1</text>
+<text x="1267" y="791" fill="#111827" font-size="18" font-weight="500" text-anchor="middle" >（256）</text>
+<rect x="1201" y="802" width="132" height="34" rx="10" ry="10" fill="#ffffff" stroke="#f07a22" stroke-width="2"/>
+<circle cx="1221" cy="819" r="7" fill="#f07a22"/>
+<circle cx="1240" cy="819" r="7" fill="#f07a22"/>
+<circle cx="1259" cy="819" r="7" fill="#f07a22"/>
+<circle cx="1278" cy="819" r="7" fill="#f07a22"/>
+<circle cx="1297" cy="819" r="7" fill="#f07a22"/>
+<circle cx="1316" cy="819" r="7" fill="#f07a22"/>
+<text x="1319" y="824" fill="#111827" font-size="22" font-weight="700" text-anchor="middle" >...</text>
+<text x="1268" y="865" fill="#111827" font-size="16" font-weight="400" text-anchor="middle" >ReLU + Dropout</text>
+<rect x="1192" y="875" width="150" height="105" rx="10" ry="10" fill="#ffffff" stroke="#f07a22" stroke-width="2"/>
+<text x="1267" y="903" fill="#111827" font-size="18" font-weight="500" text-anchor="middle" >融合全连接 2</text>
+<text x="1267" y="926" fill="#111827" font-size="18" font-weight="500" text-anchor="middle" >（128）</text>
+<rect x="1201" y="937" width="132" height="34" rx="10" ry="10" fill="#ffffff" stroke="#f07a22" stroke-width="2"/>
+<circle cx="1221" cy="954" r="7" fill="#f07a22"/>
+<circle cx="1240" cy="954" r="7" fill="#f07a22"/>
+<circle cx="1259" cy="954" r="7" fill="#f07a22"/>
+<circle cx="1278" cy="954" r="7" fill="#f07a22"/>
+<circle cx="1297" cy="954" r="7" fill="#f07a22"/>
+<circle cx="1316" cy="954" r="7" fill="#f07a22"/>
+<text x="1319" y="959" fill="#111827" font-size="22" font-weight="700" text-anchor="middle" >...</text>
+<text x="1268" y="1000" fill="#111827" font-size="16" font-weight="400" text-anchor="middle" >ReLU + Dropout</text>
+<rect x="1415" y="675" width="160" height="345" rx="14" ry="14" fill="#f7f0ff" stroke="#7c43bd" stroke-width="2"/>
+<text x="1495" y="720" fill="#5c2a9d" font-size="21" font-weight="700" text-anchor="middle" >联合回归输出</text>
+<text x="1495" y="750" fill="#5c2a9d" font-size="21" font-weight="700" text-anchor="middle" >(连续值)</text>
+<circle cx="1495" cy="805" r="52" fill="#f7fbff" stroke="#1f5fd0" stroke-width="2"/>
+<text x="1495" y="794" fill="#083b91" font-size="21" font-weight="700" text-anchor="middle" >Nu</text>
+<text x="1495" y="821" fill="#083b91" font-size="21" font-weight="700" text-anchor="middle" >(努塞尔数)</text>
+<circle cx="1495" cy="930" r="52" fill="#fffafa" stroke="#d92323" stroke-width="2"/>
+<text x="1495" y="919" fill="#d92323" font-size="21" font-weight="700" text-anchor="middle" >f</text>
+<text x="1495" y="946" fill="#d92323" font-size="21" font-weight="700" text-anchor="middle" >(阻力系数)</text>
+<text x="1495" y="1008" fill="#111827" font-size="19" font-weight="400" text-anchor="middle" >输出维度：2</text>
+<line x1="1370" y1="805" x2="1442" y2="805" stroke="#111827" stroke-width="2.8" marker-end="url(#arrow)"/>
+<line x1="1370" y1="930" x2="1442" y2="930" stroke="#111827" stroke-width="2.8" marker-end="url(#arrow)"/>
+</svg>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+<style>
+text { font-family: "Microsoft YaHei", Arial, sans-serif; fill: #1f2937; }
+.title { font-size: 28px; font-weight: 700; }
+.label { font-size: 19px; font-weight: 600; }
+.small { font-size: 15px; }
+.box { fill: #f8fafc; stroke: #2563eb; stroke-width: 2; rx: 12; }
+.green { stroke: #16a34a; }
+.orange { stroke: #f97316; }
+.red { stroke: #dc2626; }
+.line { stroke: #334155; stroke-width: 2; fill: none; }
+.arrow { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+</marker>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="500" y="58" text-anchor="middle" class="title">二维计算域整体网格划分示意</text>
+<rect x="80" y="125" width="840" height="300" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+<path d="M80,125 L150,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M80,425 L150,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M150,125 L220,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M150,425 L220,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M220,125 L290,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M220,425 L290,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M290,125 L360,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M290,425 L360,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M360,125 L430,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M360,425 L430,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M430,125 L500,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M430,425 L500,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M500,125 L570,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M500,425 L570,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M570,125 L640,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M570,425 L640,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M640,125 L710,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M640,425 L710,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M710,125 L780,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M710,425 L780,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M780,125 L850,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M780,425 L850,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M850,125 L920,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M850,425 L920,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M920,125 L990,425" stroke="#94a3b8" stroke-width="1"/>
+<path d="M920,425 L990,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M80,125 L920,125" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M80,175 L920,175" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M80,225 L920,225" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M80,275 L920,275" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M80,325 L920,325" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M80,375 L920,375" stroke="#cbd5e1" stroke-width="1"/>
+<path d="M80,425 L920,425" stroke="#cbd5e1" stroke-width="1"/>
+<ellipse cx="260" cy="210" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="328" cy="210" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="396" cy="210" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="464" cy="210" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="532" cy="210" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="600" cy="210" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="668" cy="210" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="736" cy="210" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="280" cy="268" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="348" cy="268" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="416" cy="268" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="484" cy="268" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="552" cy="268" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="620" cy="268" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="688" cy="268" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="756" cy="268" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="260" cy="326" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="328" cy="326" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="396" cy="326" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="464" cy="326" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="532" cy="326" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="600" cy="326" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="668" cy="326" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<ellipse cx="736" cy="326" rx="28" ry="7" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.4"/>
+<path d="M105,455 L895,455" class="arrow"/>
+<text x="500" y="490" text-anchor="middle" class="small">主流方向及整体计算域网格分布</text>
+</svg>

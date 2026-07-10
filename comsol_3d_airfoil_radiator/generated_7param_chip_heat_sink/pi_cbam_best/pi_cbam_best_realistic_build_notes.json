@@ -1,0 +1,115 @@
+{
+  "case": "pi_cbam_best",
+  "params": {
+    "Ta": 0.05,
+    "Twa": 0.46214900478678406,
+    "Tb": 0.12636336665143488,
+    "Ts": 1.5,
+    "Tt": 1.2,
+    "Tad": 0.34619403743883576,
+    "theta": 0.0
+  },
+  "model_path": "F:\\pyProject\\fipy_naca0012_2.0\\comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\pi_cbam_best\\pi_cbam_best_realistic_airfoil_heat_sink.mph",
+  "solved": true,
+  "solve_error": null,
+  "mesh_generated": true,
+  "plot_created": true,
+  "mesh_settings": {
+    "global_hauto": 8,
+    "applied": [
+      "ftet1:all_domains",
+      "size_air:sel_air",
+      "size_solid:sel_solid",
+      "size_chip:sel_chip",
+      "coarse_validation_mesh:light_local_refinement"
+    ],
+    "failed": []
+  },
+  "solver_settings": {
+    "mode": "stationary_auto_sequence_with_explicit_tolerance",
+    "nonlinear_tolerance": "1e-4",
+    "max_iterations": "50",
+    "applied": [
+      "st1.studystep=stat",
+      "v1.control=stat",
+      "s1.control=stat",
+      "s1.stol=1e-4"
+    ],
+    "failed": [
+      "s1.maxiter"
+    ]
+  },
+  "geometry": {
+    "domain_count": 27,
+    "air_channel": "60 mm x 28 mm x 16 mm",
+    "base": "36 mm x 22 mm x 2.5 mm",
+    "chip": "18 mm x 16 mm x 2 mm",
+    "pillar_array": "3 x 8 airfoil pillars, centered on base; chord 1.8 mm; height 7 mm"
+  },
+  "boundary_conditions": {
+    "inlet": {
+      "selection": [
+        1
+      ],
+      "type": "VelocityInlet",
+      "U0": "0.5 m/s",
+      "T": "293.15 K"
+    },
+    "outlet": {
+      "selection": [
+        1506
+      ],
+      "type": "Pressure",
+      "p0": "0 Pa"
+    },
+    "heat_source": {
+      "selection": [
+        9
+      ],
+      "type": "HeatRate",
+      "P0": "1 W"
+    },
+    "other_walls": "COMSOL default no-slip wall / thermal wall treatment in closed channel model"
+  },
+  "selection_check": {
+    "sel_air": [
+      1
+    ],
+    "sel_aluminum": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "sel_chip": [
+      9
+    ],
+    "sel_inlet": [
+      1
+    ],
+    "sel_outlet": [
+      1506
+    ]
+  }
+}

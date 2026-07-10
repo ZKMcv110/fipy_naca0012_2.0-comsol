@@ -1,0 +1,233 @@
+{
+  "cases": [
+    {
+      "dimension": "2D",
+      "case": "DE_optimum",
+      "levels": [
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "metrics": [
+        {
+          "metric": "Nu",
+          "threshold_percent": 2.0,
+          "last_pair": "G4/G5",
+          "last_error_percent": 16.006319392246272,
+          "passed": false,
+          "trend": "随网格细化单调减小",
+          "series": [
+            {
+              "level": "G3",
+              "value": 17.330959
+            },
+            {
+              "level": "G4",
+              "value": 13.579919
+            },
+            {
+              "level": "G5",
+              "value": 11.706189
+            }
+          ]
+        },
+        {
+          "metric": "f",
+          "threshold_percent": 3.0,
+          "last_pair": "G4/G5",
+          "last_error_percent": 11.729503291442251,
+          "passed": false,
+          "trend": "随网格细化单调减小",
+          "series": [
+            {
+              "level": "G3",
+              "value": 0.035262
+            },
+            {
+              "level": "G4",
+              "value": 0.029872
+            },
+            {
+              "level": "G5",
+              "value": 0.026736
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dimension": "2D",
+      "case": "baseline",
+      "levels": [
+        "G3",
+        "G4",
+        "G5"
+      ],
+      "metrics": [
+        {
+          "metric": "Nu",
+          "threshold_percent": 2.0,
+          "last_pair": "G4/G5",
+          "last_error_percent": 21.070121695021417,
+          "passed": false,
+          "trend": "随网格细化单调减小",
+          "series": [
+            {
+              "level": "G3",
+              "value": 16.064036
+            },
+            {
+              "level": "G4",
+              "value": 13.47097
+            },
+            {
+              "level": "G5",
+              "value": 11.126585
+            }
+          ]
+        },
+        {
+          "metric": "f",
+          "threshold_percent": 3.0,
+          "last_pair": "G4/G5",
+          "last_error_percent": 14.329087677725113,
+          "passed": false,
+          "trend": "随网格细化单调减小",
+          "series": [
+            {
+              "level": "G3",
+              "value": 0.034127
+            },
+            {
+              "level": "G4",
+              "value": 0.030878
+            },
+            {
+              "level": "G5",
+              "value": 0.027008
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dimension": "3D",
+      "case": "baseline",
+      "levels": [
+        "coarse",
+        "medium",
+        "fine"
+      ],
+      "metrics": [
+        {
+          "metric": "Tmax",
+          "threshold_percent": 1.0,
+          "last_pair": "medium/fine",
+          "last_error_percent": 0.6316876550178414,
+          "passed": true,
+          "trend": "随网格细化单调增大",
+          "series": [
+            {
+              "level": "coarse",
+              "value": 374.6697132857645
+            },
+            {
+              "level": "medium",
+              "value": 380.45711778952443
+            },
+            {
+              "level": "fine",
+              "value": 382.8756962970968
+            }
+          ]
+        },
+        {
+          "metric": "pressure_drop",
+          "threshold_percent": 5.0,
+          "last_pair": "medium/fine",
+          "last_error_percent": 13.385080802971183,
+          "passed": false,
+          "trend": "随网格细化单调减小",
+          "series": [
+            {
+              "level": "coarse",
+              "value": 0.017536803017964196
+            },
+            {
+              "level": "medium",
+              "value": 0.013554663243145202
+            },
+            {
+              "level": "fine",
+              "value": 0.011954538592867511
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dimension": "3D",
+      "case": "chip_mlp_cnn_de_multiloss_e10",
+      "levels": [
+        "coarse",
+        "medium",
+        "fine"
+      ],
+      "metrics": [
+        {
+          "metric": "Tmax",
+          "threshold_percent": 1.0,
+          "last_pair": "medium/fine",
+          "last_error_percent": 0.3145887567501398,
+          "passed": true,
+          "trend": "随网格细化单调增大",
+          "series": [
+            {
+              "level": "coarse",
+              "value": 372.074910950163
+            },
+            {
+              "level": "medium",
+              "value": 376.96965246656845
+            },
+            {
+              "level": "fine",
+              "value": 378.15929910415525
+            }
+          ]
+        },
+        {
+          "metric": "pressure_drop",
+          "threshold_percent": 5.0,
+          "last_pair": "medium/fine",
+          "last_error_percent": 8.062969448072124,
+          "passed": false,
+          "trend": "随网格细化单调减小",
+          "series": [
+            {
+              "level": "coarse",
+              "value": 0.015918558345869117
+            },
+            {
+              "level": "medium",
+              "value": 0.013028397305467622
+            },
+            {
+              "level": "fine",
+              "value": 0.012056301406494482
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "decision": {
+    "can_complete_grid_independence": false,
+    "two_d_failed": true,
+    "three_d_pressure_failed": true,
+    "actions": [
+      "停止继续单纯降低 air_hmax/solid_hmax；二维下一步必须建立翼型壁面边界层网格和尾迹局部细化区。",
+      "三维温度指标可作为稳定证据，压降不能写成网格无关；下一步应固定入口/出口截面并输出 p_in_avg、p_out_avg、delta_p。"
+    ]
+  }
+}

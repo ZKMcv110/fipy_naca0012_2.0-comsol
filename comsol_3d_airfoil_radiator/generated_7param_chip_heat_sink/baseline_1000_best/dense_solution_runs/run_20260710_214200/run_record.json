@@ -1,0 +1,11 @@
+{
+  "source_model": "F:\\pyProject\\fipy_naca0012_2.0\\comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\baseline_1000_best\\baseline_1000_best_realistic_airfoil_heat_sink.mph",
+  "source_model_unchanged": true,
+  "run_dir": "F:\\pyProject\\fipy_naca0012_2.0\\comsol_3d_airfoil_radiator\\generated_7param_chip_heat_sink\\baseline_1000_best\\dense_solution_runs\\run_20260710_214200",
+  "diagnose_only": true,
+  "solved": false,
+  "saved_model": null,
+  "solution_attempts": [],
+  "exported_images": [],
+  "export_errors": []
+}

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="520" viewBox="0 0 1180 520">
+  <rect width="1180" height="520" fill="#ffffff"/>
+  <style>
+    .box{fill:#f7fbff;stroke:#2f5f8f;stroke-width:2;rx:8}
+    .box2{fill:#fff8f0;stroke:#b05a2a;stroke-width:2;rx:8}
+    .box3{fill:#f5fff7;stroke:#3f7d4a;stroke-width:2;rx:8}
+    .text{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:20px;fill:#1f2933}
+    .small{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:16px;fill:#405160}
+    .title{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:26px;font-weight:700;fill:#102a43}
+    .arrow{stroke:#52606d;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#52606d"/>
+    </marker>
+  </defs>
+  <text class="title" x="36" y="48">MLP-CNN流热场重建代理优化技术路线</text>
+  <rect class="box" x="40" y="90" width="190" height="86"/>
+  <text class="text" x="65" y="125">七参数建模</text>
+  <text class="small" x="64" y="153">Ta,Twa,Tb,Ts,Tt,Tad,theta</text>
+  <rect class="box" x="280" y="90" width="190" height="86"/>
+  <text class="text" x="316" y="125">二维CFD仿真</text>
+  <text class="small" x="314" y="153">Nu、f、eta与数值场</text>
+  <rect class="box" x="520" y="90" width="210" height="86"/>
+  <text class="text" x="548" y="125">统一网格化</text>
+  <text class="small" x="552" y="153">u/v/p/T，50x80</text>
+  <rect class="box2" x="780" y="90" width="220" height="86"/>
+  <text class="text" x="816" y="125">MLP-CNN训练</text>
+  <text class="small" x="816" y="153">场重建 + Nu/f + eta约束</text>
+  <path class="arrow" d="M230 133 H280"/>
+  <path class="arrow" d="M470 133 H520"/>
+  <path class="arrow" d="M730 133 H780"/>
+  <rect class="box2" x="780" y="250" width="220" height="86"/>
+  <text class="text" x="808" y="285">DE代理优化</text>
+  <text class="small" x="812" y="313">目标：eta最大化</text>
+  <rect class="box3" x="520" y="250" width="210" height="86"/>
+  <text class="text" x="548" y="285">二维CFD复算</text>
+  <text class="small" x="550" y="313">验证最优候选结构</text>
+  <rect class="box3" x="280" y="250" width="190" height="86"/>
+  <text class="text" x="302" y="285">云图机理分析</text>
+  <text class="small" x="308" y="313">速度、压力、温度</text>
+  <rect class="box3" x="40" y="250" width="190" height="86"/>
+  <text class="text" x="64" y="285">三维迁移验证</text>
+  <text class="small" x="62" y="313">芯片级散热器模型</text>
+  <path class="arrow" d="M890 176 V250"/>
+  <path class="arrow" d="M780 293 H730"/>
+  <path class="arrow" d="M520 293 H470"/>
+  <path class="arrow" d="M280 293 H230"/>
+  <rect x="280" y="405" width="620" height="58" rx="8" fill="#f3f4f6" stroke="#9aa5b1" stroke-width="1.5"/>
+  <text class="text" x="330" y="440">关键边界：CFD场是训练标签，不是优化阶段输入；最终性能以CFD复算为准</text>
+</svg>

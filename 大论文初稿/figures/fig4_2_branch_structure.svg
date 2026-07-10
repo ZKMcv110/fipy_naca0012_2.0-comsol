@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560">
+<style>
+text { font-family: "Microsoft YaHei", Arial, sans-serif; fill: #1f2937; }
+.title { font-size: 28px; font-weight: 700; }
+.label { font-size: 19px; font-weight: 600; }
+.small { font-size: 15px; }
+.box { fill: #f8fafc; stroke: #2563eb; stroke-width: 2; rx: 12; }
+.green { stroke: #16a34a; }
+.orange { stroke: #f97316; }
+.red { stroke: #dc2626; }
+.line { stroke: #334155; stroke-width: 2; fill: none; }
+.arrow { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+</style>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+</marker>
+</defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<rect x="38" y="52" width="924" height="420" rx="20" fill="#f8fafc" stroke="#dbeafe" stroke-width="1.5"/>
+<path d="M70,118 L930,118" stroke="#dbeafe" stroke-width="2"/>
+<text x="84" y="93" class="small" fill="#475569">结构</text>
+<rect x="119.0" y="205" width="138" height="118" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="1.8"/>
+<circle cx="141.0" cy="229" r="13" fill="#0891b2"/>
+<text x="141.0" y="235" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">1</text>
+<text x="188.0" y="267" text-anchor="middle" class="small" font-weight="600">几何参数</text>
+<text x="188.0" y="291" text-anchor="middle" class="small" font-weight="600">MLP分支</text>
+<path d="M261.0,264 L271.0,264" class="arrow"/>
+<rect x="275.0" y="205" width="138" height="118" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+<circle cx="297.0" cy="229" r="13" fill="#2563eb"/>
+<text x="297.0" y="235" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">2</text>
+<text x="344.0" y="267" text-anchor="middle" class="small" font-weight="600">场图像</text>
+<text x="344.0" y="291" text-anchor="middle" class="small" font-weight="600">CNN分支</text>
+<path d="M417.0,264 L427.0,264" class="arrow"/>
+<rect x="431.0" y="205" width="138" height="118" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+<circle cx="453.0" cy="229" r="13" fill="#2563eb"/>
+<text x="453.0" y="235" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">3</text>
+<text x="500.0" y="267" text-anchor="middle" class="small" font-weight="600">CBAM</text>
+<text x="500.0" y="291" text-anchor="middle" class="small" font-weight="600">注意力模块</text>
+<path d="M573.0,264 L583.0,264" class="arrow"/>
+<rect x="587.0" y="205" width="138" height="118" rx="14" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+<circle cx="609.0" cy="229" r="13" fill="#2563eb"/>
+<text x="609.0" y="235" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">4</text>
+<text x="656.0" y="267" text-anchor="middle" class="small" font-weight="600">特征拼接</text>
+<path d="M729.0,264 L739.0,264" class="arrow"/>
+<rect x="743.0" y="205" width="138" height="118" rx="14" fill="#ecfeff" stroke="#0891b2" stroke-width="1.8"/>
+<circle cx="765.0" cy="229" r="13" fill="#0891b2"/>
+<text x="765.0" y="235" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">5</text>
+<text x="812.0" y="267" text-anchor="middle" class="small" font-weight="600">全连接</text>
+<text x="812.0" y="291" text-anchor="middle" class="small" font-weight="600">回归输出</text>
+<text x="500" y="405" text-anchor="middle" class="small" fill="#64748b">几何参数分支与流场图像分支结构</text>
+</svg>

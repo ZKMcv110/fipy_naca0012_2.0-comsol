@@ -1,0 +1,300 @@
+{
+  "source": "F:\\pyProject\\fipy_naca0012_2.0\\七参数_MLP_CNN流场重建\\analysis_results\\grid_independence\\grid_independence_summary.csv",
+  "cases": [
+    {
+      "dimension": "2D",
+      "case": "DE_optimum",
+      "metrics": [
+        {
+          "metric": "Nu",
+          "threshold_percent": 2.0,
+          "series": [
+            {
+              "level": "G3",
+              "value": 17.330959
+            },
+            {
+              "level": "G4",
+              "value": 13.579919
+            },
+            {
+              "level": "G5",
+              "value": 11.706189
+            }
+          ],
+          "adjacent_errors": [
+            {
+              "from": "G3",
+              "to": "G4",
+              "relative_error_percent": 27.621961515381642
+            },
+            {
+              "from": "G4",
+              "to": "G5",
+              "relative_error_percent": 16.006319392246272
+            }
+          ],
+          "last_error_percent": 16.006319392246272,
+          "passed_last_pair": false,
+          "trend": "随细化单调减小"
+        },
+        {
+          "metric": "f",
+          "threshold_percent": 3.0,
+          "series": [
+            {
+              "level": "G3",
+              "value": 0.035262
+            },
+            {
+              "level": "G4",
+              "value": 0.029872
+            },
+            {
+              "level": "G5",
+              "value": 0.026736
+            }
+          ],
+          "adjacent_errors": [
+            {
+              "from": "G3",
+              "to": "G4",
+              "relative_error_percent": 18.043652919121595
+            },
+            {
+              "from": "G4",
+              "to": "G5",
+              "relative_error_percent": 11.729503291442251
+            }
+          ],
+          "last_error_percent": 11.729503291442251,
+          "passed_last_pair": false,
+          "trend": "随细化单调减小"
+        }
+      ]
+    },
+    {
+      "dimension": "2D",
+      "case": "baseline",
+      "metrics": [
+        {
+          "metric": "Nu",
+          "threshold_percent": 2.0,
+          "series": [
+            {
+              "level": "G3",
+              "value": 16.064036
+            },
+            {
+              "level": "G4",
+              "value": 13.47097
+            },
+            {
+              "level": "G5",
+              "value": 11.126585
+            }
+          ],
+          "adjacent_errors": [
+            {
+              "from": "G3",
+              "to": "G4",
+              "relative_error_percent": 19.24928939786817
+            },
+            {
+              "from": "G4",
+              "to": "G5",
+              "relative_error_percent": 21.070121695021417
+            }
+          ],
+          "last_error_percent": 21.070121695021417,
+          "passed_last_pair": false,
+          "trend": "随细化单调减小"
+        },
+        {
+          "metric": "f",
+          "threshold_percent": 3.0,
+          "series": [
+            {
+              "level": "G3",
+              "value": 0.034127
+            },
+            {
+              "level": "G4",
+              "value": 0.030878
+            },
+            {
+              "level": "G5",
+              "value": 0.027008
+            }
+          ],
+          "adjacent_errors": [
+            {
+              "from": "G3",
+              "to": "G4",
+              "relative_error_percent": 10.522054537210956
+            },
+            {
+              "from": "G4",
+              "to": "G5",
+              "relative_error_percent": 14.329087677725113
+            }
+          ],
+          "last_error_percent": 14.329087677725113,
+          "passed_last_pair": false,
+          "trend": "随细化单调减小"
+        }
+      ]
+    },
+    {
+      "dimension": "3D",
+      "case": "baseline",
+      "metrics": [
+        {
+          "metric": "Tmax",
+          "threshold_percent": 1.0,
+          "series": [
+            {
+              "level": "coarse",
+              "value": 374.6697132857645
+            },
+            {
+              "level": "medium",
+              "value": 380.45711778952443
+            },
+            {
+              "level": "fine",
+              "value": 382.8756962970968
+            }
+          ],
+          "adjacent_errors": [
+            {
+              "from": "coarse",
+              "to": "medium",
+              "relative_error_percent": 1.5211713050303972
+            },
+            {
+              "from": "medium",
+              "to": "fine",
+              "relative_error_percent": 0.6316876550178414
+            }
+          ],
+          "last_error_percent": 0.6316876550178414,
+          "passed_last_pair": true,
+          "trend": "随细化单调增大"
+        },
+        {
+          "metric": "pressure_drop",
+          "threshold_percent": 5.0,
+          "series": [
+            {
+              "level": "coarse",
+              "value": 0.017536803017964196
+            },
+            {
+              "level": "medium",
+              "value": 0.013554663243145202
+            },
+            {
+              "level": "fine",
+              "value": 0.011954538592867511
+            }
+          ],
+          "adjacent_errors": [
+            {
+              "from": "coarse",
+              "to": "medium",
+              "relative_error_percent": 29.378374832239544
+            },
+            {
+              "from": "medium",
+              "to": "fine",
+              "relative_error_percent": 13.385080802971183
+            }
+          ],
+          "last_error_percent": 13.385080802971183,
+          "passed_last_pair": false,
+          "trend": "随细化单调减小"
+        }
+      ]
+    },
+    {
+      "dimension": "3D",
+      "case": "chip_mlp_cnn_de_multiloss_e10",
+      "metrics": [
+        {
+          "metric": "Tmax",
+          "threshold_percent": 1.0,
+          "series": [
+            {
+              "level": "coarse",
+              "value": 372.074910950163
+            },
+            {
+              "level": "medium",
+              "value": 376.96965246656845
+            },
+            {
+              "level": "fine",
+              "value": 378.15929910415525
+            }
+          ],
+          "adjacent_errors": [
+            {
+              "from": "coarse",
+              "to": "medium",
+              "relative_error_percent": 1.2984444462249027
+            },
+            {
+              "from": "medium",
+              "to": "fine",
+              "relative_error_percent": 0.3145887567501398
+            }
+          ],
+          "last_error_percent": 0.3145887567501398,
+          "passed_last_pair": true,
+          "trend": "随细化单调增大"
+        },
+        {
+          "metric": "pressure_drop",
+          "threshold_percent": 5.0,
+          "series": [
+            {
+              "level": "coarse",
+              "value": 0.015918558345869117
+            },
+            {
+              "level": "medium",
+              "value": 0.013028397305467622
+            },
+            {
+              "level": "fine",
+              "value": 0.012056301406494482
+            }
+          ],
+          "adjacent_errors": [
+            {
+              "from": "coarse",
+              "to": "medium",
+              "relative_error_percent": 22.1835500763289
+            },
+            {
+              "from": "medium",
+              "to": "fine",
+              "relative_error_percent": 8.062969448072124
+            }
+          ],
+          "last_error_percent": 8.062969448072124,
+          "passed_last_pair": false,
+          "trend": "随细化单调减小"
+        }
+      ]
+    }
+  ],
+  "conclusion": "当前网格细化序列中仍存在超过阈值的相邻网格差异，不能宣称网格无关性通过。",
+  "likely_causes": [
+    "二维 Nu/f 对局部边界层、尾迹和压降积分较敏感，自动网格 hauto 细化可能没有保证翼型柱壁面附近的边界层网格一致细化。",
+    "三维 Tmax 对网格变化较稳定，但压降依赖入口/出口平均压力和流道局部速度梯度，对网格和后处理截面更敏感。",
+    "粗、中、细网格由全局 hauto 控制，缺少边界层网格、局部尺寸和后处理截面一致性约束时，相邻档位可能出现非单调变化。"
+  ],
+  "paper_boundary": "论文中只能写已完成真实网格补算并发现网格敏感性风险，最终性能结论以正式 CFD 复算和三维迁移验证为准；不能写成已通过网格无关性验证。"
+}

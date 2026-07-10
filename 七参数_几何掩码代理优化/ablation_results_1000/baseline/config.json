@@ -1,0 +1,6 @@
+{
+  "use_cbam": false,
+  "use_params": true,
+  "use_pi": false,
+  "desc": "基线：纯参数 MLP"
+}

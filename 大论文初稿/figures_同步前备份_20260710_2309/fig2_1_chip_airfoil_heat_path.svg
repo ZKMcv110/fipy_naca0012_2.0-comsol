@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#1f77d0"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#e67e22"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#d62728"/>
+    </marker>
+    <linearGradient id="baseGrad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#f7c65f"/>
+      <stop offset="100%" stop-color="#d99a2b"/>
+    </linearGradient>
+    <linearGradient id="chipGrad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#f15a3a"/>
+      <stop offset="100%" stop-color="#b51f1f"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="70" y="115" width="1060" height="360" fill="#f8fbff" stroke="#2f4050" stroke-width="2"/>
+  <line x1="90" y1="165" x2="1110" y2="165" stroke="#9aa8b5" stroke-dasharray="8 8" stroke-width="2"/>
+  <line x1="90" y1="425" x2="1110" y2="425" stroke="#9aa8b5" stroke-dasharray="8 8" stroke-width="2"/>
+
+  <rect x="350" y="335" width="500" height="70" rx="4" fill="url(#baseGrad)" stroke="#8c641b" stroke-width="2"/>
+  <rect x="505" y="430" width="190" height="56" rx="4" fill="url(#chipGrad)" stroke="#8b1a1a" stroke-width="2"/>
+
+  <g fill="#dcebf7" stroke="#175a9c" stroke-width="2">
+    <path d="M405,280 C420,258 470,258 485,280 C470,297 420,297 405,280 Z"/>
+    <path d="M535,280 C550,258 600,258 615,280 C600,297 550,297 535,280 Z"/>
+    <path d="M665,280 C680,258 730,258 745,280 C730,297 680,297 665,280 Z"/>
+    <path d="M795,280 C810,258 860,258 875,280 C860,297 810,297 795,280 Z"/>
+
+    <path d="M445,225 C460,203 510,203 525,225 C510,242 460,242 445,225 Z"/>
+    <path d="M575,225 C590,203 640,203 655,225 C640,242 590,242 575,225 Z"/>
+    <path d="M705,225 C720,203 770,203 785,225 C770,242 720,242 705,225 Z"/>
+    <path d="M835,225 C850,203 900,203 915,225 C900,242 850,242 835,225 Z"/>
+
+    <path d="M405,170 C420,148 470,148 485,170 C470,187 420,187 405,170 Z"/>
+    <path d="M535,170 C550,148 600,148 615,170 C600,187 550,187 535,170 Z"/>
+    <path d="M665,170 C680,148 730,148 745,170 C730,187 680,187 665,170 Z"/>
+    <path d="M795,170 C810,148 860,148 875,170 C860,187 810,187 795,170 Z"/>
+  </g>
+
+  <g stroke="#1f77d0" stroke-width="8" fill="none" marker-end="url(#arrow-blue)" opacity="0.9">
+    <path d="M115,210 C190,210 250,210 320,210"/>
+    <path d="M115,295 C205,295 270,295 340,295"/>
+    <path d="M115,380 C195,380 260,380 330,380"/>
+    <path d="M875,210 C950,210 1015,210 1085,210"/>
+    <path d="M870,295 C955,295 1015,295 1085,295"/>
+    <path d="M865,380 C950,380 1015,380 1085,380"/>
+  </g>
+
+  <g stroke="#e67e22" stroke-width="5" fill="none" marker-end="url(#arrow-orange)">
+    <path d="M600,430 C600,405 600,392 600,370"/>
+    <path d="M555,430 C535,405 520,385 510,350"/>
+    <path d="M645,430 C668,405 690,382 705,350"/>
+    <path d="M515,335 C500,315 485,298 470,280"/>
+    <path d="M685,335 C700,315 720,298 735,280"/>
+  </g>
+
+  <g stroke="#d62728" stroke-width="4" fill="none" marker-end="url(#arrow-red)">
+    <path d="M600,520 C600,500 600,492 600,486"/>
+  </g>
+
+  <text x="90" y="92" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" fill="#1f77d0">空气入口</text>
+  <text x="990" y="92" font-family="Microsoft YaHei, SimHei, Arial" font-size="28" fill="#1f77d0">空气出口</text>
+  <text x="540" y="323" font-family="Microsoft YaHei, SimHei, Arial" font-size="26" fill="#7a4f08">铝质基板</text>
+  <text x="502" y="525" font-family="Microsoft YaHei, SimHei, Arial" font-size="26" fill="#b51f1f">芯片等效热源 P=1 W</text>
+  <text x="420" y="105" font-family="Microsoft YaHei, SimHei, Arial" font-size="26" fill="#175a9c">3×8翼型扰流柱阵列</text>
+  <text x="720" y="330" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#e67e22">导热</text>
+  <text x="880" y="335" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#e67e22">对流换热</text>
+  <text x="448" y="610" font-family="Microsoft YaHei, SimHei, Arial" font-size="24" fill="#2f4050">热量路径：芯片发热 → 基板导热 → 翼型柱/基板表面对流 → 空气带走热量</text>
+</svg>

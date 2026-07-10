@@ -1,0 +1,406 @@
+{
+  "created_at": "2026-07-10T23:23:32",
+  "input_dir": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总",
+  "output_dir": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg",
+  "total_png": 44,
+  "editable_svg": 44,
+  "embedded_svg": 0,
+  "records": [
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图1-1_芯片级翼型柱阵列散热器应用背景与研究对象示意图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图1-1_芯片级翼型柱阵列散热器应用背景与研究对象示意图.svg",
+      "source_size_bytes": 84963,
+      "target_size_bytes": 150869
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图1-2_技术路线图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图1-2_技术路线图.svg",
+      "source_size_bytes": 1254626,
+      "target_size_bytes": 865244
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图2-1_基本结构与流热耦合过程示意图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图2-1_基本结构与流热耦合过程示意图.svg",
+      "source_size_bytes": 1134963,
+      "target_size_bytes": 523648
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图2-2_空气绕流特征对比示意图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图2-2_空气绕流特征对比示意图.svg",
+      "source_size_bytes": 1055576,
+      "target_size_bytes": 431073
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图2-3_七参数设计变量定义图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图2-3_七参数设计变量定义图.svg",
+      "source_size_bytes": 976658,
+      "target_size_bytes": 476417
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图2-4_MLP-CNN总体方法框架图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图2-4_MLP-CNN总体方法框架图.svg",
+      "source_size_bytes": 1260986,
+      "target_size_bytes": 933478
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图2-5_CBAM注意力机制结构图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图2-5_CBAM注意力机制结构图.svg",
+      "source_size_bytes": 1256986,
+      "target_size_bytes": 736631
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图2-6_差分进化算法流程图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图2-6_差分进化算法流程图.svg",
+      "source_size_bytes": 1127438,
+      "target_size_bytes": 762485
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-10_七参数对f响应散点与分箱趋势图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-10_七参数对f响应散点与分箱趋势图.svg",
+      "source_size_bytes": 1388386,
+      "target_size_bytes": 3230560
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-11_七参数对eta响应散点与分箱趋势图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-11_七参数对eta响应散点与分箱趋势图.svg",
+      "source_size_bytes": 1396845,
+      "target_size_bytes": 3273326
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-12_二维样本Nu_f_eta散点相关性图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-12_二维样本Nu_f_eta散点相关性图.svg",
+      "source_size_bytes": 932167,
+      "target_size_bytes": 2969736
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-1_二维计算域.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-1_二维计算域.svg",
+      "source_size_bytes": 873195,
+      "target_size_bytes": 355621
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-2_二维网格图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-2_二维网格图.svg",
+      "source_size_bytes": 685787,
+      "target_size_bytes": 3123264
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-3_PVT数据集构建流程图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-3_PVT数据集构建流程图.svg",
+      "source_size_bytes": 1439192,
+      "target_size_bytes": 1198652
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-4_速度场云图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-4_速度场云图.svg",
+      "source_size_bytes": 167934,
+      "target_size_bytes": 684104
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-5_压力场云图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-5_压力场云图.svg",
+      "source_size_bytes": 108203,
+      "target_size_bytes": 68974
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-6_温度场云图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-6_温度场云图.svg",
+      "source_size_bytes": 144748,
+      "target_size_bytes": 518146
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-7_全局敏感性排序图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-7_全局敏感性排序图.svg",
+      "source_size_bytes": 66981,
+      "target_size_bytes": 98626
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-8_局部扰动敏感性图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-8_局部扰动敏感性图.svg",
+      "source_size_bytes": 87368,
+      "target_size_bytes": 147337
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图3-9_七参数对Nu响应散点与分箱趋势图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图3-9_七参数对Nu响应散点与分箱趋势图.svg",
+      "source_size_bytes": 1407272,
+      "target_size_bytes": 3144288
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-10_DE收敛曲线.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-10_DE收敛曲线.svg",
+      "source_size_bytes": 79477,
+      "target_size_bytes": 129406
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-10a_基准结构与优化结构速度场对比图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-10a_基准结构与优化结构速度场对比图.svg",
+      "source_size_bytes": 294523,
+      "target_size_bytes": 1182811
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-10b_基准结构与优化结构温度场对比图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-10b_基准结构与优化结构温度场对比图.svg",
+      "source_size_bytes": 249540,
+      "target_size_bytes": 814881
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-10c_基准结构与优化结构压力场对比图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-10c_基准结构与优化结构压力场对比图.svg",
+      "source_size_bytes": 213414,
+      "target_size_bytes": 226280
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-11_优化结构速度场.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-11_优化结构速度场.svg",
+      "source_size_bytes": 180046,
+      "target_size_bytes": 788480
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-12_优化结构压力场.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-12_优化结构压力场.svg",
+      "source_size_bytes": 128281,
+      "target_size_bytes": 75983
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-13_优化结构温度场.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-13_优化结构温度场.svg",
+      "source_size_bytes": 154273,
+      "target_size_bytes": 555702
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-1_MLP-CNN模型结构图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-1_MLP-CNN模型结构图.svg",
+      "source_size_bytes": 1292542,
+      "target_size_bytes": 920171
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-2_损失收敛曲线.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-2_损失收敛曲线.svg",
+      "source_size_bytes": 119075,
+      "target_size_bytes": 170911
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-3_Nu预测散点图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-3_Nu预测散点图.svg",
+      "source_size_bytes": 89551,
+      "target_size_bytes": 110230
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-4_f预测散点图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-4_f预测散点图.svg",
+      "source_size_bytes": 90012,
+      "target_size_bytes": 132141
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-5_eta预测散点图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-5_eta预测散点图.svg",
+      "source_size_bytes": 89539,
+      "target_size_bytes": 107491
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-6_PVT重建对比图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-6_PVT重建对比图.svg",
+      "source_size_bytes": 285681,
+      "target_size_bytes": 829335
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-7_压力误差图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-7_压力误差图.svg",
+      "source_size_bytes": 108573,
+      "target_size_bytes": 95415
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-8_速度误差图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-8_速度误差图.svg",
+      "source_size_bytes": 188544,
+      "target_size_bytes": 476734
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-9_温度误差图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-9_温度误差图.svg",
+      "source_size_bytes": 172827,
+      "target_size_bytes": 418324
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-9a_三折交叉验证结果图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-9a_三折交叉验证结果图.svg",
+      "source_size_bytes": 106564,
+      "target_size_bytes": 152063
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图4-9b_A0-A4消融实验结果图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图4-9b_A0-A4消融实验结果图.svg",
+      "source_size_bytes": 204228,
+      "target_size_bytes": 295932
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图5-1_三维模型图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图5-1_三维模型图.svg",
+      "source_size_bytes": 126260,
+      "target_size_bytes": 114397
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图5-2_三维网格图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图5-2_三维网格图.svg",
+      "source_size_bytes": 516493,
+      "target_size_bytes": 4275154
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图5-2a_三维温度流阻与综合性能指标对比图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图5-2a_三维温度流阻与综合性能指标对比图.svg",
+      "source_size_bytes": 126055,
+      "target_size_bytes": 361120
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图5-3_三维温度场对比图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图5-3_三维温度场对比图.svg",
+      "source_size_bytes": 353126,
+      "target_size_bytes": 177379
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图5-4_三维速度场对比图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图5-4_三维速度场对比图.svg",
+      "source_size_bytes": 753247,
+      "target_size_bytes": 875676
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图5-5_三维压力场对比图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图5-5_三维压力场对比图.svg",
+      "source_size_bytes": 542273,
+      "target_size_bytes": 225757
+    }
+  ]
+}

@@ -133,7 +133,26 @@ results/
 consol_cfddata/
 
 # Large COMSOL/CFD data directories
-comsol_3d_airfoil_radiator/
+comsol_3d_airfoil_radiator/*
+!comsol_3d_airfoil_radiator/
+!comsol_3d_airfoil_radiator/12_真实感翼型柱散热器建模.py
+!comsol_3d_airfoil_radiator/13_七参数真实芯片散热器建模.py
+!comsol_3d_airfoil_radiator/14_导出七参数三维结果图.py
+!comsol_3d_airfoil_radiator/15_提取七参数三维指标.py
+!comsol_3d_airfoil_radiator/build_realistic_airfoil_heat_sink.py
+comsol_3d_airfoil_radiator/**/*.mph
+comsol_3d_airfoil_radiator/generated*/
+!comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/
+!comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/results/
+!comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/results/seven_param_3d_summary.*
+!comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/
+!comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/pi_cbam_best_realistic_build_notes.json
+!comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/
+!comsol_3d_airfoil_radiator/generated_7param_chip_heat_sink/pi_cbam_best/exports/*.png
+comsol_3d_airfoil_radiator/archive_legacy_outputs/
+comsol_3d_airfoil_radiator/dense_array/
+comsol_3d_airfoil_radiator/reference_heat_sink/
+comsol_3d_airfoil_radiator/__pycache__/
 new_model_runs/
 tmp_mesh_export_test/
 
@@ -153,4 +172,49 @@ ai_cnn_model_results/*.png
 ai_cnn_model_results/*.joblib
 
 # Separate project with its own git
-CLIProxyAPI/
+第三方工具/CLIProxyAPI/
+
+# 2026-06-12 directory cleanup rules
+.codegraph/
+.reasonix/
+academic-research-skills/
+*.lock
+temp_*.txt
+tmp_*/
+归档/
+小论文图片初稿（带参数敏感性）/
+大论文初稿/
+paper_figures_svg/
+cnn_big_results/
+cnn_cbam_gap_results/
+pi_cnn_nuf_results/
+
+# 2026-07-10 GitHub 上传保护：COMSOL 模型、模型权重和大规模数组数据不进普通 Git。
+*.mph
+*.mphbin
+*.mphlock
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+.tmp_pytest/
+
+# 七参数论文与关键证据链：允许提交必要 Markdown 和图表，仍忽略大论文目录中的 PPT/DOCX/COMSOL 中间文件
+!大论文初稿/
+!大论文初稿/figures/
+!大论文初稿/figures/*.svg
+!大论文初稿/figures/*.png
+!大论文初稿/基于物理信息CNN的翼型管翅片散热器论文_七参数版.md
+!大论文初稿/论文数据证据链.md
+!大论文初稿/论文待补任务清单.md
+!大论文初稿/七参数版图表追踪清单.md
+!大论文初稿/七参数版当前审稿问题清单.md
+!大论文初稿/中文参考文献候选补充清单.md
+
+# 七参数 K 折只提交汇总结果；每折权重、散点图、损失图和预测明细可复现且体积较大
+七参数_几何掩码代理优化/kfold_results/fold_*/
+!七参数_几何掩码代理优化/kfold_results/
+!七参数_几何掩码代理优化/kfold_results/kfold_metrics.csv
+!七参数_几何掩码代理优化/kfold_results/kfold_summary.json
+!七参数_几何掩码代理优化/kfold_results/kfold_summary.md
