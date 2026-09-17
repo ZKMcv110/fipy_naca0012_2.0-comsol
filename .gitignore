@@ -160,7 +160,7 @@ tmp_mesh_export_test/
 fipy_pipeline/
 
 # Reference papers (PDFs)
-paper_reference/
+参考文献资料/
 
 # Generated paper figures (reproducible from scripts)
 小论文图片初稿（带参数敏感性）/

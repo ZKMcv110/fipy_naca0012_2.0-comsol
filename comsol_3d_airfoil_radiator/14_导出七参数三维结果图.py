@@ -22,6 +22,7 @@ PLOT_GROUPS = {
     "temperature": "pg_clean_temp",
     "velocity": "pg_clean_vel",
     "pressure": "pg_clean_pressure",
+    "flow_temperature_auto": "pg_auto_nitf_flow",
     "mesh": "pg_mesh_check",
 }
 

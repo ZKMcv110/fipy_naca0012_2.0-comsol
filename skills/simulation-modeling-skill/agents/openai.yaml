@@ -1,0 +1,4 @@
+interface:
+  display_name: "仿真建模学习系统"
+  short_description: "统筹传热、COMSOL、Zemax与光模块建模学习和实操"
+  default_prompt: "启用仿真建模学习系统，先识别我的任务类型，再调用案例检索、建模方案、源码参考、错误排查或学习教练流程。"

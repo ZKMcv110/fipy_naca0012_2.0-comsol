@@ -1,9 +1,9 @@
 {
-  "created_at": "2026-07-10T23:23:32",
+  "created_at": "2026-07-11T14:58:13",
   "input_dir": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总",
   "output_dir": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg",
-  "total_png": 44,
-  "editable_svg": 44,
+  "total_png": 45,
+  "editable_svg": 45,
   "embedded_svg": 0,
   "records": [
     {
@@ -401,6 +401,15 @@
       "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图5-5_三维压力场对比图.svg",
       "source_size_bytes": 542273,
       "target_size_bytes": 225757
+    },
+    {
+      "mode": "vtracer",
+      "editable": true,
+      "note": "由 vtracer 近似矢量化，路径可编辑，但与原 PNG 不保证完全一致。",
+      "source": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总\\图5-7_三维流热耦合场图.png",
+      "target": "F:\\pyProject\\fipy_naca0012_2.0\\大论文初稿\\完整论文初稿_图片汇总_svg\\图5-7_三维流热耦合场图.svg",
+      "source_size_bytes": 452047,
+      "target_size_bytes": 653152
     }
   ]
 }

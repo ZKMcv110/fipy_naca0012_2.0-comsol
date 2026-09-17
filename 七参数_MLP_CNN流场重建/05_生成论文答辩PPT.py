@@ -200,12 +200,12 @@ def main() -> None:
     slide = new_slide(prs, "研究问题与目标")
     add_panel(slide, 1.4, 3.0, 9.8, 10.5, "工程问题", ["换热增强和流阻控制需要同时考虑。", "直接用 CFD 搜索高 eta 结构计算成本高。"])
     add_panel(slide, 12.0, 3.0, 9.8, 10.5, "方法问题", ["只预测 Nu/f 可解释性不足。", "重建速度、压力、温度场后，可以解释性能变化来源。"])
-    add_panel(slide, 22.6, 3.0, 9.8, 10.5, "本文目标", ["输入七参数，预测 u/v/p/T 场和 Nu/f。", "eta 由 Nu/f 计算，并通过 DE 寻优。", "最终用 CFD 复算和三维模型验证。"])
+    add_panel(slide, 22.6, 3.0, 9.8, 10.5, "本文目标", ["输入七参数，预测 p/U/T 场和 Nu/f。", "eta 由 Nu/f 计算，并通过 DE 寻优。", "最终用 CFD 复算和三维模型验证。"])
 
     slide = new_slide(prs, "完整技术路线")
     add_flow(slide, ["七参数建模", "二维 CFD", "场数据网格化", "MLP-CNN 重建", "DE 优化 eta", "CFD 复算", "三维验证"], 1.2, 3.8, 31.4, 2.2)
     add_bullets(slide, [
-        "数据链：case_id、七参数、Nu、f、eta、u/v/p/T 四通道场，统一尺寸 4×50×80。",
+        "数据链：case_id、七参数、Nu、f、eta、p/U/T 三通道场，统一尺寸 3×96×320。",
         "模型链：MLP Encoder 编码七参数，CNN Decoder 输出流热场，MLP Head 输出 Nu/f。",
         "验证链：代理模型只负责筛选，最终结论以 CFD 复算和三维迁移验证为证据。",
     ], 2.0, 8.0, 29.0, 5.2, 15)
@@ -215,19 +215,19 @@ def main() -> None:
         ["项目", "当前结果"],
         ["样本数", str(metrics["sample_count"])],
         ["训练/验证/测试", f"{metrics['train_count']} / {metrics['val_count']} / {metrics['test_count']}"],
-        ["场数据尺寸", "4×50×80"],
-        ["场通道", "u、v、p、T"],
-        ["损失函数", "L_u+L_v+L_p+L_T+αL_Nu+βL_f+γL_eta"],
+        ["场数据尺寸", "3×96×320"],
+        ["场通道", "p、U、T"],
+        ["损失函数", "L_p+L_U+L_T+αL_Nu+βL_f+γL_eta"],
         ["权重", f"α={metrics['alpha']}, β={metrics['beta']}, γ={metrics['gamma']}"],
     ], 1.4, 2.7, 16.0, 7.6)
     add_panel(slide, 18.4, 2.7, 13.0, 7.6, "eta 定义", [
         "eta = (Nu/Nu0)/(f/f0)^(1/3)。",
-        "Nu0 和 f0 来自基准结构。",
+        "Nu0 和 f0 来自 eta 归一化参考样本。",
         "eta 同时考虑换热提升和流阻代价。",
     ])
 
     slide = new_slide(prs, "MLP-CNN 模型结构")
-    add_flow(slide, ["七参数", "MLP Encoder", "潜在特征 z", "CNN Decoder", "u/v/p/T"], 1.5, 3.3, 23.5, 2.0)
+    add_flow(slide, ["七参数", "MLP Encoder", "潜在特征 z", "CNN Decoder", "p/U/T"], 1.5, 3.3, 23.5, 2.0)
     add_flow(slide, ["潜在特征 z", "MLP Head", "Nu/f", "eta 计算"], 8.0, 7.0, 17.0, 1.8)
     add_panel(slide, 1.5, 10.2, 30.4, 4.8, "答辩表述", [
         "CNN 不是为了读入云图，而是为了生成空间场。",
@@ -333,8 +333,8 @@ def main() -> None:
     slide = new_slide(prs, "物理约束与注意力机制", "能证明的写成结果，未训练的写成扩展设计")
     add_panel(slide, 1.4, 2.7, 14.8, 9.8, "当前已实证使用", [
         "L_eta指标一致性约束：eta由Nu/f计算，不作为独立黑箱输出。",
-        "u/v/p/T场监督：用CFD数值场约束潜在特征。",
-        "损失函数：L_u+L_v+L_p+L_T+alpha L_Nu+beta L_f+gamma L_eta。",
+        "p/U/T场监督：用CFD数值场约束潜在特征。",
+        "损失函数：L_p+L_U+L_T+alpha L_Nu+beta L_f+gamma L_eta。",
     ])
     add_panel(slide, 17.2, 2.7, 14.8, 9.8, "扩展与边界", [
         "PDE残差、边界条件损失目前是可扩展设计，不写成已完成PINN结果。",
@@ -345,7 +345,7 @@ def main() -> None:
     slide = new_slide(prs, "消融、K 折与论文表达")
     add_panel(slide, 1.4, 2.8, 14.7, 9.8, "消融怎么写", [
         "旧 ANN/MLP 作为 baseline，对比纯标量回归。",
-        "MLP-CNN 增加 u/v/p/T 重建监督，说明 CNN 的空间场建模作用。",
+        "MLP-CNN 增加 p/U/T 重建监督，说明 CNN 的空间场建模作用。",
         "500 组与 1000 组作为数据规模对照，说明样本量对稳定性的影响。",
     ])
     add_panel(slide, 17.2, 2.8, 14.7, 9.8, "K 折怎么写", [
@@ -357,7 +357,7 @@ def main() -> None:
     slide = new_slide(prs, "老师可能追问")
     add_bullets(slide, [
         "问：这是不是几何掩码？答：最终主线不是几何掩码，而是参数到流热场的 MLP-CNN 重建。",
-        "问：CNN 学到了什么？答：CNN 解码 u/v/p/T 空间场，学习局部空间分布和热流耦合结构。",
+        "问：CNN 学到了什么？答：CNN 解码 p/U/T 空间场，学习局部空间分布和热流耦合结构。",
         "问：为什么还要 CFD 复算？答：代理模型用于快速筛选，最终性能必须由 CFD 复算确认。",
         "问：三维是不是全局最优？答：不是。三维只做迁移验证，结论是二维优化候选在三维模型中仍有效。",
         "问：eta 是什么？答：eta = (Nu/Nu0)/(f/f0)^(1/3)，同时考虑换热增强和流阻代价。",
@@ -365,7 +365,7 @@ def main() -> None:
 
     slide = new_slide(prs, "结论")
     add_bullets(slide, [
-        f"建立了七参数到 u/v/p/T 流热场及 Nu/f 的 MLP-CNN 代理模型，测试集 eta R2 = {fnum(metrics['eta_R2'])}。",
+        f"建立了七参数到 p/U/T 流热场及 Nu/f 的 MLP-CNN 代理模型，测试集 eta R2 = {fnum(metrics['eta_R2'])}。",
         f"DE 得到候选结构，二维 CFD 复算 eta_cfd = {fnum(cfd['eta_cfd'])}。",
         f"三维芯片级模型迁移验证 eta3D = {fnum(opt3d['eta_3d'])}，当前表现为正收益。",
         "论文主线统一为：参数化建模 + CFD 数据集 + MLP-CNN 流热场重建 + DE 优化 + CFD 复算 + 三维迁移验证。",
